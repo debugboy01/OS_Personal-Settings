@@ -1,0 +1,48 @@
+instalar el cliente de oracle http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html
+
+oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
+oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
+oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
+
+y convertir de rpm a debian con el comando alien
+
+instalar en este orden:
+
+sudo alien -i oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
+sudo alien -i oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
+sudo alien -i oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
+
+instalar:
+
+sudo apt-get install libaio1
+
+Y si sale el error de que falta libsqlplus.so, buscar en nuestra direccion
+
+/usr/lib/oracle/<version>/client64/lib/
+
+en este caso /usr/lib/oracle/12.1/client64/lib/
+
+y agregamos esto:
+
+sudo nano /etc/ld.so.conf.d/oracle.conf
+
+y anadimos: /usr/lib/oracle/12.1/client64/lib/
+
+
+y ejecutamos ldconfig
+
+
+luego instalamos rlwrap
+
+sudo apt-get install rlwrap
+
+sirve para anadir un historial de lo que se escribe en algo.
+
+ahora correr:
+
+rlwrap sqlplus64 username/password@//dbhost:1521/SID
+
+ahora para hacerlo mas faicl, anadimos en .bashrc
+alias sq='rlwrap sqlplus64 username/password@//dbhost:1521/SID'
+
+y correr sq.

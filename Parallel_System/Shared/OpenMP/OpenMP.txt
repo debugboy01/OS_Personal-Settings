@@ -1,0 +1,30 @@
+*************OPENMP
+www.openmp.org
+
+sudo apt-get install libgomp1
+
+se descarga en :
+/usr/share/doc/libgomp1
+
+se guarda los binarios
+/usr/lib/gcc/x86_64-linux-gnu/4.8/libgomp1.so
+
+/*
+  COMPUTACION COMPARTIDA, toda Unidad de procesos tiene acceso a una misma memoria ( memoria compartida ).
+ La información se comparte entre los procesos.
+  
+  MP: Multi Processing
+  
+// DEFINICIONES
+// Es una API independiente del lenguaje usado para programar computadoras paralelas.
+// OpenMP es una interface Multihilo en Sistemas de Memoria  Compartida
+// Es una especificación para un conjunto de directivas del compilador, rutinas de la biblioteca, y variables de entorno que se puede utilizar para especificar el paralelismo de MEMORIA COMPARTIDA.
+// Crea hilos desde el hilo principal( el primero creado )
+// no necesita comunicacion, pues es memoria compartida
+// MP en el mismo proceso, crea subhilos copias del hilo segun se especifique las zonas con pragma
+*/
+/*
+  Para compilar y correr:
+  gcc example.c -o example.out -fopenmp
+  ./example.out
+*/

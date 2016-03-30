@@ -1,0 +1,11 @@
+****************EXO-UTILS
+
+
+sudo apt-get install exo-utils
+
+es un gestionador de aplicaciones predeterminadas
+
+
+abrir el software y modificar:
+
+exo-preferred-applications

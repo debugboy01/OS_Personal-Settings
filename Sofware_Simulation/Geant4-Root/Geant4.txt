@@ -1,0 +1,9 @@
+https://attachment.fbsbx.com/file_download.php?id=963394887038196&eid=ASsDs0aif2rzsShb6-wxsruXVMfxso6pXIEajv9iPp7yNLAEEq8doAEPn8iAdsi31ok&inline=1&ext=1435952826&hash=ASv8HrdrLoRZK3rH
+
+viene con scientific Linux y Root
+
+Geant4
+ls /usr/local
+
+Root
+which root

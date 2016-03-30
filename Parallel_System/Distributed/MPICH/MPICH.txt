@@ -1,0 +1,174 @@
+*************MPICH
+www.mpich.org
+
+sudo apt-get install libcr-dev mpich2
+
+/*
+  COMPUTACION DISTRIBUIDA, cada Unidad de procesos tiene su propia memoria privada ( memoria distribuida ).
+ La información se intercambia mediante el paso de mensajes entre los procesos.
+  
+  MPI: Message Pasing Interface
+  
+// DEFINICIONES
+// Es un protocolo de comunicaciones independiente del lenguaje usado para programar computadoras paralelas.
+// MPI es una interface Sistemas Distribuidos de Paso de Mensajes
+// Es un standar de paso de mensajes facto para la comunicación entre procesos que modelan un programa paralelo que se ejecuta en un sistema de MEMORIA DISTRIBUIDA.
+// Tambien modos sincronizados y asinconizados de comunicacion punto a punto y comunicacion colectiva.
+// Comunicacion paso mensajes entre procesos o nodos
+// MPI hace procesos copias del proceso original segun el numero especificado, y trabaja cada proceso independiente de los otros
+*/
+
+/*
+  Para compilar y correr:
+  mpicc example.c -o example.out
+  mpiexec -f machinefile -n 4 ./example.out
+  
+  donde machine file es el archivo donde se almacenan los ips
+  de las demas maquinas
+  por ejemplo, vea el archivo Machinefile adjunto
+  
+  
+  
+  Definiciones basicas
+  
+      C
+  ------------------------------------------
+  MPI_COMM_WORLD                    Es el nombre predefinido del grupo de todos los procesos
+  
+  Tipos de variables:
+        MPI_CHAR                char
+        MPI_SHORT               short int
+        MPI_INT                 int
+        MPI_LONG                long int
+        MPI_UNSIGNED_CHAR  
+        MPI_UNSIGNED_SHORT  
+        MPI_UNSIGNED  
+        MPI_UNSIGNED_LONG  
+        MPI_FLOAT               float
+        MPI_DOUBLE              double
+        MPI_LONG_DOUBLE         long double
+        MPI_BYTE 
+  rank              Es el identificador UNICO de un proceso
+                      Para 2 diferentes comunicadores, el mismo proceso tiene
+                      Diferente rank.
+  size              Es el numero de procesos en el MPI_COMM_WORLD
+  int MPI_init(int* argc, char***argv);  Inicializa el uso de MPI
+                                         Haciendo copias del proceso de rank 0
+                                         a todos los demas procesos
+  int MPI_Finalize(void)                        |   Termina el uso de MPI
+
+  int MPI_Send(const void *buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm)
+                    Realiza un envio de bloqueo
+
+  int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag,MPI_Comm comm, MPI_Status *status)
+                    Realiza un envio de bloqueo
+                    buf: addres a enviar o recibir
+                    count: numero de elementos en el buffer de envio/recibido
+                    datatype: tipo de dato
+                    dest: rank destino
+                    tag: etiqueta del mensaje identifica el mensaje
+                    source: indica el origen del mensaje ( el rank del proceso enviado )
+                    comm: contexto de comunicacion
+                    status: indica el stado del objeto
+                              
+  int MPI_Comm_size(MPI_Comm comm, int *size)
+                    Determina el número de procesos dentro de un comunicador
+
+  int MPI_Comm_rank(MPI_Comm comm, int *rank)
+                    Determina el ID del procesador dentro de un comunicador
+
+  int MPI_Bcast( void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm )
+                    Difunde un mensaje desde el proceso con "raíz" rango a todos los otros procesos del comunicador
+                    root: rank del origen transmisor
+
+  int MPI_Barrier( MPI_Comm comm )
+                    Bloquea hasta que todos los procesos en el comunicador han llegado a esta rutina.
+                    comm: comunicador
+
+  double MPI_Wtime(void) 
+                    Devuelve un tiempo transcurrido en la llamada al procesador
+  
+  int MPI_Reduce(const void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype,MPI_Op op, int root, MPI_Comm comm)
+                    Recopila todos los valores sobre todos los procesos de un solo valor en ese valor, en un solo proceso
+                    sendbuf: buffer a enviar
+                    recvbuf: buffer que recibe
+                    op: Operacion que se realiza al recopilar (+ - / *)
+                    root: origen del dato
+
+  int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count,MPI_Datatype datatype, MPI_Op op, MPI_Comm comm)
+                    Recopila todos los valores sobre todos los procesos de un solo valor en ese valor, en todos los procesos
+
+  int MPI_Gather(const void *sendbuf, int sendcount, MPI_Datatype sendtype,void *recvbuf, int recvcount, MPI_Datatype recvtype,int root, MPI_Comm comm)
+                    Reúne los valores de un grupo de procesos en uno solo
+                    sendbuf: dirección inicial del buffer de envío (opción)
+                    sendcount  número de elementos en buffer de envío (integer)
+                    sendtype:  tipo de datos de elementos que envia (mango)
+                    recvcount:  número de elementos para un solo recibir (entero, significativa sólo en la raíz)
+                    recvtype:  tipo de datos de elementos que recibe (significativo sólo en la raíz) (mango)
+                    root: ID de proceso que recibe los datos (número entero)
+                    comm:  comunicador (mango)
+                    recvbuf: dirección del búfer de recepción
+
+  
+  int MPI_Scatter(const void *sendbuf, int sendcount, MPI_Datatype sendtype, void *recvbuf, int recvcount, MPI_Datatype recvtype, int root,MPI_Comm comm)
+                    Envía datos de un proceso a todos los demás procesos en un comunicador
+                    sendbuf: dirección del buffer de envío (elección, significativa sólo en la raíz)
+                    sendcount: número de elementos enviados a cada proceso (entero, significativa sólo en la raíz)
+                    sendtype: tipo de datos de elementos de memoria de envío (significativo sólo en la raíz) (mango)
+                    recvcount: número de elementos en el búfer de recepción (entero)
+                    recvtype: tipo de datos de recibir los elementos de amortiguación (mango)
+                    root: rango de proceso de envío (número entero)
+                    comm: comunicador (mango)
+                    recvbuf:  dirección del búfer de recepción (opción)
+
+  int MPI_Type_contiguous(int count,MPI_Datatype oldtype,MPI_Datatype *newtype)
+                    Crea un tipo de dato Contiguo
+                    count: Cuantos replicados
+                    oldtype: antiguo tipo dato
+                    newtype: nuevo tipo dato 
+                    
+  int MPI_Type_commit(MPI_Datatype *datatype)
+                    Agrega tipo de dato
+                    datatype: tipo de dato
+                    
+  int MPI_Cart_create(MPI_Comm comm_old, int ndims, const int dims[],const int periods[], int reorder, MPI_Comm *comm_cart)
+                    Hace un nuevo comunicador al que se ha adjuntado la información de topología
+                    comm_old: comunicador de entrada ( antiguo)
+                    ndims: numero de dimensiones de la cuadricula cartesiana
+                    dims: matriz de enteros de tamano ndims que especifica el numero de procesos en cada dimension
+                    periods: matriz logica de dimension ndims que especifica si la red es periodica (true) o no (false) en cada dimension
+                    reorder: ranking puede ser ordenado(true) o no (false)
+                    comm_cart: nueva topologia cartesiana creada
+
+  int MPI_Cart_shift(MPI_Comm comm, int direction, int disp, int *rank_source,int *rank_dest)
+                    Devuelve el cambio de rank origen y destino, dando un cambio de direccion y cantidad
+                    comm: comunicador con estrucura carteasiana
+                    direction: coordenada dimension de cambio
+                    disp: desplazamiento (>0: hacia arriba, <0: hacia abajo)
+                    rank_source: rank del proceso origen
+                    rank_dest: rank del proceso destino
+
+  int MPI_Type_size(MPI_Datatype datatype, int *size)
+                    Devuelve el numero de bytes que ocupa   
+                    datatype: tipodato
+                    size: tamano de datatype
+  
+  int MPI_Type_extent(MPI_Datatype datatype, MPI_Aint *extent)  
+                    Devuelve el grado de un tipo de datos
+                    datatype: tipodato
+                    extent: datatype extent ( direccion integer)
+  
+  
+Blocking vs Nonblocking
+
+BLOCKING
+
+En el bloqueo de la comunicación.
+MPI_SEND no vuelve hasta buffer está vacío (disponible para su reutilización)
+MPI_Recv no vuelve hasta búfer está lleno (disponible para su uso)
+Un proceso de envío de datos se bloquea hasta que se vacía de datos en el buffer de envío
+Un proceso de recepción de datos se bloqueará hasta que se llene el buffer de recepción
+La semántica de terminación exactas de comunicación depende generalmente en el tamaño del mensaje y el tamaño del búfer de sistema
+El bloqueo de la comunicación es simple de usar, pero puede ser propenso a los puntos muertos
+
+

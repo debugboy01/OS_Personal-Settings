@@ -1,0 +1,5 @@
+*********git
+
+// Sistema controlador de versiones
+
+sudo apt-get install git

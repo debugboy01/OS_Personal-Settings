@@ -1,0 +1,7 @@
+***************************LXAPPEARANCE
+
+sudo apt-get install lxappearance
+
+sirve para modificar valores y vistas del sistema.
+
+lxappearance

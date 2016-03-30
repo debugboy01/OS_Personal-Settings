@@ -1,0 +1,10 @@
+25.********** Terminal
+
+sudo apt-get install figlet cowsay fortune fortunes-es fortunes-es-off
+
+// entramos
+gedit .bashrc
+
+// y determinamos el nombre que queremos que aparezca
+// al final del .bashrc escribimos
+figlet Hail ! Jenazad, Meow !

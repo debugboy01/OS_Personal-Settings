@@ -1,0 +1,39 @@
+21. ***** CASSANDRA
+
+sudo su
+
+echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
+
+apt-get update
+apt-get install dsc21
+
+// Installa la Datastax distribution community de Cassandra.
+// los Debian packages empiezan el Cassandra service automaticamente.
+
+/usr/bin/nodetool status
+// vemos el estado de cassandra
+
+// iniciamos
+cqlsh
+
+
+********** OPSCENTER
+
+echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/sources.list.d/datastax.community.list
+
+curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
+
+apt-get update
+apt-get install opscenter
+
+service opscenterd start
+
+// CONECTAR A OPSCENTER
+
+//ir al local host
+
+http://localhost:8888
+
+// y empezamos a crear

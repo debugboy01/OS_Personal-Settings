@@ -1,0 +1,52 @@
+*******************HPL
+
+High Performance Linpack
+
+HPL es un paquete de software que soluciona un sistema (al azar) densa lineal en doble precisión (64 bits) aritmética en los ordenadores de memoria distribuida.
+El paquete HPL ofrece un programa de pruebas y el momento de cuantificar la precisión de la solución obtenida, así como el tiempo que tomó para calcularla.
+El mejor rendimiento alcanzable por este software en su sistema depende de una gran variedad de factores.
+Esta implementación es escalable en el sentido de que su eficiencia se mantiene constante en paralelo con respecto al uso por la memoria del procesador.
+Así, podemos usar esto para referencia un único procesador o una serie de procesadores distribuidos en paralelo. Así que vamos a empezar a instalar HPL.
+
+descargar de este link
+http://www.netlib.org/benchmark/hpl/
+
+hpl-2.1.tar.gz
+
+sudo apt-get install libatlas-base-dev libmpich2-dev gfortran
+
+cd hpl-2.1/setup
+sh make_generic
+
+//creara un Make.UNKNOWN
+
+cd ..
+
+cp setup/Make.UNKNOWN Make.i7Satelite
+// copia el archivo Make.UNKNOWN a Make.i7Satelite
+
+nano Make.i7Satelite
+// y modificamos las lineas
+ARCH         = i7Satelite # debe ser el nombre de tu Makefile
+TOPdir       = $(HOME)/hpl-2.1
+#MPdir        = /usr/local/mpich2
+#MPinc        = -I $(MPdir)/include
+#MPlib        = $(MPdir)/lib/libmpich.a
+LAdir        = /usr/lib/atlas-base/
+LAlib        = $(LAdir)/libf77blas.a $(LAdir)/libatlas.a
+
+hacemos el makefile
+
+make arch=i7Satelite
+
+se crea una carpeta i7Satelite
+
+generara un HPL.dat y un xhpl
+
+http://www.advancedclustering.com/act-kb/tune-hpl-dat-file/
+
+donde nos creara un nuevo HPL.dat
+
+y ejecutamos 
+
+mpiexec -np 4 ./xhpl

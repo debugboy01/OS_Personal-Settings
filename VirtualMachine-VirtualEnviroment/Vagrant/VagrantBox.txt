@@ -1,0 +1,6 @@
+Boxes son paquetes formato para ambientes vagrant. un Box puede ser usado por cualquiera en cualquier plataforma que vagrant brinde un entorno de trabajo identico.
+
+vagrant box add hashicorp/precise64.
+
+puedes hacer un inicio rapido con
+vagrant init hashicorp/precise64.

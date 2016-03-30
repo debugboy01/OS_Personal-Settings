@@ -1,0 +1,7 @@
+1.***BackUp, Openoffice y gedit vienen con el sistema
+
+****** themes for gedit
+
+// descargar los themes que son archivos .xml y luego en el gedit
+// preferencias -> apariencia darle click + y escogemos en la carpeta descargas
+// favorito Matrix.xml

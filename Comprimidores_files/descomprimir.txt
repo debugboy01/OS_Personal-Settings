@@ -1,0 +1,6 @@
+***descomprimir archivos TAR (en una carpeta donde este)
+
+
+tar -zxvf NOMBRE.tar.gz
+
+tar -xvJf NOMBRE.tar.xz

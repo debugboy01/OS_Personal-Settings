@@ -1,0 +1,11 @@
+***************DIA
+
+sudo apt-get install dia
+
+// Software de diagramacion 
+
+// click en base de datos
+
+// arastrar tabla, click derecho propiedades--> atributos
+
+// LLAVE PRIMARIA NO ACEPTA VALORES NULOS

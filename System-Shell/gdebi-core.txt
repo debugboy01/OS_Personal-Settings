@@ -1,0 +1,9 @@
+***************gdebi-core
+
+sudo apt-get install gdebi-core
+
+// conjunto de herramientas que permite instalar paquetes deb locales
+// resolviendo e instalando sus dependencias. 
+// es decir, los paquetes deb que tengas lo instala
+
+// apt hace lo mismo , pero sólo para ( http, ftp ) paquetes situados a distancia .

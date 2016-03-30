@@ -1,0 +1,47 @@
+Crea un grupo Docker
+
+El deamon docker solo es usado por root, y usuarios que puedan acceder mediante sudo.
+
+el docker group es equivalente a el usuario root
+
+**********************************
+
+creando el grupo docker y añado mi usuario
+
+sudo usermod -aG docker ubuntu
+
+sal y regresa, para comprobar que esta bien sin sudo.
+
+docker run hello-world
+
+
+
+AJUSTE DE MEMORIA
+
+para ajustar tamaños de memoria a cadasub sistema, vamos al grub y configuramos la linea
+
+sudo nano /etc/default/grub
+
+GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
+
+sudo update-grub
+
+
+
+CONFIGURANDO DNS PARA DOCKER
+
+un sistema inicia con 127.0.0.1 como nameserver en /etc/resolv.conf
+
+un contenedor docker no puede usar la configuracion local de DNS
+
+cambiamos el dns para docker en
+
+sudo nano /etc/default/docker
+
+DOCKER_OPTS="--dns 8.8.8.8"
+Reemplazamos por por ejemplo 192.168.1.1 o sino
+
+DOCKER_OPTS="--dns 8.8.8.8 --dns 192.168.1.1"
+
+sudo restart docker
+

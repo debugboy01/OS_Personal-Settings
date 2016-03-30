@@ -1,0 +1,49 @@
+******************
+VIDEOS EN FIREFOX
+
+https://support.mozilla.org/es/kb/instalar-el-plugin-de-flash-para-visualizar-videos
+
+// seguir instrucciones
+// descargar el tar de linux 64 bits
+// descomprimimos
+// despues movemos el archivo libflashplayer.so a mozilla plugins
+
+sudo cp libflashplayer.so /usr/lib/mozilla/plugins
+
+
+******************
+VIDEOS EN CHROMIUM (usamos ppeper flash)
+
+
+sudo add-apt-repository ppa:skunk/pepper-flash
+
+sudo apt-get update
+
+sudo apt-get install pepflashplugin-installer
+
+// Cómo configurar Chromium para utilizarlo con Pepper Flash
+
+// Una vez instalado debemos cambiar unos ajustes dentro
+// de Chromium para que nos detecte el nuevo plugin y nos permita utilizarlo.
+
+
+// Para ello debemos modificar el archivo de configuración de Chromium
+// y añadir una línea a un script.
+
+// Para ello teclearemos lo siguiente en un terminal:
+
+sudo gedit /etc/chromium-browser/default
+
+// En el documento que nos abrirá introducimos la siguiente línea
+// al final del texto ya escrito:
+
+. /usr/lib/pepflashplugin-installer/pepflashplayer.sh
+
+// guardamos el archivos y listo vamos a 
+//about:plugins en chromium y lo habilitamos
+
+chrome://plugins
+
+// y activamos el plugin
+
+

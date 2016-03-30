@@ -1,0 +1,8 @@
+**************** pyCharm
+
+https://www.jetbrains.com/pycharm-edu/quickstart/installation.html#linux
+
+descargar del enlace el .tar.gz
+descomprimirlo y luego ir a la carpeta oycharm-edu-*/bin
+
+y ejecutar ./pycharm.sh

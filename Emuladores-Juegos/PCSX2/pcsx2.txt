@@ -1,0 +1,14 @@
+*******************PCSX2
+
+sudo add-apt-repository ppa:gregory-hainaut/pcsx2.official.ppa
+sudo apt-get update
+sudo apt-get install pcsx2
+
+
+Para la BIOS descargar de internet o usar el que se tiene ( bios.7z )
+ mandarlo a la carpeta destino ./.config/pcsx2/bios
+ 
+ y listo,
+ 
+ 
+ las ISO de los juegos descargar de internet y solo correr en el emulador IZI

@@ -1,0 +1,11 @@
+**************RSTUDIO
+
+// descargar de la web el archivo .deb
+// ejemplo rstudio-0.98.1103-amd64.deb
+
+// en consola, en la carpeta donde esta el .deb
+
+sudo gdebi rstudio-0.98.1103-amd64.deb 
+
+// Rstudio ofrece las caracterisitcas de R-shell pero mas interactivos
+// espacios para ver graficos, los comandos, enviroments de las variables etc etc ...

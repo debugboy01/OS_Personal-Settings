@@ -1,0 +1,27 @@
+18.******* MONO DEVELOP
+
+// IDE PARA DESARROLLO C#
+
+sudo su
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+
+echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list
+
+apt-get update
+
+apt-get install mono-gmcs mono-utils
+
+apt-get install monodevelop
+
+apt-get install mono-database
+// para base de datos
+
+// compilador mono de C#
+
+// VOLVER NEGRO A MONO DEVELOP
+
+// menu editar --> preferences --> editor de texto
+//--> resaltado de sintaxis --> Solarized Dark
+
+

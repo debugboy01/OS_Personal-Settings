@@ -1,0 +1,45 @@
+            CORRIENDO JUEGOS EN DOSBOX
+
+1. En root creamos una carpeta en .dosbox/
+llamada Games
+Aqui metemos las carpetas con los ejecutable de programas para DOS (generalmente vienen para descomprimir)
+
+Luego modificamos el fichero ./dosbox/dosbox-0.74.conf
+
+en la parte de autoexec escrbimos las siguientes lineas:
+
+# monta como disco C automaticamente la ruta
+mount c ~/.dosbox/Games
+(solo necesitaremos este, pues jamas usaremos un CDROOM)
+
+# monta como disco D un cdRoom
+mount d /media/cdrom -t cdrom
+
+# monta la imagen (o quema) en el disco D
+imgmount D /home/mi_usuario/imagenes/game.iso -t iso
+
+# teclado español
+keyboardlayout=sp
+
+2. En esta carpeta colocamos el juego descomprimido y renombramos el ejecutable con nombre corto (menos de 8 letras).
+
+EJEMPLO:
+
+Usamos Megaman para DOS, descargamos Megaman desde:
+
+http://www.myabandonware.com/game/mega-man-x-2wh
+
+Descomprimimos en la carpeta .dosbox/Games que hemos creado.
+
+Iniciamos el dosbox, y nos llevara al escribir "C:" nos llevara a la ruta montada que pusimos en el autoexec, en este caso es 
+~/.dosbox/Games
+(renombramos la carpeta del juego tambiena un nombre menor de 8 letras, es este caso, renombramos megama_X_DOS a MMX)
+
+Al iniciar tenemos Z:> 
+escribirmo C:
+y nos manda a la ruta. hacemos cd MMX
+
+y listo, ahora falta instalar, para ello, si esque ya existe el EXE que viene de la carpeta, lo tenemos listo, y si no, escribimos install. LISTO
+
+en este caso el EXE para instalar se tdujam, ejecutamos ese y aparecera un Menu para instalar, pregunta que queremos instalar, escribimos C, ENTER y listo comenzara a instalar.
+Ahora finalmente para jugar escribimos MMXRUN y a disfrutar de Megaman X para DOS :D

@@ -1,0 +1,11 @@
+Como instalar steam en Linux/ubuntu
+
+primero:
+debes tener una version de linux mayor igual a 12.04
+
+segundo:
+escribir los comandos en consola
+
+wget http://media.steampowered.com/client/installer/steam.deb 
+sudo apt-get install gdebi-core 
+sudo gdebi steam.deb 

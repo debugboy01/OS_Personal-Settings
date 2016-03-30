@@ -1,0 +1,5 @@
+Correr el applet
+
+gnome-sound-applet
+
+para que aparezca el control de sonido.

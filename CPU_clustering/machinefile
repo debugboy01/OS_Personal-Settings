@@ -1,0 +1,28 @@
+#master
+172.16.100.9:2
+#slave01
+172.16.100.115:2
+#slave02
+#172.16.100.111:4
+#slave03
+172.16.100.110
+#slave04
+172.16.100.117
+#slave05
+172.16.100.106
+
+# en este archivo se ejecutan los procesos que le damos en 
+# las maquinas con estas direcciones IP ( ya debe haber comunicacion entre ellas )
+
+# despues del ip siguen ":" y luego un numero,
+# eso indica el numero de procesadores que usaremos de cada maquina con 
+# el IP dado en un proceso, si no se pone el numero
+# cuando hagamos el proceso, tomara por default los primeros procesadores de
+# cada maquina
+
+# es decir:
+# 1 1 1 1 1 1, para un proceso de (-n 4) tomara 4 de los primeros 4
+# pero con :2 o :4, se hara asi
+# 2 2 4 1 1 1 ...
+# porque cuando llegue a una maquina, hara el numero de procesos que tiene
+# seguido de los 2 puntos

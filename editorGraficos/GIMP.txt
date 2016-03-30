@@ -1,0 +1,4 @@
+7.***GIMP // coge imagenes 
+
+sudo apt-get install gimp
+

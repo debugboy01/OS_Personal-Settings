@@ -1,0 +1,20 @@
+16.***** ANDROID STUDIO
+
+// IDE paracreacion de apps android en JAVA
+
+//sudo add-apt-repository -y ppa:webupd8team/java
+
+//sudo apt-get update
+
+//sudo apt-get install oracle-java8-installer oracle-java8-set-default
+
+sudo add-apt-repository ppa:paolorotolo/android-studio
+
+sudo apt-get update
+
+sudo apt-get install android-studio
+
+// se corre el programa en consola
+
+/opt/android-studio/bin/studio.sh
+

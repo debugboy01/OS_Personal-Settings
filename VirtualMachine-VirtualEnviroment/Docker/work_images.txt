@@ -1,0 +1,35 @@
+se puede construir imagenes al leer el archivo Dockerfile
+que contiene todos los comandos  que se necesiten
+
+Consejos para contenedores:
+
+los contenedores deben ser efimeros
+
+cada contenedor produce un propio Dockerfile
+con "efimero" nos referimos a que pueden ser detenidos y destruidos, y ser reemplazados con el minimo de configuracion.
+
+usar el .dcokerignore file
+
+en el mejor de los casos, es recomendable poner cada Dockerfile en una carpeta vacia, que funciona como .gitignore.
+
+
+COrrer solo UN PROCESO por contenedor.
+
+es mejorhacer uso de los contenedores de manera secuencial.
+
+
+minimizar el numero de capas.
+
+
+CREANDO IMAGENES
+
+sudo debootstrap raring raring > /dev/null
+$ sudo tar -C raring -c . | docker import - raring
+a29c15f1bf7a
+$ docker run raring cat /etc/lsb-release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=13.04
+DISTRIB_CODENAME=raring
+DISTRIB_DESCRIPTION="Ubuntu 13.04"
+
+

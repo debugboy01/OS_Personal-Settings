@@ -1,0 +1,226 @@
+****************OPENSSH
+
+sudo apt-get install ssh
+// sudo apt-get install openssh-server
+// sudo apt-get install openssh-client
+
+// Por si falla hacer
+sudo apt-get remove ssh
+sudo apt-get autoremove ssh
+sudo apt-get purge ssh
+sudo apt-get install ssh
+
+/*
+
+SSH: Secure Shell
+
+En resumen, SSH es un protocolo utilizado para control remoto de otros equipos de la red y para transferencia cifrada de ficheros.
+
+// Es un protocolo de red criptografico para iniciar sesiones basado en shell en maquinas remotas de manera segura.
+// Esto permite al usuario ejecutar comandos en el símbolo del sistema de la máquina sin que ellos estén presentes físicamente cerca de la máquina.
+// También permite al usuario establecer un canal seguro sobre una red insegura en un cliente-servidor arquitectura, la conexión de un cliente SSH aplicación con un servidor SSH .
+
+// SSH se suele utilizar para iniciar sesión en una máquina remota y ejecutar comandos
+// sino que también apoya un túnel , reenvío de puertos TCP y X11 conexiones
+//Se pueden transferir archivos utilizando el asociado de transferencia de archivos SSH (SFTP) o copia segura protocolos (SCP).
+//SSH utiliza el  modelo cliente-servidor.
+
+
+Public key: ( se almacenan en authorized_keys )
+  Encripta texto plano
+Private key:
+  Decripta texto plano
+
+SSH utiliza criptografia de llave publica para autenticar el equipo remoto y permitir que autorice al usuario entrante.
+
+Hay 2 maneras:
+  1. la primera es que ambas partes usen llaves publicas-privadas generadas automaticamente
+     y cifrar una conexion red y luego pedir contrasena de autentificacion para iniciar sesion.
+  2. que se utiliza un par de llaves publicas generadas manualmente,
+    permitiendo a usuario/programas iniciar sesion sin pedir llave.
+    la llave publica se coloca en todos los equipos que deben
+    permitir acceso al titular de la llave privada.
+    Es decir, que la persona que ofrece la PublicKey tambien posee PrivateKey.
+*/  
+  
+/*  
+en ~/.ssh
+
+El fichero known_hosts contiene la lista de las claves públicas de las máquinas reconocidas. 
+
+El fichero authorized_keys es el fichero que contiene las claves públicas utilizadas durante el proceso de autentificación pública. 
+
+Los ficheros id_rsa e id_rsa.pub contienen respectivamente las claves privada y pública.
+
+*/  
+/*
+    
+SSH SERVER:
+  Es un programa de software que utiliza el protocolo SSH para aceptar conexiones desde equipos remotos.
+  SFTP / SCP transferencias de archivos y control remoto conexiones de los terminales son los casos de uso popular para un servidor SSH.
+  
+  Debe instalarse en todas las maquina a usar en red.
+  
+  Configuracion
+  
+    man sshd_config
+     
+    Antes de tocar ese archivo haremos una copia de seguridad
+     
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+    sudo chmod aw /etc/ssh/sshd_config.original
+  
+    sudo gedit /etc/ssh/sshd_config
+  
+    Tener sshd permita credenciales de acceso basados ​​en clave pública, simplemente añadir o modificar la línea: 
+    PubkeyAuthentication yes
+    
+    Añadiremos la siguiente línea para permitir el acceso mediante SSH al usuario "meow":
+
+    AllowUsers meow
+
+    Si queremos permitir el acceso mediante SSH al superusuario root añadiremos la siguiente línea a este fichero:
+
+      PermitRootLogin yes
+
+    Aunque esto no es muy recomendable por cuestiones de seguridad.
+
+    Para indicar con qué interfaz de red se establecerá la conexión (en el caso de que tengamos varias interfaces de red con varias IPs en nuestro servidor de Linux Ubuntu) añadiremos la línea:
+
+      ListenAddress 192.168.1.254
+
+    También podremos cambiar el puerto por defecto para SSH (es recomendable por seguridad), que es el 22, añadiendo (o modificando si existe) la línea:
+
+      Port 2222
+    
+    Ahora para hacer correctos los cambios :
+    sudo /etc/init.d/ssh restart
+    
+    sudo /etc/init.d/ssh start
+    sudo /etc/init.d/ssh stop
+  
+  OPCIONES DE OpenSSH server
+  
+    ssh: reemplaza a rlogin y telnet para permitir el acceso remoto a otra máquina.
+    scp: reemplaza a rcp para copiar ficheros.
+    sftp: reemplaza a ftp para transferir archivos entre dos equipos.
+    sshd: servidor demonio SSH sshd.
+    ssh-keygen: herramienta para inspeccionar y generar claves RSA y DSA que son usadas para la autenticación del cliente o usuario.
+    ssh-agent y ssh-add: herramientas para autenticarse de manera mas fácil, manteniendo las claves listas para no tener que volver introducir la frase de acceso cada vez que utilice la clave.
+    ssh-keyscan: escanea una lista de clientes y recolecta sus claves públicas.
+  
+  
+  CREACION DE SSH-KEY
+    estan ubicadas en 
+      $HOME /.ssh/identity
+        aqui estan las llaves privadas RSA cuando se usa el protocolo SSH version 1
+      $HOME /.ssh/identity.pub contiene la clave pública RSA para la autenticación cuando se utiliza la versión del protocolo SSH 1.
+    
+      $HOME /.ssh/id_dsa
+        aqui estan las llaves privadas DSA cuando se usa el protocolo SSH version 2
+      $HOME /.ssh/id_dsa.pub contiene la clave pública DSA para la autenticación cuando se utiliza la versión del protocolo SSH 2.
+      
+      $HOME /.ssh/id_rsa
+        aqui estan las llaves privadas RSA cuando se usa el protocolo SSH version 2
+      $HOME /.ssh/id_rsa.pub contiene la clave pública RSA para la autenticación cuando se utiliza la versión del protocolo SSH 2.
+      
+      Damos permisos a las siguientes carpetas
+      sudo chmod 700 ~/.ssh
+      sudo chmod 600 ~/.ssh/authorized_keys
+
+      
+      En la PCnuestra
+      
+      ssh-keygen -t rsa -C "felipe.moreno.vera@gmail.com"
+      // Creara una llave rsa y le agrega al final la cadena especificada
+      
+      ssh PCexterna@ipexterno
+      perdira contrasena de PCexterna para acceder, y listo
+      
+      para agregar a nuestra maquina(PCnuestra) llaves de otra maquina (PCexterna):
+      anade la llave publica de nuestro origen(PCnuestra) a las del servidor destino(PCexterna)
+      cat ~/.ssh/id_rsa.pub | ssh PCexterna@IPexterna "cat>>.ssh/authorized_keys"
+      
+      Y a la vez en la PCexterna:
+      
+      ssh-keygen -t rsa -C "felipe.moreno.vera@gmail.com"
+      // Creara una llave rsa y le agrega al final la cadena especificada
+      
+      ssh PCnuestra@ipnuestra
+      perdira contrasena de PCnuestra para acceder, y listo
+      
+      para agregar a la maquina(PCexterna) llaves de nuestra maquina (PCnuestra):
+      anade la llave publica de nuestro origen(PCexterna) a las del servidor destino(PCnuestra)
+      cat ~/.ssh/id_rsa.pub | ssh PCnuestra@IPnuestra "cat>>.ssh/authorized_keys"
+    
+      ERROR
+      
+      cuando aparezca esto: Could not load host key: /etc/ssh/ssh_host_rsa_key
+      La causa principal de este problema es que el demonio sshd de alguna manera no es capaz de cargar las claves de host SSH.
+      
+      Cuando el servidor OpenSSH se instala por primera vez el sistema Linux, las claves de host SSH automáticamente deben ser generados para su uso posterior.
+      Si, sin embargo, la generación de claves no fue terminado con éxito, que puede causar problemas de inicio de sesión SSH como este.
+        ls -al /etc/ssh/ssh*key 
+      
+      REGENERATE SSH HOST KEYS ......... (1)
+        sudo rm -r /etc/ssh/ssh*key
+        sudo dpkg-reconfigure openssh-server
+        
+        Luego
+          sudo ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+          sudo ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+          sudo ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+     
+     ERROR  WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
+     
+     ssh-keygen -f "~/.ssh/known_hosts" -R ipPC(current)
+     ssh-keygen -f "~/.ssh/authorized_keys" -R ipPC(current)
+     
+     Tambien podemos copiar de la siguiente manera:
+     ssh-copy-id pepe@servidor
+     
+     
+     ****
+     QUITAR PERMISO DE ACCESO
+      Generar nueva clave .... volver a (1)
+*/
+
+
+/*
+
+SEGURIDAD
+
+  gedit /etc/ssh/sshd_config 
+
+Port 432                           (o el que se quiera menor a 1024)
+# viene por default el 22, cuando cambias, para que otros accedan debera ser
+# /etc/init.d/ssh restart
+# ssh nombre@ip -p #port
+
+Protocol 2
+LoginGraceTime 30
+# tiempo para logear
+
+PermitRootLogin no
+# jamas acceder como root, evita las vulnerabilidades
+
+MaxAuthTries 2
+# El número indica la cantidad de veces que podemos equivocarnos en ingresar el usuario y/o contraseña y cerrara la sesion de login.
+
+MaxStartups 3
+# Numero de pantallas que intenten hacer login
+
+AllowUsers user
+# permite que el usuario user loguee desde donde le demos alcance
+
+  AllowUsers sergio
+
+  # El usuario sergio podrá ingresar desde cualquier PC en cualquier lugar, no se está validando el host.
+  # Si se quiere mas seguridad, es posible indicar también el host mediante el símbolo @
+
+  AllowUsers sergio@192.168.0.25     (solo desde la IP indicada)
+  AllowUsers sergio@192.168.0.*       (Toda la red indicada)
+  AllowUsers sergio@*.pato.com  analuisa@ventas.pato.com    
+    (sergio desde cualquier equipo del dominio indicado, analuisa solo desde el equipo indicado)
+    
+*/

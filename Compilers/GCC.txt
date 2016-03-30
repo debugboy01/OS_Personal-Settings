@@ -1,0 +1,7 @@
+0.****paquetes de instalacion y desintalacion
+
+
+sudo apt-get install build-essential
+sudo apt-get install checkinstall
+
+

@@ -1,0 +1,54 @@
+***************CLUSTER SSH
+
+sudo apt-get install clusterssh
+
+// es una aplicación para la administración de ordenadores conectados en red
+// permitiendo interactuar con ellos a través de SSH con dos o mas ordenadores 
+// simultáneamente desde la misma herramienta.
+
+// Crear un archivo en la carpeta ~/etc/
+// llamado clusters y dentro de ese archivo escribir
+
+/* 
+
+ Por ejemplo, digamos que tengo dos grupos,
+ cada uno compuesto por dos máquinas.
+
+ "Clúster1" tiene las máquinas "Test1" y "Test2" en ella, 
+ y "Cluster2" tiene las máquinas "Test3" y "Test4" en ella.
+ 
+  El ~ .csshrc (o / etc/clusters) archivo de control se vería así: 
+  
+  clusters = cluster1 cluster2
+
+  cluster1 = test1 test2
+  cluster2 = test3 test4
+  
+  // Donde cluster1 y cluster 2 son los nombres de los clusters con las maquina test1, ...
+  
+  si quisieramos uno que contenga todo
+  clusters = all
+  
+  all = test1 test2 test3 test4
+  
+  o mejor aun
+  clusters = cluster1 cluster2 all
+
+  cluster1 = test1 test2
+  cluster2 = test3 test4
+  all = cluster1 cluster2
+  
+  y ejecutamos en consola 
+  cssh -l <username> <clustername> &
+  
+  // el parametro "&" es para cortar la salida
+  
+  o tambien sin el archivo clusters
+  
+  cssh -l <username> <machine1> <machine2> <machine3> ... &
+  
+  o tambien de manera directa ( con el archivo /etc/clusters )
+  
+  cssh <clustername>
+  
+*/

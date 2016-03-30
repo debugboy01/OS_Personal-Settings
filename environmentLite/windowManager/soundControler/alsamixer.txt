@@ -1,0 +1,10 @@
+*****************ALSAMIXER
+
+Sirve para manejar los dispositivos de audio de la maquina.
+
+$alsamixer
+
+ Ir a seleccion de dispositivos y escoger el: PCH, en vez de HDMI ( que es la salida de audio para proyector )
+ y modificamos el Master de PCH ( es el volumen  de nuestra maquina ).
+
+ y modificamos el audio llamado. Master

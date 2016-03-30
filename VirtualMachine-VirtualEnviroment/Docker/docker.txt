@@ -1,0 +1,65 @@
+******************** DOCKER
+
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+ir a
+
+cd /etc/apt/sources.list.d/ 
+
+y crea el archivo docker.list (usando el sudo)
+
+si existen archivos borrarlos
+
+En el archivo docker.list, anadir la entrada 
+
+deb https://apt.dockerproject.org/repo ubuntu-trusty main
+
+ubuntu-version ... en 14.04 es trusty, en 15.04 es vivid, etc ...
+
+luego...
+
+sudo apt-get update
+
+si tenemos versiones anteriores purgamos
+sudo apt-get purge lxc-docker
+
+verificando que este desde el repo correcto
+sudo apt-cache policy docker-engine
+
+REQUISITOS:
+
+Instalamos linux-image-extra
+
+Instalamos Docker
+
+sudo apt-get install docker-engine
+
+Iniciamos el deamon de docker
+sudo service docker start
+
+verificando docker
+sudo docker run hello-world
+
+/*
+
+Docker Containers envuelven una pieza de software en un sistema de archivos completo que contiene todo lo que necesita para funcionar: Código, tiempo de ejecución, herramientas del sistema, las bibliotecas del sistema - cualquier cosa que usted puede instalar en un servidor. Esto garantiza que siempre va a ejecutar el mismo, independientemente del entorno en el que se está ejecutando.
+
+Los contenedores que se ejecutan en una sola máquina todos comparten el mismo núcleo del sistema operativo para que comiencen de inmediato y hacer un uso más eficiente de la memoria RAM. Las imágenes se construyen a partir de los sistemas de archivos en capas para que puedan compartir archivos comunes, haciendo uso del disco y las descargas de imágenes mucho más eficiente.
+
+*/
+
+Docker-machine (sudo -i)
+
+curl -L https://github.com/docker/machine/releases/download/v0.5.3/docker-machine_linux-amd64 >/usr/local/bin/docker-machine
+
+chmod +x /usr/local/bin/docker-machine
+
+docker-machine version
+
+Docker-Compose
+
+curl -L https://github.com/docker/compose/releases/download/1.5.2/run.sh > /usr/local/bin/docker-compose
+
+chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version

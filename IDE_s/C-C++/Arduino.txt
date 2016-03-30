@@ -1,0 +1,26 @@
+11.*** Arduino IDE
+
+//descargamos la version 1.6 .tar.xz desde la pagina:
+
+http://arduino.cc/en/Main/Software
+
+// en consola y el directorio donde descargaste
+
+tar -xvJf arduino-1.6.0-linux64.tar.xz
+
+// luego la carpeta descomprimida la mandamos a carpeta personal
+
+// vamos a la carpeta que contiene arduino
+
+sudo apt-get install gcc-avr avr-libc
+// instalamos el compilador y librerias
+
+// y le damos permiso al usuario
+
+sudo usermod -aG dialout jenazad (<USERNAME>)
+
+cd arduino-1.6.0
+
+// y corremos
+
+./arduino

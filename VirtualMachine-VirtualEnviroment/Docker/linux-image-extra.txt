@@ -1,0 +1,5 @@
+*********************LINUX IMAGE EXTRA
+
+sudo apt-get install linux-image-extra-$(uname -r)
+
+

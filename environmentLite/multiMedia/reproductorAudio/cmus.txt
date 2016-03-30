@@ -1,0 +1,30 @@
+******************CMUS
+
+sudo apt-get install cmus
+
+reproductor de musica ligero mp3
+
+Caracteristicas:
+    Gapless playback
+    ReplayGain support
+    MP3 and Ogg streaming from SHOUTcast or Icecast
+    Playlist support and powerful playlist filters
+    Play queue
+    File browser
+    Last.fm or Libre.fm song submission support (via scripts)
+    Seven different view modes
+    Color themes
+    Vi-like keyboard shortcuts 
+    
+Comandos:
+
+   :add /carpeta/de/tu/musica para agregar música desde la carpeta.
+    c para pausar o reanudar.
+    v para detener.
+    x para iniciar la reproducción.
+    + y - para subir y bajar el volumen.
+    TAB para cambiar entre pestañas.
+    Barra espaciadora para abrir el contenido de un elemento.
+                      Por ejemplo, en la primera área, para mostrar u ocultar los álbumes de un artista enfocado.
+    z canción anterior.
+    b canción siguiente.

@@ -1,0 +1,64 @@
+Corriendo Hello world con containers
+
+docker run ubuntu:14.04 /bin/echo 'Meow'
+
+lo que hace es correr la imagen ubuntu version 14.04, y ejecutando su comando /bin/echo 'Meow'
+
+y 
+
+docker run -t -i ubuntu:14.04 /bin/bash
+
+abre una consola interactiva en nuestra imagen"ubuntu" ( debido a que el comando es bin/bash)
+
+
+Creando uno
+
+docker pull centos
+
+docker run -t -i centos /bin/bash
+
+busca imagenes en Docker hub
+
+CREANDO UNO Y SUBIENDO UNO PROPIO
+
+docker run -t -i training/sinatra /bin/bash
+
+una vez dentro, instalamos por ejemplo 
+
+root@0b2616b0e5a8:/# gem install json
+
+luego hacemos un commit similar a git
+
+docker commit -m "Added json gem" -a "Kate Smith" 0b2616b0e5a8 ouruser/sinatra:v2
+
+donde ese numero es el ID de tu imagen.
+-m es un mensaje
+-a es el autor
+
+y se creara como nueva imagende docker
+
+
+CONSTRUYENDO UNA DESDE EL Dockerfile
+
+$ mkdir sinatra
+$ cd sinatra
+$ touch Dockerfile
+
+# This is a comment
+FROM ubuntu:14.04
+MAINTAINER Kate Smith <ksmith@example.com>
+RUN apt-get update && apt-get install -y ruby ruby-dev
+RUN gem install sinatra
+
+y usamos 
+
+docker build -t ouruser/sinatra:v2 .
+
+y ya tenemos una imagen creada
+
+y ahora podemos hacer un contenedor de nuestra imagen
+
+docker run -t -i ouruser/sinatra:v2 /bin/bash
+root@8196968dac35:/#
+
+

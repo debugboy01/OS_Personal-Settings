@@ -1,0 +1,16 @@
+*************GNU
+
+$ sudo apt-get install octave gnuplot
+
+en shell escribir:
+
+$  octave
+
+
+*************IDE
+
+$  octave --force-gui &
+Para acceder al interfaz
+
+o tambien instalar
+sudo apt-get install qtoctave

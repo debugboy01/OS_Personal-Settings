@@ -1,0 +1,43 @@
+**************I3
+
+echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" >> /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get --allow-unauthenticated install sur5r-keyring
+sudo apt-get update
+sudo apt-get install i3
+
+
+para configurar los atributos de la barra:  /etc/i3status.conf
+
+para configurar la barra: .i3/config
+
+para bloquear agregamos en: .i3/config
+bindsym $MOD+SHIFT+x exec i3lock -c 000000 -i /home/jenazad/.i3/archivo.png
+
+donde archivo.png es el fondo de pantalla del bloqueo.
+
+Comandos utiles para i3:
+
+$mod + Enter 	        	Abrir termianal
+$mod + A 	        	Foco al “padre”
+$mod + S  	        Disposición Stacked (Cascada)
+$mod + W 	        	Disposición Tabbed
+$mod + E 	        	Disposición por defecto
+$mod + SpaceBar 		Cambio de foco tiling/floating
+$mod + D 	        	dmenu
+$mod + H 	        	Split Horizontal
+$mod + V 	        	Split Vertical
+$mod + J 	        	Foco izquierda
+$mod + K 	        	Foco abajo
+$mod + L 	        	Foco arriba
+$mod + ñ 	        	Foco derecha
+$mod + Shift + Q 		Cerrar ventana
+$mod + Shift + E 		Salir de i3
+$mod + Shift + C 		Recarcar configuración sin reiniciar
+$mod + Shift + R 		Reiniciar i3
+$mod + Shift + J 		Mover ventana a la izquierda
+$mod + Shift + K 		Mover ventana abajo
+$mod + Shift + L 		Mover ventana arriba
+$mod + Shift + : 		Mover ventana a la derecha
+$mod + Shift + SpaceBar 	Cambiar modo de ventana entre tiling/floating
+$mod + Shift + x:		Bloquear sesion

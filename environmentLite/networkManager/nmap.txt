@@ -1,0 +1,20 @@
+************* NAMP
+
+sudo apt-get install nmap
+
+// sirve para detectar todos los dispositivos conectados en tu red.
+
+// sudo nmap -sP 192.168.20.0/24
+
+// detecta todos.
+
+
+// en modo grafico.
+
+sudo apt-get install netdiscover
+
+// ethernet
+sudo netdiscover -r 192.168.1.0/24
+
+// wireless
+sudo netdiscover -r 192.168.1.0/24 -i wlan0

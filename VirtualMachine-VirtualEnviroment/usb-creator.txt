@@ -1,0 +1,19 @@
+********** USB CREATOR
+
+La aplicación necesaria para grabar una .iso de instalación a un dispositivo usb se llama 'usb-creator'.
+Muchas distribuciones de Ubuntu. Si no es el caso, se puede obtener por tres vias:
+
+Sistema>Administración>Gestor de paquetes Synaptic. Buscar "usb-creator" e instalar. En el terminal:
+
+$ sudo apt-get install usb-creator-gtk
+
+Descargar el archivo .deb y ejecutarlo
+
+$ wget http://launchpadlibrarian.net/18940109/usb-creator_0.1.10_all.deb
+
+Una vez usb-creator está instalado en nuestro sistema:
+
+    Insertar un dispositivo USB (a poder ser, con capacidad igual o superior a 2Gb).
+    Ejecutar usb-creator.
+    Seleccionar el archivo *.iso y el dispositivo USB destino.
+

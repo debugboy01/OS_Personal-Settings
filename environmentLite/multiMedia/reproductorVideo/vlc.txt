@@ -1,0 +1,20 @@
+**************VLC player
+
+sudo apt-get install vlc vlc-plugin-pulse
+
+reproductor de musica, video, audio, etc ...
+
+puede ser en modo grafico ( vlc) o en modo (cvlc)
+cvlc: console vlc, se accede mediante
+
+modo consola:
+
+vlc --intf ncurses [nombreArchivo]
+
+modo grafico:
+
+vlc [nombreArchivo]
+
+o tambien
+
+vlc [nombreArchivo]

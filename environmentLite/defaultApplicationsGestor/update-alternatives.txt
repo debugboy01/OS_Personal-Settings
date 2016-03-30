@@ -1,0 +1,34 @@
+Las aplicaciones por defecto se encuentran en:
+
+gksudo gedit ~/.local/share/applications/mimeapps.list 
+
+y tambien:
+
+gksudo gedit /usr/share/applications/defaults.list
+
+
+
+basta con modificar el programa y listo.
+
+o tambien, se puede hacer mediante:
+
+sudo update-alternatives --config x-terminal-emulator 
+
+para le programa x-terminal-emulator.
+
+o para todos:
+
+sudo update-alternatives --all
+
+
+o tambien de manera grafica:
+
+gnome-control-center
+
+o tambien creando variable de entornos:
+
+en ~/.bashrc
+
+export EDITOR="nano"
+export BROWSER="firefox"
+

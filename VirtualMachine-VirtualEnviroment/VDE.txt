@@ -1,0 +1,27 @@
+****************VDE
+
+Virtual Distributed Ethernet
+es un conjunto de programas que provee software virtual definidos por Ethenet Network Interface Controllers a través de múltiples dispositivos, por lo general los ordenadores, que son ya sea virtual o física.
+
+SDN 
+es la creación dinámica de la infraestructura de red virtual que está completamente desacoplado e independiente de cualquier hardware de red física.
+
+
+software defined Networking(SDN)
+es un enfoque para la creación de redes de computadoras que permite a los administradores de red para gestionar los servicios de red a través de la abstracción de la funcionalidad de nivel inferior.
+
+VDE se compone de 5 componentes:
+
+VDE switch:
+es un switch de ethernet virtual equivalente a un switch fisico con multiples puertos virtuales soportando conexiones desde dispositivos VDE. Soporta telnet y web interface para monitoreo y configuracion.
+
+VDE plug:
+simula un plug al final de un ethernet fisico como 8P8C. esto forma el punto de conexion entre el host y el virtual VDE wire.
+
+VDE wire:
+recibe datos desde VDE plug y transporta a otros VDE plug.
+obviamente hace la misma funcion que una conexion dentro de un de ethernet normal. ( opciones de cableado)
+
+VDE cryptcab:
+Un protocolo sin conexion que encripta los datos antes de trasmitirlos y tambien decripta datos desde otro lado,
+Conocido como VDE Encrypted Cable.

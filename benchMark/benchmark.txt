@@ -1,0 +1,24 @@
+********
+El benchmark es una técnica utilizada para medir el rendimiento de un sistema o componente del mismo, frecuentemente en comparación con el que se refiere específicamente a la acción de ejecutar un benchmark. 
+
+La tarea de ejecutar un benchmark originalmente se reducía a estimar el tiempo de proceso que lleva la ejecución de un programa (medida por lo general en miles o millones de operaciones por segundo).
+
+Los benchmark tienen las siguientes funcionalidades:
+*Comprobar si las especificaciones de los componentes están dentro del margen propio del mismo
+
+*Maximizar el rendimiento con un presupuesto dado
+
+*Minimizar costos manteniendo un nivel máximo de rendimiento
+
+*Obtener la mejor relación costo/beneficio (con un presupuesto o unas exigencias dadas)
+
+
+Bajo nivel vs Alto nivel
+
+    Test de Bajo nivel:
+
+Miden directamente el rendimiento de los componentes Ejemplo: el reloj de la CPU, los tiempos de la DRAM y de la caché SRAM, tiempo de acceso medio al disco duro, latencia, tiempo de cambio de pista, etc.
+
+    Test de Alto nivel:
+
+Están más enfocados a medir el rendimiento de la combinación componente/controlador/SO de un aspecto específico del sistema, como por ejemplo el rendimiento de E/S con ficheros, o el rendimiento de una determinada combinación de componentes/controlador/SO/aplicación. Ejemplo: Velocidad de compresión zip.

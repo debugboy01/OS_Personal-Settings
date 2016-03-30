@@ -1,0 +1,29 @@
+**********************XBACKLIGHT
+
+sudo apt-get install xbacklight
+
+sirve apra gestionar el brillo de pantalla.
+
+incrementando brillo 10%
+
+xbacklight -inc 10
+
+decrementando brillo 10%
+
+xbacklight -dec 10
+
+
+y para ajustar el brillo en 80%
+
+xbacklight -set 80
+
+
+o tambien mas facil
+
+xbacklight -10.
+
+disminuye en 10 el brillo
+
+xbacklight +10
+
+aumenta en 10 el brillo.

@@ -1,0 +1,5 @@
+26.********** terminal Byobu
+
+sudo apt-get install byobu
+
+// manejo de multiples ventanas

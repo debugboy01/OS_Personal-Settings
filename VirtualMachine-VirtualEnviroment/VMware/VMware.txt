@@ -1,0 +1,59 @@
+**************VMware
+
+descargar el empaquetado desde:
+https://my.vmware.com/web/vmware/downloads
+
+escoger VMware Player
+
+el empaquetado (actual) es :
+VMware-Player-7.1.0-2496824.x86_64.bundle
+
+luego en /Descargas
+moverlo a home y haz lo siguiente:
+sudo sh VMware*.bundle
+
+y comenzara la instalacion
+
+/*
+
+Por medio de esta aplicación es posible instalar sistemas operativos adicionales, conocidos como «sistemas invitados»(guest), dentro de otro sistema operativo «anfitrión»(host), cada uno con su propio ambiente virtual.
+
+*/
+/*
+  ABRIENDO UNA MAQUINA VIRTUAL
+  Descarga todo el sistema compactado y dar en la opcion abrir
+  buscas en la carpeta donde este tu sistema descargado
+  busca el archivo .vmx
+  y abres ... sistema abrira
+  Es necesario que la ISO ya este descomprimida en una carpeta,
+  para luego abrirla con VMWare
+
+*/
+
+/*
+  CREANDO UNA MAQUINA VIRTUAL
+  Por ejemplo: tenemos la iso de Scientific Linux
+  http://ftp1.scientificlinux.org/linux/scientific/6x/x86_64/iso/
+  
+  e instalamos:
+  SL-6.6-x86 64-2014-11-05-Install-DVD.isos
+  
+  Create a new virtual machine
+    Install OP later
+  Next
+  Guest
+    OTHER
+      other 64-bit
+  Next
+  Location
+    Save location
+  Next
+  Disk size
+    slipt virtual disk into multiple files
+  Next
+  Finish
+  
+  Luego en la pestana principal
+  apretamos nuestra maquina y en Edit virtual machine
+    
+*/

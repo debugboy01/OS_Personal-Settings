@@ -1,0 +1,48 @@
+**************PCMANFM
+
+
+sudo add-apt-repository ppa:lubuntu-dev/lubuntu-daily
+
+sudo apt-get update
+
+sudo apt-get install pcmanfm gvfs
+
+
+lo ponemos como FILE MANAGER predeterminado en ubuntu y gnome:
+
+xdg-mime default pcmanfm.desktop inode/directory
+
+
+hacemos back up de los archivos de escritorio:
+
+sudo mv /etc/xdg/autostart/nautilus-autostart.desktop /etc/xdg/autostart/nautilus-autostart.desktop.bak
+
+
+
+Creamos un archivo:
+
+sudo touch pcmanfm-autostart.desktop
+
+y le añadimos:
+
+sudo sh -c 'cat > pcmanfm-autostart.desktop <<EOF
+
+[Desktop Entry]
+
+Type=Application
+
+Name=File Manager PCManFM
+
+Exec=pcmanfm --desktop
+
+OnlyShowIn=GNOME;Unity;Pantheon;
+
+NoDisplay=false
+
+EOF'
+
+
+y luego abrimos el pcmanfm con nuestras preferencias:
+
+pcmanfm --desktop-pref
+

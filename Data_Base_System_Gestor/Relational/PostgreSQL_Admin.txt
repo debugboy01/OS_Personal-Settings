@@ -1,0 +1,14 @@
+************ Postgres Admin
+
+// es para la parte visual del shell psql
+
+sudo apt-get install pgadmin3
+
+// es la administracion visual de postgres
+
+// en postgres hacemos una conexion
+
+// click en el enchufe y escribimos, localhost localhost --> clave
+( que debes cambiar con alter user postgres with password 'asd'; )
+
+// y listo

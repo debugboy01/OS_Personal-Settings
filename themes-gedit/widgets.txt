@@ -1,0 +1,2 @@
+En le gedit, ir a preferencias -> apariencias
+anadir con "+"

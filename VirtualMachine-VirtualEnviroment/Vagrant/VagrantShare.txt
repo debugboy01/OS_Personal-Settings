@@ -1,0 +1,42 @@
+Vagrant te facilita compartir tu vagrant con cualquiera de este mundo
+haciendo una comunicacion directa en tu entorno vagrant en almenos un entorno red co un 
+simple comando:
+vagrant share
+
+vagrant share, tiene 3 modos. no son mutuamente exclusivas, significa que pueden combinarse entre ellas y pueden activarse en cualquier momento dado.
+
+HTTP sharing:
+crea un URL que das a cualquiera. das una URL que se rutea directamente a tu ambiente vagrant.
+la persona usando este URL no necesita tener vagrant instalado.
+por lo que puede ser compartido con cualquiera.
+es muy util para testear webhooks o mostrar tu trabajo a clientes, companeros de equipos, gestionadores, etc
+
+vagrant share --http o --https
+
+vagrant share --disable-http, para deshacer
+
+http://foo.vagrantshare.com, se conecta ahi
+
+
+SSH sharing:
+conexion instantanea a tu vagrant mediante:
+vagrant connect --ssh 
+desde un sitio remoto, Esto es útil para la programación en parejas, depuración ops problemas, etc.
+vagrant genera un nuevo par de llaves, la publica se crea en nuestro vagrant, y la privada
+se carga al servidor de gestion de acciones de vagrant
+
+vagrant share --ssh
+
+se conectan mediante:
+vagrant connect -ssh Nombre_vagrant
+
+vagrant connect --ssh-once, solo 1 se conecta al vagrant antes de que se destruya
+
+es deshecho por default
+
+General Sharing:
+permite que cualquiera pueda acceder a cualquier puerto expuesta de su entorno Vagrant ejecutando:
+vagrant connect
+en el lado remoto. Esto es útil si el lado remoto quiere acceder a su entorno de Vagrant como si fuera un ordenador de la LAN.
+
+vagrant connect NAME_VAGRANT

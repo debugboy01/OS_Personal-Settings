@@ -1,0 +1,102 @@
+describe el tipo de maquina requerida a proyectar y como esta configurada.
+su sintaxis es en ruby, pero no es necesario saber ruby para modificar el Vagrantfile
+
+basta ejecutar vagrant en una direccion, para crearse
+
+para cuando vagrant quiera sobrescribir, tiene prioridades, son cargados en este orden.
+
+1. vagrantfile es empaquetado con la box que esta en uso dado por tu maquina
+2. vagrantfile en tu directorio vagrant ( por default ~/.vagrant.d ), te deja especificar cosas para tu sistema usuario
+3. vagrantfile desde tu directorio project, este el es Vfile que modificas la mayoria de tiempo.
+4. multi-machine lo sobreescriben
+5. provider-specific sobreescriben
+
+vagrant init
+tiene esta forma:
+  Vagrant.configure(2) do |config|
+    # ...
+  end
+el 2 significa la version de configuracion, usado para configurar ese bloque
+representa la version 1.1+ 2.0.x
+
+vagrant.require_version
+es el minimo numero de version especificado de vagrant para ser usado.
+ayuda con la compatibilidad.
+  Vagrant.require_version ">= 1.3.5", "< 1.4.0"
+
+CONFIG.VM
+
+  config.vm modifica la configuracion de la maquina que vagrant maneja
+
+  config.vm.boot_timeout
+    el tiempo en segundos que vagrant espera para que inicie la maquinay sea accesible
+      por default es 300 segundos
+
+  config.vm.box
+    configura que caja de maquina sera apagado.
+    
+  config.vm.box_ckeck_update
+    si es true, vagrant checkea actualizaciones para la caja configurada cada vez que hay
+    vagrant up, si no se encuentran updates le dira al usuario, por default  es true
+
+  config.vm.box_download_checksum
+    especifica por config.vm.box_url, si no esta especificada no hay comparacion checksum,
+    si lo esta, vagrant compara la checksum de las descargas box con este valor y sale error
+    si no coinciden. checksum solo termina cuando vagrant descarga el box
+
+  config.vm.box_url
+    el URL de configuracion de caja donde puede ser encontrado, puede haber multiples URLs
+
+  config.vm.box_version
+    version a usar, por default >=0, pero puedes modificarlo >= 1.0, < 1.5
+
+  config.vm.communicator
+    por defecto es :ssh, pero puede cambiarlo a :winrm para usuarios windows
+
+  config.vm.graceful_halt_timeout
+    el tiempo en segundos que vagrant espera para apagar la maquina cuando vagrant halt es ejecutado
+    por default es 60s
+
+  config.vm.hostname
+    la maquina debe tener hostname, por default es nil, si es nil, vagrant no gestiona el hostname
+
+  config.vm.network
+    configura redes en la maquina.
+
+  config.vm.provision
+    configura las provisiones en la maquina, entonces ese software puede ser 
+    automaticamente instalado y configurado cuando la maquina es creada.
+ The URL that the configured box can be found at.
+  config.vm.synced_folder
+    configura los diectorios compatidos en la maquina, esos directorios en la maquina host puede ser
+    sincronizado para y desde la maquina invitado.
+
+CONFIG.SSH
+  configuran como vagrant accesa a tu maquina mediante SSH, como la mayoria de configuraciones vagrant, los default son tipicamente bien.
+  pero se puede ajustar con precisión lo que usted desea.
+  
+  config.ssh.username
+    esto cambia el username para vagrant, sera ssh por default.
+    Por defecto es "vagrant", ya que eso es lo que la mayoría de las cajas públicas se hacen como.
+  
+  config.ssh.password
+    le da contrasena a vagrant para autentificar el usuario SSH.
+  
+  config.ssh.host
+    el hostname o IP de SSH, por default es vacio.
+  
+  config.ssh.port
+    el puerto SSH, por default es puerto 22.
+  
+  config.ssh.guest_port
+    puerto SSH que usa el usuario mientras corre.
+
+CONFIG.VAGRANT
+  modifica el comortamiento de vagrant
+
+  config.vagrant.host
+    cambia los tipos de host maquina que estan corriendo.
+    por default es :detect, lo que provoca Vagrant para auto-detectar el host.
+    Vagrant necesita saber esta información para llevar a cabo algunas de las cosas específicas de servidor,
+    tales como la preparación de carpetas NFS si están habilitadas.
+    Solo debe configurar manualmente esto si falla la detección automática.

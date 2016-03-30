@@ -1,0 +1,67 @@
+14.******** uTorrent
+
+sudo apt-get install libssl0.9.8:i386
+// instala las dependencias
+
+wget http://download.utorrent.com/linux/utorrent-server-3.0-25053.tar.gz
+// descarga de la pagina de torrent el archivo 
+// o tambien vas y descargas desde el mismo sitio web
+
+sudo cp utorrent-server-3.0-25053.tar.gz /opt/
+// copio el archivo en opt
+
+sudo tar -xvf utorrent-server-3.0-25053.tar.gz
+// desempaqueto
+
+sudo rm -rf utorrent-server-3.0-25053.tar.gz
+// borro el zip
+
+sudo chmod 777 -R utorrent-server-v3_0/
+// cambia los permisos de extrare el folder
+
+sudo ln -s /opt/utorrent-server-v3_0/utserver /usr/bin/utserver
+// crea un enlace simbolico para correrlo desde consola
+
+
+// con este comando lo corres
+
+utserver -settingspath /opt/utorrent-server-v3_0/ &
+
+http://localhost:8080/gui/
+// usa un local host
+// "admin" - ""
+
+// y ya tenemos nuestro utorrent server para descargas
+
+// configuramos
+
+// en carpetas->colocar nuesvas descargas en:
+/home/jenazad/Descargas
+
+
+***** CREANDO UN ICONO PARA EL DESKTOP
+
+// Ahora creamos un icono en gnome o escritorio
+
+sudo apt-get install --no-install-recommends gnome-panel
+
+// instala el gnome panel
+
+sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
+
+// se crea un launcher aplication
+
+
+
+**** 
+// siguiendo a lo de utorrent
+Name: utorrent
+Command: utserver -settingspath /opt/utorrent-server-v3_0/ &
+coment : this will start the utorrent server
+
+/usr/share/icons/hicolor/scalable/apps
+//ahi se encuentran los simbolos de sistema
+
+click en la imagen y escogemos icono del app
+
+

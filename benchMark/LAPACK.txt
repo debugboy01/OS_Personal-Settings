@@ -1,0 +1,14 @@
+********LAPACK
+
+sudo apt-get install liblapack3gf liblapack-doc liblapack-dev
+
+se guardan en :
+/usr/share/doc/liblap*
+
+y los binarios en:
+/usr/lib/liblapack
+
+/*
+  Es una version mas reciente de LINPACK
+  Tiene como objetivo el mismo
+*/

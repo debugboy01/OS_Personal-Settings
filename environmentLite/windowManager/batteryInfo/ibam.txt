@@ -1,0 +1,7 @@
+********************IBAM
+
+sudo apt-get install ibam
+
+sirve para ver la bateria de nuestro computador
+
+ibam --battery

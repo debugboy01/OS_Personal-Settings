@@ -1,0 +1,65 @@
+19.******* MYSQL SERVER
+
+sudo apt-get update
+
+sudo apt-get install mysql-client-core-5.6
+        |
+        v
+sudo apt-get install mysql-client-5.6
+        |
+        v
+sudo apt-get install mysql-server-5.6
+
+en plena instalacion nos aparecera una pantalla
+
+// nos perdira password de root
+// pon lo que quieras
+
+// luego aparecera para confirmar contrasena
+
+//luego para acceder a mysql escribimos
+
+
+mysql -u root -p
+// perdira contrasena
+
+mysql> exit
+// sale del mysql
+
+
+MYSQL CLUSTER --- es lo mismo pero en tiempo real con un servidor
+MYSQL WORKBENCH -- es el IDE para manejo de database
+MYSQL UTILITIES -- provee comandos de linea para administrar y hacer mantenimiento de
+                   MySQL servers ( admin utilities, replication utilities, general utilities )
+MYSQL PROXY -- provee comunacion entre Sql servers de uno a todos y de todos a uno
+
+
+comandos desde consola
+
+sudo service mysql restart
+
+// para restart el servicio
+
+sudo service mysql start
+
+// para iniciar el servicio
+
+sudo service mysql stop
+
+// detiene el servidor
+
+sido service mysql status
+
+// estado del servicio
+
+// o tambien
+
+sudo /etc/init.d/mysql restart
+
+
+'''
+desintalar MYSQL
+sudo apt-get remove --purge mysql-server mysql-client mysql-common
+sudo apt-get autoremove
+sudo apt-get autoclean
+'''

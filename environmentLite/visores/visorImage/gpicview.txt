@@ -1,0 +1,13 @@
+****************GPICVIEW
+
+
+sudo apt-get install gpicview
+
+visor de imagenes ligero.
+
+abrir imagen: 
+
+gpicview /carpeta/de/la/imagen.jpg
+
+o tambien, abrir gpicviewer:
+y escoger el archivo a abrir.

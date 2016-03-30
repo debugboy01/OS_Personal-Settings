@@ -1,0 +1,24 @@
+6.*** Terminal Guake
+
+sudo apt-get install guake
+
+saldra error porque los guake.schemas no estan en la direccion correcta
+
+sudo mkdir /etc/gconf/schemas
+cd /etc/gconf/schemas/
+sudo ln -s /usr/share/gconf/schemas/guake.schemas
+
+Apariencia
+
+Color de texto : #EF970C
+rojo: 239
+verde: 151
+azul: 12
+matiz: 37
+saturacion: 95
+valor: 94
+
+Color fondo: #000000
+
+Built-in schemes: consola linux
+

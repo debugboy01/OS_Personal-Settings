@@ -1,0 +1,5 @@
+24.******** WINE
+
+sudo apt-get install wine
+
+// luego algun ejecutable abrirlo con wine

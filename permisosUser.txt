@@ -1,0 +1,23 @@
+************* chmod
+
+change mode
+
+Cod   Binario   Permisos efectivos
+0     0 0 0     ---
+1     0 0 1     --x
+2     0 1 0     -w-
+3     0 1 1     -wx
+4     1 0 0     r--
+5     1 0 1     r-x
+6     1 1 0     rw-
+7     1 1 1     rwx
+
+sudo chmod 700 nombre_archivo
+
+le da modificacion de:
+
+-rwx --- ---
+
+y con chmod 664 lo modificamos:
+
+-rw-rw-r--

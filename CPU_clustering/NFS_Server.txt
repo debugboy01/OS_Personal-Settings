@@ -1,0 +1,69 @@
+*********** NFS SERVER
+
+sudo apt-get install nfs-kernel-server nfs-client
+
+/*
+
+NFS ( Network File System) es un protocolo de sistema de archivos distribuido
+
+que permite a un usuario en un cliente ordenador acceder a archivos a traves de una red tanto como se puede acceder al almacenamiento local.
+
+NFS se basa en ONC RPC (Open Network Computing Remote Procedicure Call).
+
+*/
+
+/*
+
+Cuando intentemos en 
+sudo /etc/init.d/nfs-kernel-server start
+
+nos mandara este mensaje
+Not starting NFS kernel daemon: no exports.
+
+Y eso es porque no hay archivos para exportar.
+
+Asi que hacemos esta Configuracion
+
+sudo nano /etc/exports
+
+Damos acceso de solo lectura a la carpeta home/shared 
+#/home       192.168.0.1(rw,sync,no_subtree_check)
+/home/share  192.168.0.0/255.255.255.0(ro,no_subtree_check)
+
+#
+
+
+Aqui configuracion solo las Ips con permiso
+de bloqueo o acceso
+# vi /etc/hosts.allow
+#
+portmap:    192.168.0.0/255.255.255.0
+lockd:      192.168.0.0/255.255.255.0
+rquotad:    192.168.0.0/255.255.255.0
+mountd:     192.168.0.0/255.255.255.0
+statd:      192.168.0.0/255.255.255.0
+
+
+
+Montamos carpeta en un client nodo
+sudo mount -t nfs servername:/home/share /mnt
+
+*/
+
+/*
+Para crear un cluster o un sistemas de archivos, instalar en todas
+las PCs a compartir
+
+Compartiendo Carpetas y montando
+
+Creamos una carpeta en el master y todos los slaves:
+$sudo mkdir /forShare
+
+Y luego compartir el contenido de esta carpeta situada en el nodo maestro a todos los otros nodos. Para hacerlo, primero edite el archivo / etc / exports en el nodo maestro para contener la línea adicional
+
+$echo "/mirror *(rw,sync)" | sudo tee -a /etc/exports
+
+reiniciamos el servidor nfs
+$sudo service nfs-kernel-server restart
+
+*/

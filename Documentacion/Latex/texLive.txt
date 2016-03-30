@@ -1,0 +1,18 @@
+*********************TEXLIVE
+
+sudo apt-get install texlive-full
+
+
+***********************TEXMAKER
+
+sudo apt-get install texmaker
+
+creamos un archivo .tex con comandos de latex
+
+$ latex archivo.tex
+
+genera un documento .dvi
+
+$ xdvi archivo.dvi
+
+para visualizar el documento.

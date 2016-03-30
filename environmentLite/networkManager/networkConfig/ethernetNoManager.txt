@@ -1,0 +1,57 @@
+Problemas con 
+RED CABLEADA, DISPOSITIVOS NO GESTONADO
+
+en cat /etc/NetworkManager/NetworkManager.conf
+
+aparecera:
+
+dns=dnsmaq
+
+[ifupdown]
+managed=false
+
+*************************************************
+cambiamos false por true
+
+
+luego reiniciamos:
+
+sudo service network-manager restart
+
+Y finalmente VUALA !!!!
+tenemos conexion cableada
+
+************************************************
+o tambien, solo cerramos o comentamos todo lo relativo a eth0
+y creamos una red cableada, dandole nuesra direccion mac y que sea DHCP( automatico)
+
+**************************************************
+
+en total, nuestra PC en /etc/network/interfaces
+es:
+
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+# Ethernet
+#auto eth0
+#iface eth0 inet static
+#address 192.168.100.15
+#gateway 192.168.100.1
+#network 192.168.100.0
+#netmask 255.255.255.0
+#broadcast 192.168.100.255
+#dns-nameservers 8.8.8.8 8.8.4.4
+
+# Wireless
+#auto wlan0
+#iface wlan0 inet dhcp
+#iface wlan0 inet static
+#wireless-essid Gatozad
+#wireless-key Meow
+#address 192.168.9.150
+#netmask 255.255.255.0
+#gateway 192.168.9.254
+#dns-nameservers 8.8.8.8 8.8.4.4
+

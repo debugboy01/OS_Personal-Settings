@@ -1,0 +1,6 @@
+****************VIRTUALMACHINEMANAGER
+
+
+sudo apt-get install virt-manager virt-viewer libvirt-bin
+
+Vistualizador de maquinas, gestionador

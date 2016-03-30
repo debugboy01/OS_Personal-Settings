@@ -1,0 +1,14 @@
+
+Para cambiar la direccion:
+
+Sistema de arachivos/etc/network/interfaces
+
+Original:
+
+auto lo
+iface lo inet loopback
+
+Para cambiar la direecion DNS:
+
+cat /etc/resolv.conf
+

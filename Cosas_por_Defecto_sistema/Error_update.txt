@@ -1,0 +1,47 @@
+﻿**** PARA EL SUDO APT-GET UPDATE 
+APAREZCAN ERRORES
+1.ir a software y actualizaciones
+2.otro software
+3.y desmarcar las direcciones que no hagan update
+
+*** para dependencias
+
+mv  /var/lib/dpkg/status  /var/lib/dpkg/status-bad
+cp /var/lib/dpkg/status-old  /var/lib/dpkg/status
+mv /var/lib/dpkg/available  /var/lib/dpkg/available-bad
+cp /var/lib/dpkg/available-old  /var/lib/dpkg/available
+rm -rf /var/lib/dpkg/updates/*
+rm -rf /var/lib/apt/lists/*
+mkdir /var/lib/apt/lists/partial
+rm /var/cache/apt/*.bin
+apt-get clean
+apt-get autoremove
+apt-get update
+dpkg --configure -a
+apt-get install -f
+
+Preguntar antes de eliminar
+
+*********************************
+en terminal escribir
+
+gedit ~/.bashrc
+
+****
+nos abre un archivo gedit
+
+en la linea 100 aprox donde diga 
+#alias definition
+...
+...
+if[ -f ~/.bash_aliases];then . ~/.bash_aliases
+
+fi
+
+el mismo archivo debe ser cambiado para root
+
+entonces
+
+sudo gedit /root/.bashrc
+
+

@@ -1,0 +1,28 @@
+**************************SHUTTER
+
+sudo add-apt-repository ppa:shutter/ppa
+sudo apt-get update
+sudo apt-get install shutter
+
+capturador de pantallas.
+
+si le damos salida ( con -o ), 
+pantalla completa:
+
+shutter -f -o shot.png
+
+lo graba en nuestro directorio actual.
+
+shutter -f
+
+lo graba en la carpeta home/.../imagenes
+
+
+Pantalla en cuadro, en la misma carpeta.
+
+shutter -s -o meow.png
+
+
+Pantalla en cuadro, en la carpeta home/.../imagenes.
+
+shutter -s

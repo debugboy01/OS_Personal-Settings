@@ -1,0 +1,32 @@
+20.********* NEO4J
+
+sudo su
+
+wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add -
+
+echo 'deb http://debian.neo4j.org/repo stable/' | tee --append /etc/apt/sources.list.d/neo4j.list
+
+sudo apt-get update -y
+sudo apt-get install neo4j -y
+
+sudo service neo4j-service status
+// nos muestra el estado del servidor
+
+// ahora hay quetenemos que modificar la direccion del servidor neo
+
+sudo nano /etc/neo4j/neo4j-server.properties
+
+// y descomentamos la linea
+
+#org.neo4j.server.webserver.address=0.0.0.0
+// solo le quetamos el "#"
+
+sudo service neo4j-service start
+
+sudo service neo4j-service restart
+
+// ahora vamos a
+127.0.0.1:7474/browser/
+
+// y empezamos a crear
+

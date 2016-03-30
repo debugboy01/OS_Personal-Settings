@@ -1,0 +1,84 @@
+*************
+wlan0
+
+Tipos de Seguridad: Open/WEP/WPA/WPA2
+
+Activamos la tarjeta de red inalambrica
+sudo ifconfig wlan0 up
+
+Buscamos una red a la cual conectarnos
+iwlist wlan0 scan
+
+----- ir a (*)
+
+En caso de no poder conectarse a internet inalambrico, usar:
+sudo dhclient wlan0
+// le pide una direccion IP para wlan0
+
+si queremos que sea:
+
+sudo nano /etc/network/interfaces
+
+DINAMICA ( mediante dhclient )
+
+auto wlan0
+iface wlan0 inet dhcp
+wireless-essid Gatozad
+#wireless-key Meow
+wireless-mode managed
+
+
+ESTATICA
+
+auto wlan0
+iface wlan0 inet static
+wireless-essid Gatozad
+#wireless-key Meow
+address 192.168.9.150
+netmask 255.255.255.0
+gateway 192.168.9.254
+dns-nameservers 8.8.8.8 8.8.4.4
+
+y luego:
+sudo /etc/init.d/networking restart
+
+En caso de tener problemas, iremos al DNS server, ir:
+sudo nano /etc/resolv.conf
+y escribir lo mismo que nuestra predeterminada
+
+
+----(*)
+Conectarse a redes
+Open:
+
+sudo iwconfig essid "Nombre_red_sin_clave"
+
+WEP:
+
+sudo iwconfig essid "Nombre_red" key ["HExadecimal_Clave_red"  o "s:decimal_key"]
+
+WAP/WAP2:
+
+necesitamos el paquete wpasupplicant
+sudo apt-get install wpasupplicant
+
+Creamos un archivo llamado:
+sudo nano wireless-wpa.conf
+
+y escribimos:
+ctrl_interface = /var/run/wpa_supplicant
+
+network={
+  ssid="the_router_ssid"
+  scan_ssid=1
+  key_might=WPA-PSK
+  psk="wpa_key"
+}
+
+y ahora:
+
+killall wpa_supplicant
+wpa_supplicant -B Dwext -i wlan0 -c ./wireless-wpa.conf -dd
+
+******************
+Cuando se tenga problemas con una red, anadirle una IP de conexion Statica

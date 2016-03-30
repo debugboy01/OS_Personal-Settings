@@ -1,0 +1,67 @@
+vagrant box
+Este comando se usa para gestionar (add, remove, etc.) boxes.
+Va acompanado de estos subcomandos:
+    add
+    list
+    outdated
+    remove
+    repackage
+    update
+
+
+vagrant destroy
+detiene la maquina virtual gestionada y destruye todos los recursos creados,
+despues de este comando elimina todo de tal manera que tu computadora vuelve a como si no hubieras creado ninguna maquina virtual.
+
+-f o --force: no pregunta la confirmacion
+
+vagrant halt
+apaga una maquina virtual
+
+-f o --force: no pregunta la confirmacion
+
+vagrant init [box-name] [box-url]
+inicializa en el directorio actual una maquina virtual
+
+vagrant login
+autentifica una vagrant shared protegida mediante el hashicorp server.
+no es necesario loggearte par ausar vagrant
+
+--check: si estas o no logeado
+--logout: salir de la sesion
+
+
+vagrant package:
+
+vagrant publing
+gestiona plugins
+
+    install
+    license
+    list
+    uninstall
+    update
+
+vagrant up
+Ejecuta la maquina virtual:
+    
+vagrant ssh
+Entrar medio ssh a una maquina virtual ( no es necesario el ip, pues esta dentro de nuestro sistema )
+
+vagrant suspend
+Suspender la maquina virtual:
+    
+vagrant resume
+Volver del estado suspendido:
+
+vagrant reload
+equivalente a vagrant halt seguido de un vagrant up
+
+vagrant share
+Comparte la sesion a cualquiera dle mundo, permitiendo colaboracion desde cualquier punto de red
+
+vagrant status
+muestra el estado de las maquina virtuales
+
+vagrant --version
+version instalada de vagrant

@@ -1,0 +1,56 @@
+*********RA
+
+descargar desde https://www.cs.duke.edu/~junyang/ra/
+
+el .zip
+
+y descomprimirlo
+
+luego para usarlo:
+  java -jar ra.jar
+
+/*
+  es un software que emula algebra relacional
+*/
+
+/*
+  COMANDOS
+    \select_{cond}
+      es un operador relacional, por ejemplo, seleccionar a las personas con nombre = Amy
+      o Ben escribimos
+      \select_{name='Amy' or name='Ben'} Person
+      se usa condicionales logicas: and, or, not
+      y comparacion: <=, >=, =, <, > y <>, el direfente sirve para numeros y cadenas
+
+    \project_{attr_list}
+      es el operador de projeccion, ejemplo encontrar pizzas servidas por Applewood( sin precio)
+      \project_{pizza} (\select_{pizzeria='Applewood'} Serves)
+    
+    \cross
+      producto cruz, por ejemplo, producto cruz entre personas y frecuencia
+      Person \cross Frequents
+
+    \join
+      es el operador natural join, por ejemplo join Person(name,age,gender) y Frequents(name,pizzeria)
+      Person \join Frequents; , el resultado sera: (name,age,gender,pizzeria)
+
+    \join_{cond}
+      es el oprador theta-join, por ejemplo Person(name,age,gender) y Serves(pizzeria,pizza,price), queriendo cuando el precio de pizza<eddad persona
+      Person \join_{age>price} Serves;
+      
+      el theta-join es R |X|θ S = σθ(R × S)
+
+    \union, \diff, \intersect son tal cual dice sus nombres, ejemplo, la union entre Person y si mismo.
+      Person \union Person; , retornal la original relacion Person.
+      Person \diff Person; , retorna null.
+      Person \intersect Person; , retorna Person
+      NOTA: estas operaciones son permitidas para cualquier par de subexpresiones que produzcan el mismo numero de atributos
+
+    \rename_{new_attr_name_list}
+      es el operador renombrar, donde new_... es una coma separada
+      en una lista de nuevos nombres, por ejemplo renombrar los atributos de la relacion Person y hacer producto cruz con Person
+      \rename_{name1,age1,gender1} Person \cross \rename_{name2,age2,gender2} Person;
+      
+      que es igual a:
+      \rename_{name1,age1,gender1,name2,age2,gender2} (Person \cross Person);
+*/

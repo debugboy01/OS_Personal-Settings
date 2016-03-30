@@ -1,0 +1,46 @@
+********GRUB********************
+
+Inicia ubuntu en modo consola
+
+Hacer que la computadora no inicie su interfaz grafica
+1. Modificar el archivo
+  sudo nano /etc/default/grub
+
+2. En el archivo cambiar esta linea: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+   por esta: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash text"
+   
+   Esto hace que accedamos a ubuntu en modo consola
+   
+3. Guardar el archivo
+
+4.Actualizamos el grub:   sudo update-grub
+
+5. Reiniciamos el ordenador: sudo reboot
+
+6. si en modo consola queremos tener parte grafica usar: startx
+
+****************************
+
+Imagen de fondo
+
+PRIMER PASO:  una imagen de 640x480
+
+SEGUNDO PASO: sudo cp "/etc/grub.d/05_debian_theme" "/etc/grub.d/05_debian_theme.bak"
+
+TERCER PASO: Abrimos el archivo antes dicho (el original, no el backup) con gedit 
+        sudo gedit "/etc/grub.d/05_debian_theme"
+
+CUARTO PASO:  Ahora buscamos la frase en la línea 157 que comienza con: 
+              if set_background_image
+
+QUINTO PASO:  Cambiemos esa ruta por la de nuestra "imagen.png" (sin tocar más nada que la ruta al archivo, ni siquiera las comillas), guardamos y salimos del editor de texto. 
+
+SEXTO PASO:    Actualizamos el grub: sudo update-grub
+
+**********************************
+
+grub en modo consola
+
+vamos a sudo nano /etc/default/grub
+    y desconmentamos la linea GRUB_TERMINAL=console
+    para que GRUB aparezca en modo consola

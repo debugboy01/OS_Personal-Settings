@@ -1,0 +1,35 @@
+*************
+eth0
+
+Activamos la tarjeta de red cableada
+sudo ifconfig eth0 up
+
+En caso de no poder conectarse a internet cableado, usar:
+sudo dhclient eth0
+// le pide una direccion IP para eth0
+
+si queremos que sea:
+
+DINAMICA ( mediante dhclient )
+en sudo nano /etc/network/interfaces
+escribir:
+
+auto eth0
+iface eth0 inet dhcp
+
+ESTATICA
+
+auto eth0
+iface eth0 inet static
+address 192.168.100.15
+netmask 255.255.255.0
+gateway 192.168.100.254
+dns-nameservers 8.8.8.8 8.8.4.4
+
+y luego:
+sudo /etc/init.d/networking restart
+
+En caso de tener problemas, iremos al DNS server, ir:
+sudo nano /etc/resolv.conf
+y escribir lo mismo que nuestra predeterminada
+

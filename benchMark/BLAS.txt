@@ -1,0 +1,17 @@
+**********BLAS
+
+Basic Linear Algebra Subprograms
+
+sudo apt-get install libblas3gf libblas-doc libblas-dev
+
+se guardan en :
+/usr/share/doc/libblas*
+
+y los binarios en:
+/usr/lib/libblas
+
+/*
+ Contiene un conjunto de rutinas de bajo nivel para realizar comunes de álgebra lineal operaciones como vector Además,
+ multiplicación escalar , productos de punto , combinaciones lineales, y la multiplicación de matrices .
+  Ellos son el de facto API para las bibliotecas de álgebra lineal, con fijaciones tanto para C y Fortran .
+*/

@@ -1,0 +1,34 @@
+23.********* GOLANG
+
+// bajamos las claves de los repositorios
+
+
+wget https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz
+tar -xf go1.4.1.linux-amd64.tar.gz
+
+// creando el GO_PATH
+
+sudo su
+
+mv go /opt/
+mkdir /opt/gopkg
+
+// actualizamos el camino
+
+export GOPATH="/opt/gopkg" 
+export GOROOT="/opt/go"
+
+// actualizamos el camino deja la configuracion de gopath y goroot
+// permanentemente en el sistema
+
+echo export GOPATH=/opt/gopkg >> ~/.bashrc
+echo export GOROOT=/opt/go >> ~/.bashrc
+echo export PATH=$PATH:$GOROOT/bin:$GOPATH/bin >> ~/.bashrc
+
+// Ahora añadimos el PATH variable
+
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin 
+
+// VERIFICANDO
+
+go version

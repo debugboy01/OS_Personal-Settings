@@ -1,0 +1,43 @@
+13.*** R-project
+
+// puede ser mediante:
+
+sudo apt-get install r-base r-base-dev
+
+// o tambien 
+
+sudo nano /etc/apt/sources.list.d/r-base.list
+// creamos un nuevo r-base.list para tener conexion al CRAN
+//CRAN es una red de servidores ftp y web de todo el mundo que almacenan idénticos,
+// hasta a la fecha, versiones de código y la documentación para R. Por favor,
+// utilice el CRAN mirror más cercano a  usted para reducir al mínimo la carga de red.
+
+# R-Base repository
+deb http://cran.espol.edu.ec/bin/linux/ubuntu trusty/
+
+// CRAN de ecuador
+// copiamos estas lineas en ese r-base
+
+
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+// importamos repositorio
+
+sudo apt-get update
+
+//luego:
+
+sudo apt-get install r-base r-base-dev r-cran-rjava r-cran-xml libxml2-dev
+
+// instala todo el sistema r
+// en la consola escribir
+
+R
+
+***** RStudio
+
+//ir a la web oficial y descargar para el SO
+
+http://www.rstudio.com/products/rstudio/download/
+// escoger sistema operativo
+

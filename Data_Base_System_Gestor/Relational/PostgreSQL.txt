@@ -1,0 +1,75 @@
+www.postgresql.org
+
+***************** POSTGRESQL
+
+// Gestor de Base de Datos Standar para SQL
+
+## Instalar porstgres
+
+sudo apt-get install postgresql-9.3 postgresql-client-9.3
+
+sudo cat /etc/shadow
+// vemos que se creo un nuevo usuario
+
+sudo passwd postgres
+// pedira introducir contraseña
+
+// Modificamos los archivos siguientes
+
+cd /etc/postgresql/9.3/main
+// vamos a esa direccion de carpeta
+
+1.postgresql.conf
+
+sudo vim postgresql.conf
+
+// listen_addresses = '*'
+
+//quitamos el comentario password_encryption = on
+
+
+2.pg_hba.conf
+
+#Database administrative
+local all all trust
+
+#"local" is for Unix
+local all all md5
+
+#Ipv4
+host all all 127.0.0.1/32 md5
+
+#Ipv6
+host all all ::1/128 md5
+
+su postgres
+
+psql
+// nos aparece la consola del postgres UI en shell
+
+// Cambiamos clave de acceso
+ALTER USER postgres WITH ENCRYPTED PASSWORD 'cc331';
+// si esta bien recibimos " ALTER ROLE "
+
+// salimos
+\q
+
+su postgres
+
+// conexion a una base de datos
+psql -U postgres -d postgres
+// -U es usuario de jenazad, y -d para nombre de base de datos
+// crear un usuario y una base de datos
+
+su postgres
+
+createuser jenazad
+//¿Será el nuevo rol un superusuario? (s/n) n
+//¿Debe permitírsele al rol la creación de bases de datos? (s/n) s
+//¿Debe permitírsele al rol la creación de otros roles? (s/n) s
+
+psql
+ALTER USER jenazad WITH password ‘*****’;
+\q
+
+createdb JenDatabase --owner jenazad;

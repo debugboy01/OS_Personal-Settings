@@ -1,0 +1,5 @@
+***********************GNOME SCREENSAVER
+
+sirve para bloquear teclado.
+
+gnome-screensaver-command -l

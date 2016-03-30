@@ -1,0 +1,7 @@
+*****************MPLAYER
+
+sudo apt-get install mplayer
+
+reproductor de videos ligero
+
+mplayer [nombreArchivo]

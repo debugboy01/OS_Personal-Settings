@@ -1,0 +1,7 @@
+Sirve para abrir el centro de control:
+
+gnome-control-center 
+
+ejemplo, si queremos el sonido
+
+gnome-control-center sound

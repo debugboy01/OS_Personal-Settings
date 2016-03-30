@@ -1,0 +1,11 @@
+*******************GNOMESCREENSHOT
+
+sirve para tomar captura de pantalla.
+
+para tomar pantalla completa:
+
+gnome-screenshot
+
+y solo un area:
+
+gnome-screenshot -a

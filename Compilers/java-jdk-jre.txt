@@ -1,0 +1,22 @@
+****** JDK = javac + JRE + JVM
+
+// javac = Compilador de java
+
+// JRE = 
+
+// JVM = 
+
+// descargar de la pagina de oracle
+
+tar -xvf jdk-8u40-linux-x64.tar.gz
+// movemos la carpeta a home
+
+sudo mkdir -p /usr/lib/jvm/jdk1.8.0
+
+sudo mv jdk1.8.0_40/* /usr/lib/jvm/jdk1.8.0/
+
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0/bin/java" 1
+
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0/bin/javac" 1
+
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk1.8.0/bin/javaws" 1

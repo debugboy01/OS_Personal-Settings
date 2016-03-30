@@ -1,0 +1,26 @@
+5.*** TOR browser
+
+NOTA: NO DESEMPAQUETAR O CORRER TOR COMO ROOT SOLO COMO USUARIO
+
+// ir a la pagina de descargas de tor (tor download )
+// y seguir las instrucciones
+
+// Desempaquetar el tor
+
+tar -xvJf tor-browser-linux64-VERSION_LANG.tar.xz
+// LANG es language ... fijarse bien
+// VERSION es version, fijarse bien
+// en nuestro caso es:
+
+tar -xvJf tor-browser-linux64-4.5a3_es-ES.tar.xz
+
+// la carpeta desempaquetada la mandamos a carpeta personal
+
+// vamos a la carpeta de tor "tor-browser_es-ES"
+
+cd tor-browser_es-ES
+
+// y corremos tor como :
+
+./start-tor-browser
+

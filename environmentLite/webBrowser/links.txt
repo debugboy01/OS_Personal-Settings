@@ -1,0 +1,34 @@
+***********************LINKS
+
+sudo apt-get install links links2
+
+Es un navegador web que no soporta imagenes ni video, muy util cuando solo quieras leer
+webs de texto puro, como wikipedia sama.
+
+links2 es para graficos
+
+Switch	Meaning
+-g	The browser will run in graphics mode
+-mode	Sets the graphics driver mode (see below).
+-driver	Specifies a graphics system to be used. If you do not use the switch, the graphics system will be autodetected.
+-help	Prints out a summary of switches and keyboard control.
+-version	Displays the version number of the program.
+
+
+especificacion de colores:
+
+links -g -mode 1024x768x16M
+
+con 1024x768 and 16 million colours
+
+links2 -g www.google.com.pe
+
+links www.google.com.pe
+
+Propiedades 
+
+   Free and Open source (Foss)
+   Text and graphical web browser with a pull down menu.
+   Built in support for color and monochrome terminal with the facility of horizontal scrolling.
+   Inherits a lot of features from graphical user interface e.g., pop-ups, Menus, etc in textual-fashion.
+   Capable of font Rendering in different sizes and JavaScript support.

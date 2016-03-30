@@ -1,0 +1,30 @@
+***************NMCLI
+
+ya viene instalado
+
+nm-connection-editor 
+parte grafica
+
+nm-applet
+parte de red
+
+nm-connection-editor
+
+conectarse a una red inalambrica:
+
+$sudo nmcli dev wifi connect "APCTIC" password "ac22060dc5"
+
+
+desconectar:
+
+$sudo nmcli dev disconnect iface eth0
+
+
+ver dispositivos disponibles:
+
+$sudo nmcli dev
+
+
+apagar wifi:
+
+$sudo nmcli r wifi off

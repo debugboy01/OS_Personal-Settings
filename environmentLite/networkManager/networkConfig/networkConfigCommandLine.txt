@@ -1,0 +1,18 @@
+*******
+Ver nuestros ip de maquina
+sudo cat /etc/hosts
+
+Ver nuestro nombre de la maquina
+sudo gedit /etc/hostname
+
+********
+ver las tarjetas de interfaz de red
+ls /sys/class/net
+
+eth0: Tarjeta de red cableada (Ethernet)
+lo:
+wlan0: Tarjeta de red inalambrica (wireless)
+
+Ver todas las configuraciones de la red
+sudo nano /etc/network/interfaces
+

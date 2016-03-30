@@ -1,0 +1,36 @@
+********DOS BOX
+
+sudo apt-get install dosbox
+
+/*
+  Dosbox es, en términos visuales, un terminal o consola de comandos bien al estilo DOS.
+  Nos permite ejecutar aplicaciones desarrolladas para ese sistema operativo DOS en nuestro linux.
+*/
+
+iniciamos con dosbox
+
+DOSBox, solo reconoce archivos y  ficheros desntro de la carpeta /home/user, y con nombres menores a 8 letras.
+
+******************************** DBGL
+
+Si queremos la GUI, existe DBGL, necestiamos esto:
+
+sudo apt-get install libsdl-sound1.2 libsdl-net1.2
+
+vamos a http://members.quicknet.nl/blankendaalr/dbgl/#install
+descargamos: dbgl079_generic.tar.gz
+descomprimimos
+y ejecutamos:
+./dbgl
+
+DBGL ofrece en http://www.dosbox.com/wiki/Special_Keys:
+
+atajos de teclado:
+CTRL-F7 Disminuya el frameskip (la velocidad a la que se actualizan los gráficos en pantalla).
+CTRL-F8 Incrementa el frameskip (la velocidad a la que se actualizan los gráficos en pantalla).
+CTRL-F11 Disminuye los ciclos (la velocidad a la que se lleva a cabo la emulación).
+CTRL-F12 Incrementa los ciclos (la velocidad a la que se lleva a cabo la emulación).
+
+Otros atajos útiles:
+CTRL-F9 Mata la sesión de DOSBox.
+CTRL-F10 Captura/Libera el mouse (en caso de que tengas que usarlo dentro de DOSBox).

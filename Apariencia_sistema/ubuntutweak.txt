@@ -1,0 +1,28 @@
+15.*** UBUNTU TWEAK
+
+// personaliza ubuntu
+
+sudo add-apt-repository ppa:tualatrix/ppa
+
+sudo apt-get update
+
+sudo apt-get install ubuntu-tweak
+
+//MODIFICACIONES:
+
+ajustes->unity
+
+opacidad: 0,0
+tamano: 38
+
+ajustes->tema
+
+tema: gtk == Radiance
+
+tema de iconos: ubuntu-mono-darks
+
+tema cursor: whiteglass
+
+tema ventanas: ambiance
+
+

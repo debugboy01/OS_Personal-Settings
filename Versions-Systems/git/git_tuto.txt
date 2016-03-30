@@ -1,0 +1,33 @@
+luego de instalar.
+configuramos el usuario.
+
+Para un solo repo 
+vamos a esa carpeta y hacemos
+
+git config user.name "username"
+git config user.email "usermail"
+
+
+para hacerlo con todos los repos de nuestra compu
+
+git config --global user.name "username"
+git config --global user.email "usermail"
+
+en github creamos un repo con el mismo nombre de la carpeta en la que guardamos archivos en nuestro repo local
+
+luego hacemos en un directorio
+git init, y crea el repo local ahi.
+
+con git status vemos si hay alguna novedad
+
+git pull origin maste ( para traer data antes de subir )
+
+git add <> lo alistamos para subir al repo github
+
+git push origin master   subimos al repo github
+
+Configurar un repo local, en .git/config anadir los campos
+[remote "origin"]
+	url = https://github.com/Jenazad/Computer_Science_Pregrade.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+

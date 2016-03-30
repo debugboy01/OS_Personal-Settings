@@ -1,0 +1,7 @@
+************Sensors
+
+sudo apt-get install lm-sensors
+
+/*
+
+Nos permite ver la temperatura de nuestro PC y nucleos

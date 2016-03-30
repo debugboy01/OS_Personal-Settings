@@ -1,0 +1,100 @@
+sudo docker info
+
+Descargamos una imagen de ubuntu:
+
+
+sudo docker pull centos:latest
+ultima version centos
+
+sudo docker pull centos:centos5
+version especifica de centos
+
+sudo docker pull centos
+version por default de los repos para le sistema nativo
+
+cuando la imagen sea completada, se mostrara 12 caracteres de tabla hash 539c0211cd76: Download complete
+
+que es el ID de imagen. puedes ver las imagenes con
+
+docker inspect o docker images --no-trunc=true
+
+y corremos como:
+
+sudo docker run -i -t centos /bin/bash
+
+"centos" puede ser cambaido por la imagen que usas
+The -i flag starts an interactive container. The -t flag creates a pseudo-TTY that attaches stdin and stdout.
+
+Para desmontar el tty sin salir del shell, usar la secuencia de escape Ctrl-p + Ctrl-q.
+El contenedor seguirá existiendo en un estado detenido una vez salido.
+Para una lista de todos los contenedores detenidos y en funcionamiento, utilice el comando sudo docker ps -a.
+
+$ JOB=$(docker run -d ubuntu /bin/sh -c "while true; do echo Hello world; sleep 1; done")
+
+# Collect the output of the job so far
+$ docker logs $JOB
+
+# Kill the job
+$ docker kill $JOB
+
+MULTIPLES MANERAS DE CONECTARSE A DOCKER
+
+tcp:// -> TCP connection to 127.0.0.1 on either port 2376 when TLS encryption is on, or port 2375 when communication is in plain text.
+tcp://host:2375 -> TCP connection on host:2375
+tcp://host:2375/path -> TCP connection on host:2375 and prepend path to all requests
+unix://path/to/socket -> Unix socket located at path/to/socket
+
+Run Docker in daemon mode:
+
+$ sudo <path to>/docker daemon -H 0.0.0.0:5555 &
+
+Download an ubuntu image:
+
+$ docker -H :5555 pull ubuntu
+
+
+CONTROLES A UN CONTAINER
+
+# Start a new container
+$ JOB=$(docker run -d ubuntu /bin/sh -c "while true; do echo Hello world; sleep 1; done")
+
+# Stop the container
+$ docker stop $JOB
+
+# Start the container
+$ docker start $JOB
+
+# Restart the container
+$ docker restart $JOB
+
+# SIGKILL a container
+$ docker kill $JOB
+
+# Remove a container
+$ docker stop $JOB # Container must be stopped to remove it
+$ docker rm $JOB
+
+
+CONTROLES DE CONTAINER FORMA DE PUERTOS
+
+# Bind port 4444 of this container, and tell netcat to listen on it
+$ JOB=$(docker run -d -p 4444 ubuntu:12.10 /bin/nc -l 4444)
+
+# Which public port is NATed to my container?
+$ PORT=$(docker port $JOB 4444 | awk -F: '{ print $2 }')
+
+# Connect to the public port
+$ echo hello world | nc 127.0.0.1 $PORT
+
+# Verify that the network connection worked
+$ echo "Daemon received: $(docker logs $JOB)"
+
+
+
+GRABANDO ESTADOS DE LAS IMAGENES ( CON COMMIT )
+
+# Commit your container to a new named image
+$ docker commit <container> <some_name>
+
+# List your images
+$ docker images

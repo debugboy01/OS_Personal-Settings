@@ -1,0 +1,17 @@
+17.***** CODEBLOCKS
+
+// IDE PARA PROGRAMACION C y C++
+
+sudo apt-get install gdb
+// es un debugger
+
+sudo apt-get install libwxgtk2.8-0
+// corre cualquier programa que use la libreria wxWidgets
+
+sudo apt-get install libwxgtk2.8-dev
+// instala los paquetes de desarrollo de wxWidgets
+
+sudo apt-get install codeblocks
+
+
+

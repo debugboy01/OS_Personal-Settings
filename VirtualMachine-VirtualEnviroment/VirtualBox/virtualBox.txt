@@ -1,0 +1,52 @@
+***********VIRTUALBOX
+
+sudo apt-get update
+sudo apt-get install virtualbox
+
+/*
+  Virtual Box es un software de virtualización para arquitecturas x86/amd64,
+  Por medio de esta aplicación es posible instalar sistemas operativos adicionales, conocidos como «sistemas invitados»(guest), dentro de otro sistema operativo «anfitrión»(host), cada uno con su propio ambiente virtual.
+
+*/
+
+/*
+  CREANDO UNA MAQUINA VIRTUAL
+  Por ejemplo: tenemos la iso de Scientific Linux
+  http://ftp1.scientificlinux.org/linux/scientific/6x/x86_64/iso/
+  
+  e instalamos:
+  SL-6.6-x86 64-2014-11-05-Install-DVD.iso
+  
+  Damos click en Nueva
+    nos pedira nombre y tipo de sistema
+    ScientificLinux
+    linux
+    otherlinux
+  Next
+  RAM
+    por default 512
+  Memoria disco duro
+    VDI
+      Tamano fijo
+        8GB
+   
+   Despues de terminar, podemos ver nuestra maquina virtual
+   le damos en configuracion ( pues aun falta la iso )
+    almacenamiento
+      y escogemos la ruta de la iso
+   
+   Iniciamos el sistema, instalamos y listo ya tenemos
+   nuestra maquina virtual
+
+*/
+
+/*
+  INSTALANDO UNA MAQUINA VIRTUAL
+  Si esta desde un CD/DVD la iso, ir a configuracion.
+  Escoger en almacenamiento --> en vacio --> IDE secundario maestro
+    Escogemos la ruta donde se encuentra nuestro ISO
+  y listo,
+  luego damos en iniciar a nuestra maquina y empezamos la instalacion normal.
+  Elegimos el iso, desktop. y le damos instalar
+  
+*/

@@ -1,0 +1,7 @@
+**************System Monitor
+
+sirve para ver cuantos recursos estamos usando, es una forma analoga a htop
+
+en shell escribir
+
+$gnome-system-monitor

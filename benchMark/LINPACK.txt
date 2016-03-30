@@ -1,0 +1,39 @@
+****************LINPACK
+https://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download
+
+Basic Linear Algebra Subprograms (BLAS)
+en procesadores intel es mkl (Intel Math Kernel Library)
+
+descargar el .tgz para linux
+
+luego descomprimimos
+
+tar zxvf l_lpk_p_10. .. .tgz
+
+se extraera una carpeta l_lpk_p_X/
+donde X es la version
+
+cd l_lpk_p_X/../linux/mkl/benchmarkrs/linpack/
+./xlinpack_xeon64
+
+pedira ingresar data o ayuda?
+data
+# de ecuaciones del sistema(n): 
+Longuitud de un array(m):   // se refiere al numero de incognitas
+# numero de iteraciones de solucion:
+# Cantidad de Memoria maxima a usar:
+
+A continuacion hace calculos segun se le ha especificado
+Hace calculos de punto flotante de un sistema de nxn
+
+o tambien
+./runme_xeon64
+
+que ya tiene parametros por defecto
+
+El objetivo es aproximar la rapidez con una computadora realizará en la resolución de problemas reales.
+Es una simplificación, ya que no es una tarea computacional solo puede reflejar el rendimiento global de un sistema informático. Sin embargo,
+el rendimiento de referencia LINPACK puede proporcionar una buena corrección sobre el máximo rendimiento proporcionado por el fabricante.
+El máximo rendimiento es el rendimiento máximo teórico que un ordenador puede lograr,
+calculado como la frecuencia de la máquina, en ciclos por segundo, veces el número de operaciones por ciclo que puede realizar.
+El rendimiento real siempre será menor que el máximo rendimiento.

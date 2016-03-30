@@ -1,0 +1,9 @@
+*************************NITROGEN
+
+sudo apt-get install nitrogen
+
+sirve para cambiar el fondo de escritorio, de manera centrada:
+
+nitrogen --set-centered /home/jenazad/.i3/DragonInferno.jpg
+
+donde ruta es la ruta de directorio donde se encuentra DragonInferno.jpg

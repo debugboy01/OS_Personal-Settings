@@ -1,0 +1,30 @@
+********* fail2ban
+
+sudo apt-get install  fail2ban
+
+/*
+
+
+// Es una aplicación escrita en Python para la prevención de intrusos en un sistema, que actúa penalizando o bloqueando las conexiones remotas que intentan accesos por fuerza bruta. 
+
+Ahora hacemos
+
+  sudo gedit /etc/fail2ban/jail.local
+  
+y escribimos
+
+  [ssh]
+  enabled = true
+  port = 1234
+  filter = sshd
+  logpath = /var/log/auth.log
+  maxretry = 3
+  
+  sudo /etc/init.d/fail2ban start
+
+  Y Para ver los LOGS de conexión haced esto:
+
+    cd /var/log/
+    gedit auth.log
+    
+*/

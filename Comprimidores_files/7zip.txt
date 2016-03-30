@@ -1,0 +1,3 @@
+2.***7zip
+
+sudo apt-get install p7zip p7zip-rar

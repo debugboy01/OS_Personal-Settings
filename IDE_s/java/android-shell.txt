@@ -1,0 +1,28 @@
+conectar el android en modo desarrollador o depurador
+
+lsusb
+
+luego 
+
+sudo touch etc/udev/rules.d/51-android.rules 
+
+sudo nano etc/udev/rules.d/51-android.rules 
+
+SUBSYSTEM=="usb", SYSFS{idVendor}=="22b8", OWNER="jenazad" GROUP="jenazad" 
+
+
+luego guardamos.
+
+instalamos
+
+sudo apt-get install android-tools-adb
+
+ahora hacemos 
+
+sudo services udev restart
+
+adb devices
+
+y luego
+
+adb shell

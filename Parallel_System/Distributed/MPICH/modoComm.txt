@@ -1,0 +1,18 @@
+Modo de envio
+
+Synchronous send: (Modo Sincronizado)
+
+El mensaje va directamente al recibidor.
+Solo se completa cuando el recibidor se inicializa.
+
+Buffered send: (Modo Asincronizado)
+
+El mensaje se copia en el buffer ( que tiene la aplicacion ).
+Siempre se completa(excepto cuando hay error, memoria etc) independiente del receptor.
+
+Standard send: (Modo Sincronizado y Asincronizado a la vez)
+
+Tambien llamado hybrido.
+Cualquiera de ambos modos (en un búfer de tamaño fijo proveer por el sistema de MPI).
+
+Ready send:

@@ -1,0 +1,19 @@
+*************************LYNX
+
+sudo apt-get install lynx
+
+Es muy similar a links
+
+Propiedades
+
+   Text-based Web Browser.
+   Highly Configurable.
+   Oldest web browser in use and development.
+   support for SSL and many features of HTML
+   Highlight the chosen link.
+   Number all the links on a web page and open links using number assigned.
+   No support for JavaScript.
+   Compatible with older hardware.
+   Web bugs unsupported, hence 0% privacy concern.
+   No support for HTTP Cookies.
+   Configuration through commands in terminal or configuration files.

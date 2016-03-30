@@ -1,0 +1,5 @@
+**********VIM
+
+sudo apt-get install vim
+
+editor de texto consola, similar a nano pero con mas funciones.

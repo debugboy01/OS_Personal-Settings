@@ -1,0 +1,9 @@
+*****************ACPI
+
+sudo apt-get install acpi
+
+sirve para ver la bateria del computador
+
+acpi -V
+
+

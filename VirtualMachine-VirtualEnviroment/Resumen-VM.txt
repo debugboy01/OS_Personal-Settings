@@ -1,0 +1,9 @@
+Docker:
+Software que mantiene abiertas muchos "contenedores" que en realidad son imagenes de sistemas operativos a la vez. cada sistema puede hacer operaciones pero por recomendacion solo debe hacer uno por contenedor, es contenedor, porque su sesion es similar al de un gestionador de veriones. modificas un OS, gestionado por Docker, y se debe guardar la diferencia en esa imagen.
+
+Vagrant:
+Software de virtualizacion, multiples maquinas encendidas, y se conectan mediante shell.
+
+VirtualMachinesSoftware (VirtualBox, VMWare):
+software de vrtualizacion, una maquina sobre otra, mediante el virtualizador.
+

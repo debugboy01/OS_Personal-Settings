@@ -1,0 +1,38 @@
+*******Manejo de usuarios
+
+sudo apt-get install gnome-system-tools
+
+GRAFICA de administracion con:
+users-admin
+
+O tambien desde CONSOLA
+
+Crear usuario: sudo adduser user
+  -g: grupo que queremos que tenga el usuario
+  -d: carpeta home del usuario
+  -m: crear carpeta home si no existe
+  -s: shell de usuario
+
+Ejemplo, si deseamos crear un usuario llamado 'pedro' cuyo grupo principal sea 'profesores', cuya carpeta home sea /home/pedro y su intérprete de comandos sea /bin/bash, ejecutaremos el siguiente comando:
+
+    // Crear un usuario
+    sudo useradd -g profesores -d /home/pedro -m -s /bin/bash pedro
+    // Cambiar el home de un usuario
+    sudo usermod -d /home/carpeta_pedro pedro 
+
+Cambiar Contrasena usuario: sudo passwd user
+
+Eliminar usuario: sudo userdel -r user
+
+Crear grupo: sudo groupadd groupname
+Añadir usuario a grupo: sudo adduser user groupname
+
+Eliminar grupo: sudo groupdel groupname
+
+Anadir usuarios: sudo adduser user groupname
+
+Quitar usuarios: sudo deluser user groupname
+
+Cambiar de usuario: su user
+
+Forzar cambio de contraseña: sudo chage user -d 0

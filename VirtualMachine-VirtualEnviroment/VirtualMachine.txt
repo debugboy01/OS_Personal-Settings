@@ -1,0 +1,7 @@
+********* Virtual Machine
+Una máquina virtual es un programa de ordenador que emula ser una computadora.
+Es decir, a través de software se recrea un hardware.
+¿Para qué? Principalmente, para tener una configuración específica de hardware y software en un entorno controlado, pues la máquina virtual es un programa estanco que no afecta a tu ordenador.
+Con una máquina virtual se pueden probar programas, encontrar vulnerabilidades y realizar tareas peligrosas sin miedo a estropear tu sistema operativo.
+Los programas para crear máquinas virtuales más conocidos son VirtualBox y VMware.
+Te presentamos páginas con máquinas virtuales preconfiguradas, para descargar y usarlas sin configurar nada.

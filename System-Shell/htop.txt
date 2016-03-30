@@ -1,0 +1,7 @@
+27.********** htop
+
+// Muestra los procesos en ejecucion, memoria usada en los procesos
+sudo apt-get install htop
+
+// llamada desde shell
+htop
