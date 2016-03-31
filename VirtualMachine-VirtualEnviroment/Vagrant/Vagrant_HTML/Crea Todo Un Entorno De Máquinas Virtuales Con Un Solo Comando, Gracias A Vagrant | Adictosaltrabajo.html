@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="es-ES"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!-- Basic Page Needs 
+========================================================= -->
+<meta charset="UTF-8">
+<title>Crea Todo Un Entorno De Máquinas Virtuales Con Un Solo Comando, Gracias A Vagrant | Adictosaltrabajo</title>
+
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+
+
+<!-- Mobile Specific Metas & Favicons
+========================================================= -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+
+
+
+
+<!-- WordPress Stuff
+========================================================= -->
+<link rel="pingback" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/a.html">
+
+
+<!-- All in One SEO Pack 2.3.2.3 by Michael Torbert of Semper Fi Web Design[393,509] -->
+<meta name="description" itemprop="description" content="Este tutorial trata de máquinas virtuales, nubes, servicios y pereza.">
+
+<meta name="keywords" itemprop="keywords" content="vagrante,virtual">
+
+<link rel="canonical" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/a.html">
+			<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/widgets.js" id="twitter-wjs"></script><script src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/ca-pub-5819347387229795.js"></script><script style="" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/analytics.js" async=""></script><script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-1265115-1', 'auto');
+			
+			ga('send', 'pageview');
+			</script>
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="adictosaltrabajo » Feed" href="http://www.adictosaltrabajo.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="adictosaltrabajo » RSS de los comentarios" href="http://www.adictosaltrabajo.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="adictosaltrabajo » Crea todo un entorno de máquinas virtuales con un solo comando, gracias a Vagrant RSS de los comentarios" href="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.adictosaltrabajo.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+			!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/wp-emoji-release.js"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="tp-sidebar-login-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/tt-sidebar-login.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-classic-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="basic-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/basic.css" type="text/css" media="all">
+<link rel="stylesheet" id="headers-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/headers.css" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/bootstrap.css" type="text/css" media="all">
+<link rel="stylesheet" id="shortcodes-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/shortcodes.css" type="text/css" media="all">
+<link rel="stylesheet" id="flexslider-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/flexslider.css" type="text/css" media="all">
+<link rel="stylesheet" id="prettyPhoto-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/prettyPhoto.css" type="text/css" media="all">
+<link rel="stylesheet" id="stylesheet-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="retina-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/retina.css" type="text/css" media="only screen and (-webkit-min-device-pixel-ratio: 2)">
+<link rel="stylesheet" id="skeleton-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/skeleton.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="front-estilos-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/estilos.css" type="text/css" media="all">
+<link rel="stylesheet" id="cff-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/cff-style.css" type="text/css" media="all">
+<link rel="stylesheet" id="cff-font-awesome-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="custom-style-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/custom_script.css" type="text/css" media="all">
+<style id="custom-style-inline-css" type="text/css">
+
+        	
+        	body{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #444444; }
+
+			h1{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 28px; font-weight: normal; color: #666666; }
+			h2{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 23px; font-weight: normal; color: #666666; }
+			h3{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; color: #666666; }
+			h4{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #666666; }
+			h5{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #666666; }
+			h6{ font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; color: #666666; }
+
+			h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited  { font-weight: inherit; color: inherit; }
+
+			h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, a:hover h1, a:hover h2, a:hover h3, a:hover h4, a:hover h5, a:hover h6 { color: #666666; }
+
+			.callus{ font-family: arial, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #999999 !important; }
+
+			a, a:visited{ color: #289dcc; }
+			a:hover, a:focus{ color: #666666; }
+			#infobar{ position: fixed; }
+
+			#topbar{ background: #ffffff; border-bottom: 1px solid #efefef; }
+			#topbar .callus { color: #999999; }
+			#topbar .callus a { color: #999999; }
+			#topbar .callus a:hover { color: #333333; }
+
+			.header{ background: #ffffff; }
+			.header .slogan{ font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+
+			/* Header V1 ------------------------------------------------------------------------ */  
+
+			#header { height: 90px; }
+			#header .logo{ margin-top: 33px; }
+			#header .select-menu{ background: #ffffff }
+
+			#header #navigation ul#nav > li { height: 90px; }
+			#header #navigation ul#nav > li > a { height: 87px; line-height: 87px; }
+			#header #navigation ul#nav li .sub-menu{ top: 87px; }
+			#header #header-searchform{ margin-top: 29px; }
+			#header #header-cart{ margin-top: 29px; }
+
+			#header #navigation ul#nav > li > a { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+			#header #navigation ul#nav > li > a:hover { color: #333333; border-color: #333333; }
+			#header #navigation ul#nav > li.current-menu-item > a,
+			#header #navigation ul#nav > li.current-menu-item > a:hover,
+			#header #navigation ul#nav > li.current-page-ancestor > a,
+			#header #navigation ul#nav > li.current-page-ancestor > a:hover,
+			#header #navigation ul#nav > li.current-menu-ancestor > a,
+			#header #navigation ul#nav > li.current-menu-ancestor > a:hover,
+			#header #navigation ul#nav > li.current-menu-parent > a,
+			#header #navigation ul#nav > li.current-menu-parent > a:hover,
+			#header #navigation ul#nav > li.current_page_ancestor > a,
+			#header #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color: #289dcc; }
+
+			/* Header V2 ------------------------------------------------------------------------ */  
+
+			#header-v2 .header-v2-container{ height: 110px; }
+			#header-v2 .logo{ margin-top: 33px; }
+			#header-v2 #header-searchform{ margin-top: 28px; }
+			#header-v2 #header-cart{ margin-top: 28px; }
+			#header-v2 .slogan{ margin-top: 33px; }
+			#header-v2 #navigation .sub-menu{ top: 41px; }
+
+			#header-v2 #navigation ul#nav > li > a { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+			#header-v2 #navigation ul#nav > li > a:hover { color: #333333; border-color: #333333; }
+			#header-v2 #navigation ul#nav > li.current-menu-item > a,
+			#header-v2 #navigation ul#nav > li.current-menu-item > a:hover,
+			#header-v2 #navigation ul#nav > li.current-page-ancestor > a,
+			#header-v2 #navigation ul#nav > li.current-page-ancestor > a:hover,
+			#header-v2 #navigation ul#nav > li.current-menu-ancestor > a,
+			#header-v2 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+			#header-v2 #navigation ul#nav > li.current-menu-parent > a,
+			#header-v2 #navigation ul#nav > li.current-menu-parent > a:hover,
+			#header-v2 #navigation ul#nav > li.current_page_ancestor > a,
+			#header-v2 #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color: #289dcc; }
+
+			#header-v2 #navigation ul#nav > li.current-menu-item > a:after,
+			#header-v2 #navigation ul#nav > li.current-page-ancestor > a:after,
+			#header-v2 #navigation ul#nav > li.current-menu-ancestor > a:after,
+			#header-v2 #navigation ul#nav > li.current-menu-parent > a:after,
+			#header-v2 #navigation ul#nav > li.current_page_ancestor > a:after{
+				border-color: #289dcc transparent transparent transparent;
+			}
+
+			/* Header V3 ------------------------------------------------------------------------ */  
+
+			#header-v3 { height: 90px; }
+			#header-v3 .logo{ margin-top: 33px; }
+			#header-v3 #navigation ul{ margin-top: 26px; }
+			#header-v3 #header-searchform{ margin-top: 30px; }
+			#header-v3 #header-cart{ margin-top: 30px; }
+			#header-v3 #navigation .sub-menu{ top: 37px; }
+
+			#header-v3 #navigation ul#nav > li > a { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; background: #ffffff; }
+
+			#header-v3 #navigation ul#nav > li > a:hover, 
+			#header-v3 #navigation ul#nav > li.sfHover > a  { background: #333333; }
+
+			#header-v3 #navigation ul#nav > li.current-menu-item > a,
+			#header-v3 #navigation ul#nav > li.current-menu-item > a:hover,
+			#header-v3 #navigation ul#nav > li.current-page-ancestor > a,
+			#header-v3 #navigation ul#nav > li.current-page-ancestor > a:hover,
+			#header-v3 #navigation ul#nav > li.current-menu-ancestor > a,
+			#header-v3 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+			#header-v3 #navigation ul#nav > li.current-menu-parent > a,
+			#header-v3 #navigation ul#nav > li.current-menu-parent > a:hover,
+			#header-v3 #navigation ul#nav > li.current_page_ancestor > a,
+			#header-v3 #navigation ul#nav > li.current_page_ancestor > a:hover { background: #289dcc; }
+
+			/* Header V4 ------------------------------------------------------------------------ */  
+
+			#header-v4 .header-v4-container{ height: 90px; }
+			#header-v4 .logo{ margin-top: 33px; }
+			#header-v4 #header-searchform{ margin-top: 28px; }
+			#header-v4 #header-cart{ margin-top: 28px; }
+			#header-v4 .slogan{ margin-top: 33px; }
+			#header-v4 #navigation .sub-menu{ top: 41px; }
+
+			#header-v4 #navigation{ background: #555555; }
+			#header-v4 #navigation ul#nav > li > a { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+
+			#header-v4 #navigation ul#nav > li > a:hover, 
+			#header-v4 #navigation ul#nav > li.sfHover > a { background: #333333; }
+
+			#header-v4 #navigation ul#nav > li.current-menu-item > a,
+			#header-v4 #navigation ul#nav > li.current-menu-item > a:hover,
+			#header-v4 #navigation ul#nav > li.current-page-ancestor > a,
+			#header-v4 #navigation ul#nav > li.current-page-ancestor > a:hover,
+			#header-v4 #navigation ul#nav > li.current-menu-ancestor > a,
+			#header-v4 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+			#header-v4 #navigation ul#nav > li.current-menu-parent > a,
+			#header-v4 #navigation ul#nav > li.current-menu-parent > a:hover,
+			#header-v4 #navigation ul#nav > li.current_page_ancestor > a,
+			#header-v4 #navigation ul#nav > li.current_page_ancestor > a:hover { background: #289dcc; }
+
+			/* Header V5 ------------------------------------------------------------------------ */  
+
+			#header-v5 .header-v5-container{ height: 107px; }
+			#header-v5 .logo{ margin-top: 33px; }
+			#header-v5 .slogan{ margin-top: 4px; }
+			#header-v5 #navigation .sub-menu{ top: 41px; }
+
+			#header-v5 #navigation ul#nav > li > a { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+
+			#header-v5 #navigation ul#nav > li > a:hover { color: #333333; }
+			        
+			#header-v5 #navigation ul#nav > li.current-menu-item > a,
+			#header-v5 #navigation ul#nav > li.current-menu-item > a:hover,
+			#header-v5 #navigation ul#nav > li.current-page-ancestor > a,
+			#header-v5 #navigation ul#nav > li.current-page-ancestor > a:hover,
+			#header-v5 #navigation ul#nav > li.current-menu-ancestor > a,
+			#header-v5 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+			#header-v5 #navigation ul#nav > li.current-menu-parent > a,
+			#header-v5 #navigation ul#nav > li.current-menu-parent > a:hover,
+			#header-v5 #navigation ul#nav > li.current_page_ancestor > a,
+			#header-v5 #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color:#289dcc; }
+
+			/* Header V6 ------------------------------------------------------------------------ */  
+
+			#header-v6 { height: 90px; }
+			#header-v6 .logo{ margin-top: 33px; }
+			#header-v6 .select-menu{ background: #ffffff }
+
+			#header-v6 #navigation ul#nav > li { height: 90px; }
+			#header-v6 #navigation ul#nav > li > a { height: 87px; line-height: 87px; }
+			#header-v6 #navigation .sub-menu{ top: 87px !important; }
+			#header-v6 #header-searchform{ margin-top: 29px; }
+			#header-v6 #header-cart{ margin-top: 29px; }
+
+			#header-v6 #navigation ul#nav > li > a { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+			#header-v6 #navigation ul#nav > li > a:hover { color: #333333; border-color: #333333; }
+			#header-v6 #navigation ul#nav > li.current-menu-item > a,
+			#header-v6 #navigation ul#nav > li.current-menu-item > a:hover,
+			#header-v6 #navigation ul#nav > li.current-page-ancestor > a,
+			#header-v6 #navigation ul#nav > li.current-page-ancestor > a:hover,
+			#header-v6 #navigation ul#nav > li.current-menu-ancestor > a,
+			#header-v6 #navigation ul#nav > li.current-menu-ancestor > a:hover,
+			#header-v6 #navigation ul#nav > li.current-menu-parent > a,
+			#header-v6 #navigation ul#nav > li.current-menu-parent > a:hover,
+			#header-v6 #navigation ul#nav > li.current_page_ancestor > a,
+			#header-v6 #navigation ul#nav > li.current_page_ancestor > a:hover { color: #289dcc; border-color: #289dcc; }
+
+			#header-v6.header-megamenu #navigation > ul#nav > li.megamenu > ul > li{ border-color: #a5a5a5 !important; }
+			#header-v6.header-megamenu #navigation .sub-menu ul li a,
+			#header-v6.header-megamenu #navigation .sub-menu li a{ border-color: #a5a5a5 !important; }
+
+			#navigation ul#nav > li.current-menu-item > a,
+			#navigation ul#nav > li.current-page-ancestor > a,
+			#navigation ul#nav > li.current-page-parent > a{ font-weight: 600 !important; }
+
+			/* Sub-Menu Navigation ------------------------------------------------------------------------ */ 
+
+			html body #navigation .sub-menu{ background: #999999 !important; border-color: #555555 !important; }
+			html body #navigation .sub-menu li a,
+			html body #navigation .sub-menu li .sub-menu li a,
+			html body #navigation .sub-menu li .sub-menu li .sub-menu li a { font-family: helvetica, Arial, Helvetica, sans-serif !important; font-size: 15px !important; font-weight: normal !important; color: #dedede !important; }
+			#navigation .sub-menu li{ border-color: #a5a5a5; }
+			#navigation .sub-menu li a:hover,
+			#navigation .sub-menu li .sub-menu li a:hover,
+			#navigation .sub-menu li.current-menu-item a,
+			#navigation .sub-menu li.current-menu-item a:hover,
+			#navigation .sub-menu li.current_page_item a,
+			#navigation .sub-menu li.current_page_item a:hover { color: #ffffff !important; }
+
+			#navigation ul#nav > li > ul > li:last-child > a:hover{ border:none !important; }
+
+			#title {
+				background: #FFFFFF;
+			    background-image: linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+			    background-image: -o-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+			    background-image: -moz-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+			    background-image: -webkit-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+			    background-image: -ms-linear-gradient(bottom, #FAFAFA 0%, #FFFFFF 100%);
+			    border-bottom: 1px solid #e4e4e4;
+			    border-top: 1px solid #e4e4e4;
+			}
+			#title h1, #title .blog-h1 { font-family: arial, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; color: #666666; }
+			#title h2, #title .blog-h2 { font-family: arial, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #aaaaaa; }
+			#title #breadcrumbs { color: #aaaaaa; }
+			#title #breadcrumbs a { color: #aaaaaa; }
+			#title #breadcrumbs a:hover { color: #289dcc; }
+
+			#alt-title h1, #alt-title .blog-h1 { background:#289dcc; font-family: arial, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; color: #ffffff;  }
+			#alt-title h2, #alt-title .blog-h2 { background:#ffffff; font-family: arial, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal; color: #999999; }
+			#alt-breadcrumbs, #no-title { background:#ffffff; border-bottom: 1px solid #e4e4e4; color: #999999; }
+			#alt-title .grid{ opacity: 0.8; }
+			#no-title  #breadcrumbs{ color: #999999; }
+			#alt-breadcrumbs a, #no-title #breadcrumbs a { color: #999999; }
+			#alt-breadcrumbs a:hover, #no-title #breadcrumbs a:hover { color: #289dcc; }
+
+			#alt-title-2 h1, #alt-title-2 .blog-h1 { font-family: arial, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #666666; }
+			#alt-title-2 { background-color: #efef; border-top:1px solid #e4e4e4; border-bottom:1px solid #e4e4e4; }
+
+			#alt-title-2 #breadcrumbs, #alt-title-2 #breadcrumbs a{ color: #999999; }
+			#alt-title-2 #breadcrumbs a:hover{ color: #289dcc; }
+
+			#sidebar .widget h3 { font-family: arial, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; color: #666666; }
+  
+
+			/* Twitter Bar ------------------------------------------------------------------------ */ 
+	
+			#twitterbar { font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #ffffff; background: #289dcc; }
+			#twitterbar .twitterpost a { color: #ffffff; }
+
+			/* Footer ------------------------------------------------------------------------ */  
+	
+			#footer{ border-top: 10px solid #333333; }  
+			#footer, #infobar { border-top-color: #333333; background: #444444; color:#999999; }
+			#footer a, #infobar a{ color:#999999; }
+			#footer a:hover, #infobar a:hover{ color:#ffffff; }
+			#footer .widget h3, #infobar .widget h3 { font-family: arial, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: normal !important; color: #ffffff !important; border-bottom:1px solid #555555; }
+			#infobar .no-widgets{ color:#999999; }
+
+			/* Copyright ------------------------------------------------------------------------ */  
+	        
+			#copyright { background: #222222; color: #777777; }
+			#copyright a { color: #888888; }
+			#copyright a:hover { color: #ffffff; }
+
+			/* Forms ------------------------------------------------------------------------ */  
+	    
+			input[type='text'], input[type='password'], input[type='email'], textarea, select, button, input[type='submit'], input[type='reset'], input[type='button'] { font-family: helvetica, Arial, Helvetica, sans-serif; font-size: 15px; }
+	    
+			/* Accent Color ------------------------------------------------------------------------ */ 
+	
+			::selection { background: #289dcc }
+			::-moz-selection { background: #289dcc }
+			.highlight { color: #289dcc }
+			.post-icon { background: #289dcc }
+			.single .post-tags a:hover { background: #289dcc; border-color: #289dcc; }
+			#pagination a:hover { border-color: #289dcc; background: #289dcc; }
+			#filters ul li a:hover { color: #289dcc }
+			#filters ul li a.active { color: #289dcc }
+			.portfolio-item:hover .portfolio-title { background: #289dcc; border-color: #289dcc; }
+			.projects-nav a:hover,
+			.post-navigation a:hover { background-color: #289dcc }
+			.sidenav li a:hover, .widget_wp_nav_menu_desc li a:hover { color: #289dcc }
+			.sidenav > li.current_page_item > a, .widget_wp_nav_menu_desc > li.current_page_item > a { border-left-color: #289dcc; color: #289dcc; }
+			.sidenav > li.current_page_item > a, .sidenav > li.current_page_item > a:hover, .widget_wp_nav_menu_desc > li.current_page_item > a, .widget_wp_nav_menu_desc > li.current_page_item > a:hover { background-color: #289dcc; }
+			.sidenav ul.children > li.current_page_item > a{ color: #289dcc }
+			#back-to-top a:hover { background-color: #289dcc }
+			.widget_tag_cloud a:hover { background: #289dcc; border-color: #289dcc; }
+			.widget_flickr #flickr_tab a:hover { background: #289dcc; border-color: #289dcc; }
+			.widget_portfolio .portfolio-widget-item .portfolio-pic:hover { background: #289dcc; border-color: #289dcc; }
+			#footer .widget_tag_cloud a:hover,
+			#infobar .widget_tag_cloud a:hover { background: #289dcc; border-color: #289dcc; }
+			#footer .widget_flickr #flickr_tab a:hover,
+			#infobar .widget_flickr #flickr_tab a:hover { background: #289dcc; border-color: #289dcc; }
+			#footer .widget_portfolio .portfolio-widget-item .portfolio-pic:hover,
+			#infobar .widget_portfolio .portfolio-widget-item .portfolio-pic:hover { background: #289dcc; border-color: #289dcc; }
+			.flex-direction-nav a:hover { background-color: #289dcc }
+			a.button.alternative-1 { background: #289dcc; border-color: #289dcc; }
+			.gallery img:hover { background: #289dcc; border-color: #289dcc !important; }
+			.skillbar .skill-percentage { background: #289dcc }
+			.latest-blog .blog-item:hover h4 { color: #289dcc }
+			.tp-caption.big_colorbg{ background: #289dcc; }
+			.tp-caption.medium_colorbg{ background: #289dcc; }
+			.tp-caption.small_colorbg{ background: #289dcc; }
+			.tp-caption.customfont_color{ color: #289dcc; }
+			.tp-caption a { color: #289dcc; }
+			.tp-leftarrow.default:hover,
+			.tp-rightarrow.default:hover { background-color: #289dcc !important; }
+			.wooslider-direction-nav a:hover { background-color: #289dcc; }
+
+			/* WooCommerce */
+
+			.product .onsale{ background: #289dcc; }
+			.woocommerce button, .woocommerce input[type=submit]{ color: #289dcc; }
+			.products li .price{ color: #289dcc; }
+			.product .price{ color: #289dcc; }
+			.woocommerce-tabs .panel h2{ color: #289dcc; }
+			.checkout .shop_table .total{ color: #289dcc; }
+			.woocommerce .form-row input[type=submit], 
+			.woocommerce .form-row button{ color: #289dcc; }
+
+        
+</style>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/jquery_002.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/jquery-migrate.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var cdp_cookies_info = {"url_plugin":"http:\/\/www.adictosaltrabajo.com\/wp-content\/plugins\/asesor-cookies-para-la-ley-en-espana\/plugin.php","url_admin_ajax":"http:\/\/www.adictosaltrabajo.com\/wp-admin\/admin-ajax.php","comportamiento":"aceptar","posicion":"inferior","layout":"ventana"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/principal.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/easing.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/fitvids.js"></script>
+<link rel="https://api.w.org/" href="http://www.adictosaltrabajo.com/wp-json/">
+<link rel="prev" title="Depurar Tomcat en remoto." href="http://www.adictosaltrabajo.com/tutoriales/depurar-tomcat-remoto/">
+<link rel="next" title="Mi semana de desk-surfing en Otogami" href="http://www.adictosaltrabajo.com/noticias/mi-semana-de-desk-surfing-en-otogami/">
+<meta name="generator" content="WordPress 4.4.2">
+<link rel="shortlink" href="http://www.adictosaltrabajo.com/?p=2878">
+<link rel="alternate" type="application/json+oembed" href="http://www.adictosaltrabajo.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.adictosaltrabajo.com%2Ftutoriales%2Fvagrant-install%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.adictosaltrabajo.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.adictosaltrabajo.com%2Ftutoriales%2Fvagrant-install%2F&amp;format=xml">
+	<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/js"></script>
+	
+	<style>
+		
+				
+		 		@media only screen and (max-width: 767px) {
+			#topbar .callus{ background: #efefef; }	
+		}
+				
+				
+				
+		
+				
+				
+	</style>
+
+
+<script src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/timeline.js" async="" charset="utf-8" type="text/javascript"></script><script src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/common.js" charset="UTF-8" type="text/javascript"></script><script src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/util.js" charset="UTF-8" type="text/javascript"></script><script src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/stats.js" charset="UTF-8" type="text/javascript"></script></head>
+
+<body class="single single-post postid-2878 single-format-standard">
+
+		
+		<div id="topbar" class="clearfix ">
+	
+		<div class="container">
+		
+			<div class="eight columns">
+									<div class="callus">&nbsp;</div>
+					<div class="clear"></div>
+							</div>
+			
+						<div class="eight columns">
+				<div class="social-icons clearfix">
+					<ul>
+													<li class="social-twitter"><a data-original-title="Twitter" href="http://www.twitter.com/@adictosaltrabaj" target="_blank">Twitter</a></li>
+																																					<li class="social-facebook"><a data-original-title="Facebook" href="http://www.facebook.com/pages/AdictosAlTrabajo/353360561767" target="_blank">Facebook</a></li>
+																																											<li class="social-linkedin"><a data-original-title="LinkedIn" href="https://www.linkedin.com/groups?gid=2768318&amp;mostPopular=" target="_blank">LinkedIn</a></li>
+																																					<li class="social-youtube"><a data-original-title="YouTube" href="https://www.youtube.com/user/AutentiaMedia" target="_blank">YouTube</a></li>
+																																																													<li class="social-rss"><a data-original-title="RSS" href="http://www.adictosaltrabajo.com/feed/" target="_blank">RSS</a></li>
+											</ul>
+				</div>
+			</div>
+					
+		</div>
+	
+	</div> <!-- end topbar -->
+	
+	<header id="header-v2" class="header clearfix">
+		
+		<div class="container header-v2-container">
+			
+			<div class="sixteen columns clearfix">
+			
+				<div class="eight columns alpha">
+					<div class="logo">
+													<a href="http://www.adictosaltrabajo.com/"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/Logo_adictos.png" alt="adictosaltrabajo" class="logo_standard"></a>
+																		</div>
+				</div>
+
+				<div class="three columns clearfix">
+									</div>
+				<div id="banner-widget-right" class="four columns clearfix" style="float:right; padding-top:20px;width: 40%;">
+					<div id="text-5" class="widget widget_text">			<div class="textwidget"><!--<img style="width:100%" src="/wp-content/uploads/2015/05/banner-estandar-primavera.jpg"/>-->
+
+
+<!--<img style="width:100%" src="/wp-content/uploads/2015/05/Estreno_adictos3.png"/>
+--></div>
+		</div>				</div>
+			
+			</div>
+
+
+		</div>
+		
+		<div id="navigation" class="sixteen columns clearfix alpha omega">
+			<div class="container">
+				<div class="sixteen columns">
+					<div class="menu-main-container"><ul id="nav" class="menu sf-js-enabled sf-arrows"><li id="menu-item-684" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-684"><a href="http://adictosaltrabajo.com/">Inicio</a></li>
+<li id="menu-item-685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-685"><a href="http://www.adictosaltrabajo.com/quienes-somos/">Quiénes somos</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5"><a href="http://autentia.com/servicios/formacion/">Formación</a></li>
+<li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-11"><a class="sf-with-ul" href="#">Publicaciones</a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-687" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-687"><a href="http://www.adictosaltrabajo.com/category/tutoriales/">Tutoriales</a></li>
+	<li id="menu-item-688" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-688"><a href="http://www.adictosaltrabajo.com/category/noticias/">Noticias</a></li>
+	<li id="menu-item-1325" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1325"><a href="http://www.adictosaltrabajo.com/category/libros/">Libros</a></li>
+	<li id="menu-item-1326" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1326"><a href="http://www.adictosaltrabajo.com/category/charlas/">Charlas</a></li>
+	<li id="menu-item-5681" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5681"><a href="http://www.adictosaltrabajo.com/category/chistes/">Chistes</a></li>
+	<li id="menu-item-5682" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5682"><a href="http://www.adictosaltrabajo.com/category/comic/">Cómic</a></li>
+</ul>
+</li>
+</ul><select class="select-menu"><option selected="selected" value="#">Navigation</option><option value="http://adictosaltrabajo.com/">&nbsp;Inicio</option><option value="http://www.adictosaltrabajo.com/quienes-somos/">&nbsp;Quiénes somos</option><option value="http://autentia.com/servicios/formacion/">&nbsp;Formación</option><option value="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/#">&nbsp;Publicaciones</option><option value="http://www.adictosaltrabajo.com/category/tutoriales/">–&nbsp;Tutoriales</option><option value="http://www.adictosaltrabajo.com/category/noticias/">–&nbsp;Noticias</option><option value="http://www.adictosaltrabajo.com/category/libros/">–&nbsp;Libros</option><option value="http://www.adictosaltrabajo.com/category/charlas/">–&nbsp;Charlas</option><option value="http://www.adictosaltrabajo.com/category/chistes/">–&nbsp;Chistes</option><option value="http://www.adictosaltrabajo.com/category/comic/">–&nbsp;Cómic</option></select></div>					<div class="header-searchbox"> <form action="http://www.adictosaltrabajo.com/" id="searchform" method="get">
+        <input id="s" name="s" value="Buscar..." onfocus="if(this.value=='Buscar...')this.value='';" onblur="if(this.value=='')this.value='Buscar...';" autocomplete="off" type="text">
+        <input value="Search" id="searchsubmit" class="hidden" type="submit">
+</form> </div>
+				</div>
+			</div>
+		</div>
+		
+</header>
+<!-- Title Bar -->	
+
+	<div id="title">
+		<div class="container">
+			<div class="seven columns">
+				<div class="blog-h1">Tutoriales. </div>
+							</div>
+								<div id="breadcrumbs" class="ten columns ">
+					<div id="crumbs"><a href="http://www.adictosaltrabajo.com/">adictosaltrabajo</a> / <a href="http://www.adictosaltrabajo.com/category/tutoriales/">Tutoriales</a> / <span class="current">Crea todo un entorno de máquinas virtuales con un solo comando, gracias a Vagrant</span></div>				</div>
+						</div>
+	</div>
+	
+	<div class="hr-border"></div>
+<!-- End: Title Bar -->
+
+<div id="page-wrap" class="container">
+	
+	<div id="content" class="sidebar-right twelve columns single">
+
+	
+		
+											<div id="author-info" class="clearfix">
+				    <div class="author-image">
+				    					    		<a href="http://www.adictosaltrabajo.com/author/alejandropg/"><img style="max-width:100px;max-height:150px" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/Alex.jpg"></a>
+				    					    </div>   
+				    <div class="author-bio">
+				        				        <h4><a href="http://www.adictosaltrabajo.com/author/alejandropg/">Alejandro Pérez García</a></h4>
+				        <p>Alejandro es socio fundador de Autentia y nuestro experto en Java EE, Linux y optimización de aplicaciones empresariales.<br>
+<br>
+Ingeniero en Informática y Certified ScrumMaster.<br>
+<br>
+<a href="http://twitter.com/alejandropgarci">Seguir @alejandropgarci</a><br>
+<br>
+Si te gusta lo que ves, puedes contratarle para darte ayuda con soporte 
+experto, impartir cursos presenciales en tu empresa o para que 
+realicemos tus proyectos como factoría (Madrid). <br>
+<br>
+Puedes encontrarme en <a href="http://www.autentia.com/">Autentia</a>: Ofrecemos servicios de soporte a desarrollo, factoría y formación.</p>
+				        <a href="http://twitter.com/alejandropgarci"> <img with="24px" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/icono-twiter.png" height="24px"> </a><a href="http://www.slideshare.net/AlejandroGarca8"> <img with="24px" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/icono-slideshare-mini.png" height="24px"> </a>				    </div>
+				</div>
+								<div class="post clearfix">
+
+	
+		
+	<!--<a href="#" class="post-icon standard"></a>-->
+	
+	<div class="post-content">
+		<div id="banner-widget">
+						<center>
+					<script type="text/javascript">
+													google_ad_client = "pub-5819347387229795";
+							/* 468x60 grafico. creado 04/04/11 */
+							google_ad_slot ="6894614182";google_ad_width = 468;google_ad_height = 60;
+											</script>
+					<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/show_ads.js">
+					</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" frameborder="0" height="60" width="468"></iframe></ins></ins>
+				</center>
+	</div>
+		<div class="post-title">
+			<h1>Crea todo un entorno de máquinas virtuales con un solo comando, gracias a Vagrant</h1>
+		</div>
+				<div class="post-meta"><span class="meta-date"><i class="icon-calendar"></i><time datetime="2016-03-30T14:27:57+00:00" class="updated">febrero 12, 2014</time></span><span class="meta-author"><i class="icon-user"></i><a data-original-title="Ver todas las entradas de Alejandro Pérez García" href="http://www.adictosaltrabajo.com/author/alejandropg/">Alejandro Pérez García</a></span><span class="meta-comment"><i class="icon-comment"></i><a href="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/#comments" class="comments-link">3 Comentarios</a></span><span id="tutoriales" class="meta-category"><i class="icon-align-left" style="background-image:none !important;">
+	 <img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/university2.png" title="Tutoriales" alt="Tutoriales" class="category" id="sci_icon_18" height="11" width="16"> </i><a data-original-title="" href="http://www.adictosaltrabajo.com/category/tutoriales/" rel="category tag">Tutoriales</a></span><span class="meta-category">
+<i class="icon-eye-open"></i>
+106238 visitas</span>
+<div class="hidden"></div>
+</div>
+		<div class="post-excerpt"><div>
+
+
+<h1 align="CENTER">Crea todo un entorno de máquinas virtuales con un solo comando, gracias a Vagrant</h1>
+<p>Creación: 06-12-2013</p>
+<p align="CENTER"><em>Tutorial dedicado a <a href="http://kcy.me/w4qa"><strong>@OtogamiCOM</strong></a> por su tremenda
+y contagiosa ilusión, por ser los inspiradores gracias al “Hacking Day” que organizaron el 06-12-2013, y por ser, sin
+lugar a dudas, la mejor forma de encontrar videojuegos al mejor precio.</em></p>
+<p><br><br>
+</p>
+<h2>Índice de contenidos</h2>
+<p>
+    <a href="#1.%20Introduccion">1. Introducción</a><br>
+    <a href="#2.%20Entorno">2. Entorno</a><br>
+    <a href="#3.%20Instalacion">3. Instalación</a><br>
+    <a href="#4.%20Creando%20nuestro%20primer%20proyecto">4. Creando nuestro primer proyecto</a><br>
+    <a href="#4.1.%20El%20descriptor">4.1. El descriptor</a><br>
+    <a href="#4.2.%20El%20box">4.2. El box</a><br>
+    <a href="#4.3.%20Usando%20el%20box">4.3. Usando el box</a><br>
+    <a href="#4.4.%20Levantando%20y%20entrando%20en%20nuestra%20m%C3%A1quina%20virtual">4.4. Levantando y entrando en nuestra máquina virtual</a><br>
+    <a href="#4.5.%20Algun%20problema%20con%20las%20Guest%20Addittions?">4.5. ¿Algún problema con las Guest Addittions?</a><br>
+    <a href="#4.6.%20Entrando%20por%20SSH%20en%20nuestra%20maquina%20virtual">4.6. Entrando por SSH en nuestra máquina virtual</a><br>
+    <a href="#5.%20Como%20instalo%20software%20de%20forma%20que%20lo%20vean%20mis%20compa%C3%B1eros?">5. ¿Cómo instalo software de forma que lo vean mis compañeros?</a><br>
+    <a href="#6.%20Configurando%20la%20red%20de%20la%20maquina%20virtual">6. Configurando la red de la máquina virtual</a><br>
+    <a href="#7.%20Despedida%20y%20cierre">7. Despedida y cierre</a><br>
+    <a href="#8.%20Apendice%20I%20-%20El%20Vagrantfile">8. Apendice I – El Vagrantfile</a><br>
+    <a href="#9.%20Conclusiones">9. Conclusiones</a><br>
+    <a href="#10.%20Sobre%20el%20autor">10. Sobre el autor</a><br>
+    <br><br><br>
+</p>
+<h2><a name="1. Introduccion"></a>1. Introducción</h2>
+<p>Este tutorial trata de máquinas virtuales, nubes, servicios y pereza. ¿<em>Pereza</em>?!?!?! ¿WTF?!?!?! Sí, sí,
+pereza, y sino decirme si os sentís identificados con alguna de estas preguntas o similares:</p>
+<ul>
+    <li><p>¿Cuántas veces nos hemos visto con la necesidad de instalar tal o cual servicio, base de datos o aplicación en general,
+    pero, o no estaba disponible para nuestro sistema operativo, o simplemente nos daba pereza <em>ensuciar</em> nuestro entorno?</p></li>
+    <li><p>¿Cuántas veces hemos tenido que hacer un desarrollo que se integra con otros sistemas, nos los hemos instalado en nuestra
+    máquina, y cuando nuestros compañeros se han bajado el código del proyecto no han sido capaces de instalar y configurar
+    de igual manera al sistema de terceros, por lo que no les funcionan los tests de integración?</p></li>
+    <li><p>¿Cuántas veces hemos configurado un entorno de máquinas virtuales y nos ha quedado niquelao, y ha llegado alguien y nos
+    ha dicho que lo teníamos que replicar en otro sitio, y casi nos da un pasmo al pensar todo el trabajo que tenemos que
+    repetir?</p></li>
+</ul>
+<p>Si no te sientes identificado con estas preguntas, o no sabes ni siquiera de qué te estoy hablando, puedes irte
+tranquilamente a <a href="http://www.youtube.com/">YouTube</a> a seguir viendo tontunas. Pero si eres de los que las
+preguntas anteriores les duelen un poquito, te recomiendo que sigas leyendo hasta el final, porque
+<a href="http://www.vagrantup.com/"><strong>Vagrant</strong></a> te va a simplificar muuuuuuuucho todos tus problemas.</p>
+<p><br><br>
+</p>
+<h2><a name="2. Entorno"></a>2. Entorno</h2>
+<p>El tutorial está escrito usando el siguiente entorno:</p>
+<ul>
+    <li><p>Hardware: Portátil MacBook Pro 15′ (2.3 GHz Intel i7, 16GB 1600 Mhz DDR3, 500GB Flash Storage).</p></li>
+    <li><p>NVIDIA GeForce G7 750M</p></li>
+    <li><p>Sistema Operativo: Mac OS X Lion 10.9</p></li>
+    <li><p>Vagrant 1.4.3</p></li>
+</ul>
+<p><br><br>
+</p>
+<h2><a name="3. Instalacion"></a>3. Instalación</h2>
+<p>¡Pero bueno! ¿Qué es ese dichoso Vagrant? Vagrant es un sistema que nos permite montar entornos (máquinas virtuales)
+fácilmente replicables y configurables. ¿Y qué significa esto? Que podemos preparar un <em>script</em> que cuando lo
+<em>ejecuten</em> nuestros compañeros, se encontrarán con el mismo entorno replicado a la perfección. Y por si esto
+fuera poco, las máquinas que creamos con Vagrants las podemos desplegar en <strong>VirtualBox</strong>, <strong>VMware</strong>,
+<strong>AWS</strong> (Amazon Web Services), u otros proveedores. Con lo que podemos usarlas tanto en desarrollo como
+luego llevarlas a producción.</p>
+<p>Vagrant por defecto trabaja con <a href="https://www.virtualbox.org/"><strong>VirtualBox</strong></a>, así que como
+requisito debemos instalarlo primero.</p>
+<p>Para instalar Vagrant basta con ir a su página <a href="http://www.vagrantup.com/"><strong>http://www.vagrantup.com/</strong></a>
+y pinchar sobre su enorme botón de <em>Download</em>.</p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-home-page.png"></p>
+<p>Una vez descargado el archivo (en mi caso Vagrant-1.4.3.dmg), hacemos doble click para abrirlo, y luego hacemos
+doble click sobre el instalador, y seguiremos sus instrucciones.</p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-install.png"></p>
+<p><br><br>
+</p>
+<h2><a name="4. Creando nuestro primer proyecto"></a>4. Creando nuestro primer proyecto</h2>
+<h3><a name="4.1. El descriptor"></a>4.1. El descriptor</h3>
+<p>Un proyecto se define por el fichero de configuración <strong><code>Vagrantfile</code></strong>. Este fichero define:
+</p><ul>
+    <li>Dónde se encuentra el directorio base del proyecto.</li>
+    <li>Describe el tipo de máquina y recursos que necesitamos para ejecutar nuestro proyecto, así como el software
+    que necesitamos instalar y cómo queremos acceder a él.</li>
+</ul>
+Para crear este fichero en el directorio donde nos encontremos podemos ejecutar el comando: <strong><code>$ vagrant init</code></strong>
+
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-command-init.png"></p>
+<p><br>
+</p>
+<h3><a name="4.2. El box"></a>4.2. El box</h3>
+<p>Ahora para crear la máquina virtual vamos a utilizar lo que Vagrant denomina un <strong><em>box</em></strong>. En vez de
+crear la máquina virtual desde cero, lo que sería lento y tedioso, Vagrant usa una imagen de base, que puede clonar rápidamente.
+A estas imágenes que se utilizan como base es a lo que se denominan <em>boxes</em>.
+</p><p>Vamos a añadir un box con el comando: <strong><code>$ vagrant box add precise64 http://files.vagrantup.com/precise64.box</code></strong></p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-add-box.png"></p>
+<p>Veremos como en pocos minutos se descarga el box de Internet. Esta descarga se hace una sola vez, ya que
+que estas imágenes se comparten entre todos los proyectos. Es decir cada proyecto hace referencia a un box por
+su nombre, en nuestro caso <code>precise64</code> (NOTA: <em>precise</em> es el nombre de la <a href="http://releases.ubuntu.com/">
+distribución de Ubuntu</a> que estamos usando como box), pero los proyectos en ningún caso modifican esta imagen de base,
+por lo que se puede compartir sin problema.</p>
+<p>En esta página <a href="https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Boxes">https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Boxes</a>
+podemos encontrar una lista de boxes oficiales que provee el propio Vagrant, así como una referencia a una lista de
+boxes que provee la comunidad (la recomendación sería usarlos sólo si tienes suficiente confianza en el proveedor que lo
+proporciona, o sino mejor <a href="http://docs.vagrantup.com/v2/boxes/base.html">hacerte tu propio box</a>).</p>
+<p><br>
+</p>
+<h3><a name="4.3. Usando el box"></a>4.3. Usando el box</h3>
+<p>Por ahora sólo hemos descargado el box en nuestro ordenador, pero ahora tenemos que decirle a nuestro proyecto que se
+base en él para crear la máquina virtual. Para ello editamos el fichero <code>Vagrantfile</code>, y buscamos la línea</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf76a196143750" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    config.vm.box = "base"</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf76a196143750-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf76a196143750-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.box</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"base"</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0032 seconds] -->
+
+<p>y la cambiamos por:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf787135595551" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    config.vm.box = "precise64"</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf787135595551-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf787135595551-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.box</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"precise64"</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+
+<p>indicando así que queremos usar el como base el box de nombre <code>precise64</code>.</p>
+<p><br>
+</p>
+<h3><a name="4.4. Levantando y entrando en nuestra maquina virtual"></a>4.4. Levantando y entrando en nuestra máquina virtual</h3>
+Para arrancar la máquina virtual, basta con ejecutar el comando: <strong><code>$ vagrant up</code></strong>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-up.png"></p>
+<p><br>
+</p>
+<h3><a name="4.5. Algun problema con las Guest Addittions?"></a>4.5. ¿Algún problema con las Guest Addittions?</h3>
+<p>En mi caso se puede ver como aparece un mensaje de alerta en amarillo, indicando que la versión del
+<em>Guest Addittions</em> de la máquina virtual que estamos generando (4.2.0) no coincide con la versión
+de VirutalBox que tengo instalada en mi sistema (4.3). Esta alerta es relativamente normal ya que tanto los boxes como el
+propio VirtualBox, se van actualizando. Para arreglar este problema y evitar posibles complicaciones futuras con el
+Guest Addittions (es un software que corre en la máquina virtual y que permite mejorar la interoperatividad con la
+máquina real, por ejemplo para uso de USB, compartición de directorios, …) vamos ejecutar el siguiente comando:
+<strong><code>$ vagrant plugin install vagrant-vbguest</code></strong></p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-plugin-vbguest.png"></p>
+<p>Con esto hemos instalado un <a href="https://github.com/dotless-de/vagrant-vbguest">plugin
+ de Vagrant que se encarga de,
+cada vez que arrancamos nuestra máquina virtual, comprobar la versión de
+ los Guest Addittions de VirtualBox, y si no es correcta,
+instalar la que corresponde</a>. Para ver cómo funciona vamos a parar nuestra máquina virtual y la vamos a volver a arrancar:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf79c456932851" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    $ vagrant halt
+    $ vagrant up</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf79c456932851-1">1</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf79c456932851-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf79c456932851-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">vagrant </span><span class="crayon-i">halt</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf79c456932851-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">vagrant </span><span class="crayon-v">up</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-update-guest-addittions.png"></p>
+<p>Vemos como esta vez se pone a instalar varias cosas, … le dejamos trabajar hasta que termine  <img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/1f609.png" alt="😉" class="emoji" draggable="false"></p>
+<p>Si ahora volvemos ha hacer una parada y de nuevo levantamos la máquina virtual, deberíamos ver un arranque limpio:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf7b0330135167" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    $ vagrant halt
+    $ vagrant up</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7b0330135167-1">1</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf7b0330135167-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf7b0330135167-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">vagrant </span><span class="crayon-i">halt</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf7b0330135167-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">vagrant </span><span class="crayon-v">up</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-up-clean.png"></p>
+<p><br>
+</p>
+<h3><a name="4.6. Entrando por SSH en nuestra maquina virtual"></a>4.6. Entrando por SSH en nuestra máquina virtual</h3>
+<p>Ya tenemos la máquina virtual creada y arrancada, pero ahora habrá que entrar en ella para hacer cosas, porque sino
+todo esto no valdría de nada. Vagrant ha pensado en todo y basta con ejecutar el comando:
+<strong><code>$ vagrant ssh</code></strong></p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-ssh.png"></p>
+<p>Ya estamos dentro y podemos hacer lo que queramos. Cabe destacar que el directorio <strong><code>/vagrant</code></strong>
+de nuestra máquina virtual es un directorio compartido con el directorio de nuestro proyecto en la máquina física.
+De hecho si ahora mismo hacemos un <strong><code>$ ls /vagrant</code></strong>, veremos el fichero <code>Vagrantfile</code>.
+Así que cuidado con borrar este directorio, porque esto tendrá repercusiones en nuestra máquina física y la podemos llegar
+a liar parda!</p>
+<p><br><br>
+</p>
+<h2><a name="5. Como instalo software de forma que lo vean mis compañeros?"></a>5. ¿Cómo instalo software de forma que lo vean mis compañeros?</h2>
+<p>Hasta ahora prácticamente lo que hemos hecho es ejecutar tres comandos, y eso está bien porque hace que conseguir
+nuevas máquinas virtuales sea muy sencillo. Pero ¿Para qué queremos máquinas virtuales vacías? Si cada vez que alguien del
+equipo quiere instalar dentro un Apache Web Server, o un PostgreSQL, … lo tiene que hacer a mano, no habremos ganado mucho.
+Pero tranquilos porque de nuevo Vagrant viene al rescate.</p>
+<p>Lo primero que vamos a hacer es crear en el directorio base del proyecto (al lado del fichero <code>Vagrantfile</code>)
+el script <strong><code>bootstrap.sh</code></strong> (el nombre da igual, si no os gusta este podéis ponerle otro), con el
+siguiente contenido:
+</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf7c4839409545" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    #!/usr/bin/env bash
+
+    apt-get update
+    apt-get install -y apache2
+    rm -rf /var/www
+    ln -fs /vagrant /var/www</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7c4839409545-1">1</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf7c4839409545-2">2</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7c4839409545-3">3</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf7c4839409545-4">4</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7c4839409545-5">5</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf7c4839409545-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf7c4839409545-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">#!/usr/bin/env bash</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf7c4839409545-2">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf7c4839409545-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">apt</span><span class="crayon-o">-</span><span class="crayon-r">get</span><span class="crayon-h"> </span><span class="crayon-e">update</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf7c4839409545-4"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">apt</span><span class="crayon-o">-</span><span class="crayon-r">get</span><span class="crayon-h"> </span><span class="crayon-v">install</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">y</span><span class="crayon-h"> </span><span class="crayon-e">apache2</span></div><div class="crayon-line" id="crayon-56fbe26cbf7c4839409545-5"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">rm</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">rf</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-t">var</span><span class="crayon-o">/</span><span class="crayon-e">www</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf7c4839409545-6"><span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">ln</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">fs</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">vagrant</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-t">var</span><span class="crayon-o">/</span><span class="crayon-v">www</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+
+Se trata de un script de Unix donde estamos diciendo al sistema de paquetes que instale un Apache Web Server, y que el
+directorio que tiene que servir como contenido web es nuestro direcotorio compartido <code>/vagrant</code>.
+<p>Ahora editamos el fichero <code>Vagrantfile</code>, añadimos al final (antes del <code>end</code>):
+</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf7d5806483765" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    config.vm.provision :shell, :path =&gt; "bootstrap.sh"</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7d5806483765-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf7d5806483765-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.provision</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-v">shell</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-v">path</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-s">"bootstrap.sh"</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+
+Con esto estamos indicando que en el arranque de la máquina virtual queremos que se ejecute este script. Para que este
+cambio tenga efecto ejecutamos el comando: <code>$ vagrant up</code>, o si la máquina virtual ya está arrancada podemos
+ejecutar el comando <code>$ vagrant reload --provisioning</code>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-bootstrap-install-apache.png"></p>
+<p>Vemos como al hacer el <code>reload</code> se pone a instalar los paquetes necesarios. Igual que antes,
+le dejamos trabajar por nosotros <img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/1f609.png" alt="😉" class="emoji" draggable="false"></p>
+<p>Cuando termine, para comprobar que todo ha ido bien podemos ejecutar:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf7e5701831249" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    $ vagrant ssh
+    ...
+    vagrant@precise64:~$ wget -qO- 127.0.0.1</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7e5701831249-1">1</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf7e5701831249-2">2</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7e5701831249-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf7e5701831249-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">vagrant </span><span class="crayon-i">ssh</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf7e5701831249-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span></div><div class="crayon-line" id="crayon-56fbe26cbf7e5701831249-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">vagrant</span><span class="crayon-sy">@</span><span class="crayon-v">precise64</span><span class="crayon-o">:</span><span class="crayon-o">~</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-v">wget</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">qO</span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-cn">127.0.0.1</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-apache-wget.png"></p>
+<p>y deberíamos ver la salida por defecto del Apache, mostrando el contenido del directorio <code>/vagrant</code>.</p>
+<p>Con esto hemos visto una manera sencilla de crear scripts de configuración de la máquina virtual. Ya que estos scrips
+estarán en el repositorio, permiten que cualquier compañero que haga el <code>vagrant up</code> obtenga su propia
+máquina virtual configurada exactamente igual.</p>
+<p>Si queremos complicar más el proceso de instalación y configuración del software de nuestra máquina virtual sería
+recomendable apoyarnos en otras herramientas como <a href="http://puppetlabs.com/">Puppet</a>
+o <a href="http://www.getchef.com/chef/">Chef</a>, que se integran perfectamente con Vagrant (podemos ver algún ejemplo
+dentro de nuestro <code>Vagrantfile</code>).</p>
+<p><br><br>
+</p>
+<h2><a name="6. Configurando la red de la maquina virtual"></a>6. Configurando la red de la máquina virtual</h2>
+<p>Hemos visto en el apartado anterior que, para acceder al Servidor Web Apache que hemos instalado, tenemos que hacerlo
+desde dentro de la propia máquina virtual. Esto no parece demasiado cómodo, así que vamos a editar el fichero
+<code>Vagrantfile</code> y vamos a buscar las opciones de configuración del estilo:
+<strong><code>config.vm.network</code></strong></p>
+<p>Veremos que están todas comentadas (tiene una <code>#</code> delante), pero que tenemos tres opciones:</p>
+<ul>
+    <li><em>port forwarding</em> – hacer un mapeo de puertos para que el tráfico que llega a un puerto del host
+    (máquina física) se redirija a un puerto del guest (máquina virtual).</li>
+    <li><em>private network</em> – crear otra red privada que sólo es accesible desde el host.</li>
+    <li><em>bridged network</em> – hacer que el guest se comporte como otra máquina más dentro de la red del host.</li>
+</ul>
+<p>Vamos a probar la tercera, para lo que simplemente descomentamos la línea:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf7f7217923653" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    # config.vm.network :public_network</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf7f7217923653-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf7f7217923653-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.network :public_network</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+
+<p>dejando:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf807841093130" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">    config.vm.network :public_network</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf807841093130-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf807841093130-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.network</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-v">public_network</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+
+<p>Y ahora recargamos a la máquina virtual con el comando: <code>$ vagrant reload</code></p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-network-bridge.png"></p>
+<p>Vemos como nos pregunta que interfaz de red del host queremos usar para el guest. En mi caso elijo <code>1)</code>
+para que se enganche a la Wi-Fi.</p>
+<p>Ahora podemos entrar en máquina virtual con <code>$ vagrant ssh</code> y hacer un <code>$ ifconfig</code> para ver
+la IP que tiene el guest.</p>
+<p align="CENTER"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/vagrant-network-ifconfig.png"></p>
+<p>Ahora desde cualquier máquina de la red deberíamos poder acceder a esa IP. Por ejemplo ejecutando en el host el comando:
+<code>$ curl 192.168.1.41</code>, deberíamos obtener la misma salida que cuando antes hicimos el <code>wget</code>.
+</p><p><br><br>
+</p>
+<h2><a name="7. Despedida y cierre"></a>7. Despedida y cierre</h2>
+<p>Ya para terminar simplemente vamos a ver las distintas formas de apagar nuestra máquina virtual:</p>
+<ul>
+    <li><p><strong><code>vagrant suspend</code></strong> – sería el equivalente a cerrar la tapa de nuestro portatil,
+    quedando el ordenador suspendido. La ventaja es que es más rápido y se queda guardado el estado todos los programas
+    y memoria en ese justo memento. El inconveniente es que consume más espacio en disco de nuestro host.</p></li>
+    <li><p><strong><code>vagrant halt</code></strong> – es como apagar el ordenador. Es un poco más lento que el
+    método anterior, y cuando arrancamos de nuevo la máquina virtual todos los servicios se vuelven a arrancar de cero,
+    pero consume menos disco duro de nuestro host.</p></li>
+    <li><p><strong><code>vagrant destroy</code></strong> – borra todo rastro de la máquina virtual de nuestro host,
+    ahorrando así espacio en disco, pero al volver arrancar tiene que volver a hacer todo el proceso de configuración,
+    y tarda mucho más. No sería recomendable salvo que sea un proyecto con el que ya no vamos a trabajar.</p></li>
+</ul>
+<p>En cualquier caso, el método de arranque siempre es el comando: <code>$ vagrant up</code>.
+</p><p><br><br>
+</p>
+<h2><a name="8. Apendice I - El Vagrantfile"></a>8. Apendice I – El Vagrantfile</h2>
+<p>Así queda el <strong><code>Vagrantfile</code></strong> después de los cambios que hemos ido haciendo:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/classic_002.css">
+<link rel="stylesheet" type="text/css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/monaco_002.css">
+
+		<div id="crayon-56fbe26cbf819024969902" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;"># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = "precise64"
+
+  # The url from where the 'config.vm.box' box will be fetched if it
+  # doesn't already exist on the user's system.
+  # config.vm.box_url = "http://domain.com/path/to/above.box"
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # config.vm.network :forwarded_port, guest: 80, host: 8080
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network :private_network, ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  config.vm.network :public_network
+
+  # If true, then any SSH connections made will enable agent forwarding.
+  # Default value: false
+  # config.ssh.forward_agent = true
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  # config.vm.provider :virtualbox do |vb|
+  #   # Don't boot with headless mode
+  #   vb.gui = true
+  #
+  #   # Use VBoxManage to customize the VM. For example to change memory:
+  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
+  # end
+  #
+  # View the documentation for the provider you're using for more
+  # information on available options.
+
+  # Enable provisioning with Puppet stand alone.  Puppet manifests
+  # are contained in a directory path relative to this Vagrantfile.
+  # You will need to create the manifests directory and a manifest in
+  # the file base.pp in the manifests_path directory.
+  #
+  # An example Puppet manifest to provision the message of the day:
+  #
+  # # group { "puppet":
+  # #   ensure =&gt; "present",
+  # # }
+  # #
+  # # File { owner =&gt; 0, group =&gt; 0, mode =&gt; 0644 }
+  # #
+  # # file { '/etc/motd':
+  # #   content =&gt; "Welcome to your Vagrant-built virtual machine!
+  # #               Managed by Puppet.\n"
+  # # }
+  #
+  # config.vm.provision :puppet do |puppet|
+  #   puppet.manifests_path = "manifests"
+  #   puppet.manifest_file  = "site.pp"
+  # end
+
+  # Enable provisioning with chef solo, specifying a cookbooks path, roles
+  # path, and data_bags path (all relative to this Vagrantfile), and adding
+  # some recipes and/or roles.
+  #
+  # config.vm.provision :chef_solo do |chef|
+  #   chef.cookbooks_path = "../my-recipes/cookbooks"
+  #   chef.roles_path = "../my-recipes/roles"
+  #   chef.data_bags_path = "../my-recipes/data_bags"
+  #   chef.add_recipe "mysql"
+  #   chef.add_role "web"
+  #
+  #   # You may also specify custom JSON attributes:
+  #   chef.json = { :mysql_password =&gt; "foo" }
+  # end
+
+  # Enable provisioning with chef server, specifying the chef server URL,
+  # and the path to the validation key (relative to this Vagrantfile).
+  #
+  # The Opscode Platform uses HTTPS. Substitute your organization for
+  # ORGNAME in the URL and validation key.
+  #
+  # If you have your own Chef Server, use the appropriate URL, which may be
+  # HTTP instead of HTTPS depending on your configuration. Also change the
+  # validation key to validation.pem.
+  #
+  # config.vm.provision :chef_client do |chef|
+  #   chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"
+  #   chef.validation_key_path = "ORGNAME-validator.pem"
+  # end
+  #
+  # If you're using the Opscode platform, your validator client is
+  # ORGNAME-validator, replacing ORGNAME with your organization name.
+  #
+  # If you have your own Chef Server, the default validation client name is
+  # chef-validator, unless you changed the configuration.
+  #
+  #   chef.validation_client_name = "ORGNAME-validator"
+
+  config.vm.provision :shell, :path =&gt; "bootstrap.sh"
+end</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-1">1</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-2">2</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-3">3</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-4">4</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-5">5</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-6">6</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-7">7</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-8">8</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-9">9</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-10">10</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-11">11</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-12">12</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-13">13</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-14">14</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-15">15</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-16">16</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-17">17</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-18">18</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-19">19</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-20">20</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-21">21</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-22">22</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-23">23</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-24">24</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-25">25</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-26">26</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-27">27</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-28">28</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-29">29</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-30">30</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-31">31</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-32">32</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-33">33</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-34">34</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-35">35</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-36">36</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-37">37</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-38">38</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-39">39</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-40">40</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-41">41</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-42">42</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-43">43</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-44">44</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-45">45</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-46">46</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-47">47</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-48">48</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-49">49</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-50">50</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-51">51</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-52">52</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-53">53</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-54">54</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-55">55</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-56">56</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-57">57</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-58">58</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-59">59</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-60">60</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-61">61</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-62">62</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-63">63</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-64">64</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-65">65</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-66">66</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-67">67</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-68">68</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-69">69</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-70">70</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-71">71</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-72">72</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-73">73</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-74">74</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-75">75</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-76">76</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-77">77</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-78">78</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-79">79</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-80">80</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-81">81</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-82">82</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-83">83</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-84">84</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-85">85</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-86">86</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-87">87</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-88">88</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-89">89</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-90">90</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-91">91</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-92">92</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-93">93</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-94">94</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-95">95</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-96">96</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-97">97</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-98">98</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-99">99</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-100">100</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-101">101</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-102">102</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-103">103</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-104">104</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-105">105</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-106">106</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-107">107</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-108">108</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-109">109</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-110">110</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-111">111</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-112">112</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-113">113</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-114">114</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-115">115</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-116">116</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-117">117</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-118">118</div><div style="height: 15px;" class="crayon-num" data-line="crayon-56fbe26cbf819024969902-119">119</div><div style="height: 15px;" class="crayon-num crayon-striped-num" data-line="crayon-56fbe26cbf819024969902-120">120</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56fbe26cbf819024969902-1"><span class="crayon-c"># -*- mode: ruby -*-</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-2"><span class="crayon-c"># vi: set ft=ruby :</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-4"><span class="crayon-c"># Vagrantfile API/syntax version. Don't touch unless you know what you're doing!</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-5"><span class="crayon-v">VAGRANTFILE_API_VERSION</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"2"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-6">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-7"><span class="crayon-v">Vagrant</span><span class="crayon-e">.configure</span><span class="crayon-sy">(</span><span class="crayon-v">VAGRANTFILE_API_VERSION</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">do</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-v">config</span><span class="crayon-o">|</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-8"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># All Vagrant configuration is done here. The most common configuration</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-9"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># options are documented and commented below. For a complete reference,</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-10"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># please see the online documentation at vagrantup.com.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-12"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Every Vagrant virtual environment requires a box to build off of.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-13"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.box</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"precise64"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-14">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-15"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># The url from where the 'config.vm.box' box will be fetched if it</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-16"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># doesn't already exist on the user's system.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-17"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.box_url = "http://domain.com/path/to/above.box"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-18">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-19"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Create a forwarded port mapping which allows access to a specific port</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-20"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># within the machine from a port on the host machine. In the example below,</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-21"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># accessing "localhost:8080" will access port 80 on the guest machine.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-22"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.network :forwarded_port, guest: 80, host: 8080</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-23">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-24"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Create a private network, which allows host-only access to the machine</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-25"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># using a specific IP.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-26"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.network :private_network, ip: "192.168.33.10"</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-27">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-28"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Create a public network, which generally matched to bridged network.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-29"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Bridged networks make the machine appear as another physical device on</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-30"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># your network.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-31"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.network</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-v">public_network</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-32">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-33"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># If true, then any SSH connections made will enable agent forwarding.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-34"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Default value: false</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-35"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.ssh.forward_agent = true</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-36">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-37"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Share an additional folder to the guest VM. The first argument is</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-38"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># the path on the host to the actual folder. The second argument is</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-39"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># the path on the guest to mount the folder. And the optional third</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-40"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># argument is a set of non-required options.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-41"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.synced_folder "../data", "/vagrant_data"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-42">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-43"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Provider-specific configuration so you can fine-tune various</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-44"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># backing providers for Vagrant. These expose provider-specific options.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-45"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Example for VirtualBox:</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-46"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-47"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.provider :virtualbox do |vb|</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-48"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; # Don't boot with headless mode</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-49"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; vb.gui = true</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-50"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-51"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; # Use VBoxManage to customize the VM. For example to change memory:</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-52"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; vb.customize ["modifyvm", :id, "--memory", "1024"]</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-53"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># end</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-54"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-55"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># View the documentation for the provider you're using for more</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-56"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># information on available options.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-57">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-58"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Enable provisioning with Puppet stand alone.&nbsp;&nbsp;Puppet manifests</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-59"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># are contained in a directory path relative to this Vagrantfile.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-60"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># You will need to create the manifests directory and a manifest in</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-61"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># the file base.pp in the manifests_path directory.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-62"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-63"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># An example Puppet manifest to provision the message of the day:</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-64"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-65"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># # group { "puppet":</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-66"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># #&nbsp;&nbsp; ensure =&gt; "present",</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-67"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># # }</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-68"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># #</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-69"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># # File { owner =&gt; 0, group =&gt; 0, mode =&gt; 0644 }</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-70"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># #</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-71"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># # file { '/etc/motd':</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-72"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># #&nbsp;&nbsp; content =&gt; "Welcome to your Vagrant-built virtual machine!</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-73"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Managed by Puppet.\n"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-74"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># # }</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-75"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-76"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.provision :puppet do |puppet|</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-77"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; puppet.manifests_path = "manifests"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-78"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; puppet.manifest_file&nbsp;&nbsp;= "site.pp"</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-79"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># end</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-80">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-81"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Enable provisioning with chef solo, specifying a cookbooks path, roles</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-82"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># path, and data_bags path (all relative to this Vagrantfile), and adding</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-83"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># some recipes and/or roles.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-84"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-85"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.provision :chef_solo do |chef|</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-86"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.cookbooks_path = "../my-recipes/cookbooks"</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-87"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.roles_path = "../my-recipes/roles"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-88"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.data_bags_path = "../my-recipes/data_bags"</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-89"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.add_recipe "mysql"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-90"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.add_role "web"</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-91"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-92"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; # You may also specify custom JSON attributes:</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-93"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.json = { :mysql_password =&gt; "foo" }</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-94"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># end</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-95">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-96"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># Enable provisioning with chef server, specifying the chef server URL,</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-97"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># and the path to the validation key (relative to this Vagrantfile).</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-98"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-99"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># The Opscode Platform uses HTTPS. Substitute your organization for</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-100"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># ORGNAME in the URL and validation key.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-101"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-102"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># If you have your own Chef Server, use the appropriate URL, which may be</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-103"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># HTTP instead of HTTPS depending on your configuration. Also change the</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-104"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># validation key to validation.pem.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-105"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-106"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># config.vm.provision :chef_client do |chef|</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-107"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-108"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.validation_key_path = "ORGNAME-validator.pem"</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-109"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># end</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-110"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-111"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># If you're using the Opscode platform, your validator client is</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-112"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># ORGNAME-validator, replacing ORGNAME with your organization name.</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-113"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-114"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># If you have your own Chef Server, the default validation client name is</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-115"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c"># chef-validator, unless you changed the configuration.</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-116"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#</span></div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-117"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">#&nbsp;&nbsp; chef.validation_client_name = "ORGNAME-validator"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-118">&nbsp;</div><div class="crayon-line" id="crayon-56fbe26cbf819024969902-119"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">config</span><span class="crayon-e">.vm</span><span class="crayon-e">.provision</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-v">shell</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-v">path</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-s">"bootstrap.sh"</span></div><div class="crayon-line crayon-striped-line" id="crayon-56fbe26cbf819024969902-120"><span class="crayon-st">end</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0100 seconds] -->
+
+<p><br><br>
+</p>
+<h2><a name="9. Conclusiones"></a>9. Conclusiones</h2>
+<p>El tutorial ha quedado un poco largo, pero creo que merece la pena, ya que nos va a simplicar muchísimo la forma de
+crear máquinas virtuales y sobre todo nos aporta la capacidad de compartirlas y replicar su configuarción exacta entre
+todos los miembros del equipo.</p>
+<p>Os animo a que sigáis investigando sus opciones de configuración, por ejemplo para definir cuánta memoria o recursos
+debe tener el guest, y le saquéis así el máximo partido para vuestros proyectos.</p>
+
+<p><br><br>
+</p>
+<h2><a name="10. Sobre el autor"></a>10. Sobre el autor</h2>
+<p>Alejandro Pérez García, Ingeniero en Informática (especialidad de Ingeniería del Software) y Certified ScrumMaster</p>
+<p>Socio fundador de Autentia (Desarrollo de software, Consultoría, Formación)</p>
+<p><a href="mailto:alejandropg@autentia.com">mailto:alejandropg@autentia.com</a></p>
+<p>Autentia Real Business Solutions S.L. – “Soporte a Desarrollo”</p>
+<p><a href="http://www.autentia.com/">http://www.autentia.com</a></p>
+<p><br><br>
+</p>
+
+</div></div>		
+		<div class="post-tags clearfix"><a href="http://www.adictosaltrabajo.com/tag/vagrante/" rel="tag">vagrante</a><a href="http://www.adictosaltrabajo.com/tag/virtual/" rel="tag">virtual</a></div>
+	</div>
+
+</div>									
+							<div class="sharebox clearfix">
+	<h4>Comparte este artículo!</h4>
+	<div class="social-icons clearfix">
+		<ul>
+				
+			<li class="social-facebook">
+				<a data-original-title="Facebook" href="http://www.facebook.com/sharer.php?u=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/&amp;t=Crea%20todo%20un%20entorno%20de%20m%C3%A1quinas%20virtuales%20con%20un%20solo%20comando,%20gracias%20a%20Vagrant" target="_blank">Facebook</a>
+			</li>
+							
+			<li class="social-twitter">
+				<a data-original-title="Twitter" href="http://twitter.com/home?status=Crea%20todo%20un%20entorno%20de%20m%C3%A1quinas%20virtuales%20con%20un%20solo%20comando,%20gracias%20a%20Vagrant%20http://www.adictosaltrabajo.com/tutoriales/vagrant-install/" target="_blank">Twitter</a>
+			</li>
+							
+			<li class="social-linkedin">
+				<a data-original-title="LinkedIn" href="http://linkedin.com/shareArticle?mini=true&amp;url=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/&amp;title=Crea%20todo%20un%20entorno%20de%20m%C3%A1quinas%20virtuales%20con%20un%20solo%20comando,%20gracias%20a%20Vagrant" target="_blank">LinkedIn</a>
+			</li>
+							
+			<li class="social-reddit">
+				<a data-original-title="Reddit" href="http://www.reddit.com/submit?url=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/&amp;title=Crea+todo+un+entorno+de+m%C3%A1quinas+virtuales+con+un+solo+comando%2C+gracias+a+Vagrant" target="_blank">Reddit</a>
+			</li>
+							
+			<li class="social-digg">
+				<a data-original-title="Digg" href="http://digg.com/submit?phase=2&amp;url=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/&amp;bodytext=&amp;tags=&amp;title=Crea+todo+un+entorno+de+m%C3%A1quinas+virtuales+con+un+solo+comando%2C+gracias+a+Vagrant" target="_blank">Digg</a>
+			</li>
+							
+			<li class="social-delicious">
+				<a data-original-title="Delicious" href="http://www.delicious.com/post?v=2&amp;url=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/&amp;notes=&amp;tags=&amp;title=Crea+todo+un+entorno+de+m%C3%A1quinas+virtuales+con+un+solo+comando%2C+gracias+a+Vagrant" target="_blank">Delicious</a>
+			</li>
+							
+			<li class="social-googleplus">
+				<a data-original-title="Google+" href="https://plus.google.com/share?url=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/&amp;title=Crea+todo+un+entorno+de+m%C3%A1quinas+virtuales+con+un+solo+comando%2C+gracias+a+Vagrant" target="_blank">Google++</a>
+			</li>
+							
+			<li class="social-email">
+				<a data-original-title="E-Mail" href="mailto:?subject=Crea%20todo%20un%20entorno%20de%20m%C3%A1quinas%20virtuales%20con%20un%20solo%20comando,%20gracias%20a%20Vagrant&amp;body=http://www.adictosaltrabajo.com/tutoriales/vagrant-install/" target="_blank">E-Mail+</a>
+			</li>
+					</ul>
+	</div>
+</div>						
+<div id="license">
+	<!--Creative Commons License-->
+	<p>
+		<a href="http://creativecommons.org/licenses/by-nc-nd/2.5/es/" target="_blank">
+			<img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/somerights20.png" name="graphics1" alt="Creative Commons License" class="img-licencia" border="0" align="bottom" height="31" width="88">
+		</a>
+		Esta obra está licenciada bajo 
+		<a href="http://creativecommons.org/licenses/by-nc-nd/2.5/es/" target="_blank">licencia Creative Commons de 
+		Reconocimiento-No comercial-Sin obras derivadas 2.5</a>
+	</p>
+	<!--/Creative Commons License-->
+	<!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<Work rdf:about="">
+	<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/2.5/es/" />
+	<dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+	</Work>
+	<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/2.5/es/"><permits rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/></License></rdf:RDF> -->	
+</div>		
+				
+				
+			
+			<div id="related-posts">
+										  
+					  <h3 class="title"><span>Entradas relacionadas</span></h3>
+					  
+					  <ul>
+										 </ul>
+			</div>
+
+					
+		<div class="comments"><div id="comments">
+		
+			
+		
+		<h3 id="comments" class="title"><span>Respuestas (3)</span></h3>
+	
+		<div class="navigation">
+			<div class="next-posts"></div>
+			<div class="prev-posts"></div>
+		</div>
+	
+		<ol class="commentlist clearfix">
+			 	
+	   <li class="comment even thread-even depth-1" id="li-comment-17966">
+	   <div id="comment-17966" class="comment-body clearfix"> 
+	   		
+	   		<div class="avatar"><img alt="" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/935bc41cc7c9a331454ad5f59e40ca45.jpeg" srcset="http://0.gravatar.com/avatar/935bc41cc7c9a331454ad5f59e40ca45?s=100&amp;d=mm&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50"></div>
+	         
+	         <div class="comment-text">
+	         
+				 <div class="author">
+				 	<span><a href="http://www.sebastian-gomez.com/" rel="external nofollow" class="url">Sebastian Gomez</a></span>
+				 	<div class="date">
+				 	agosto 11, 2015 at 9:05 pm				   	· <a rel="nofollow" class="comment-reply-link" href="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/?replytocom=17966#respond" onclick='return addComment.moveForm( "comment-17966", "17966", "respond", "2878" )' aria-label="Responder a Sebastian Gomez">Responder</a>  </div>  
+				 </div>
+				 
+				 <div class="text"><p>El mejor tutorial de vagrant en español que he visto hasta ahora. Muchas gracias excelente.</p>
+</div>
+				 
+				 
+				 		      	
+	      	</div>
+	      
+	   </div>
+	</li><!-- #comment-## -->
+	
+	   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-52168">
+	   <div id="comment-52168" class="comment-body clearfix"> 
+	   		
+	   		<div class="avatar"><img alt="" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/f6b69a4c895a52b2b19e05bec8513672.jpeg" srcset="http://0.gravatar.com/avatar/f6b69a4c895a52b2b19e05bec8513672?s=100&amp;d=mm&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50"></div>
+	         
+	         <div class="comment-text">
+	         
+				 <div class="author">
+				 	<span>alejandro</span>
+				 	<div class="date">
+				 	marzo 25, 2016 at 1:01 am				   	· <a rel="nofollow" class="comment-reply-link" href="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/?replytocom=52168#respond" onclick='return addComment.moveForm( "comment-52168", "52168", "respond", "2878" )' aria-label="Responder a alejandro">Responder</a>  </div>  
+				 </div>
+				 
+				 <div class="text"><p>Muy buen tutorial, lo que falto o no vi es como comparto el proyecto con mis compañeros</p>
+</div>
+				 
+				 
+				 		      	
+	      	</div>
+	      
+	   </div>
+	<ul class="children">
+	
+	   <li class="comment even depth-2" id="li-comment-52365">
+	   <div id="comment-52365" class="comment-body clearfix"> 
+	   		
+	   		<div class="avatar"><img alt="" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/f927bbc34cce51455bc339b7d7950b28.png" srcset="http://0.gravatar.com/avatar/f927bbc34cce51455bc339b7d7950b28?s=100&amp;d=mm&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50"></div>
+	         
+	         <div class="comment-text">
+	         
+				 <div class="author">
+				 	<span><a href="http://www.autentia.com/" rel="external nofollow" class="url">Alejandro Pérez García</a></span>
+				 	<div class="date">
+				 	marzo 29, 2016 at 9:48 am				   	· <a rel="nofollow" class="comment-reply-link" href="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/?replytocom=52365#respond" onclick='return addComment.moveForm( "comment-52365", "52365", "respond", "2878" )' aria-label="Responder a Alejandro Pérez García">Responder</a>  </div>  
+				 </div>
+				 
+				 <div class="text"><p>Para compartirlo puedes hacerlo usando 
+cualquier repositorio de código, por ejemplo GitHub o Bitbucket. Y 
+bastaría con subir los ficheros (Vagrantfile, bootstrap.sh, y en general
+ cualquier fichero que hayas usado para crear la máquina virtual) al 
+repositorio para que luego se los bajen los compañeros y ejecuten el 
+‘vagrant up’</p>
+</div>
+				 
+				 
+				 		      	
+	      	</div>
+	      
+	   </div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+	
+		<div class="navigation">
+			<div class="next-posts"></div>
+			<div class="prev-posts"></div>
+		</div>
+		
+	 		
+		
+
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title"></h3><h3 class="title"><span>Deja un comentario</span></h3> <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.adictosaltrabajo.com/tutoriales/vagrant-install/#respond" style="display:none;">Cancelar respuesta</a></small>				<form action="http://www.adictosaltrabajo.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Tu dirección de correo electrónico no será publicada.</span> Los campos necesarios están marcados <span class="required">*</span></p><div id="respond-textarea"><p><textarea id="comment" name="comment" aria-required="true" cols="58" rows="10" tabindex="4"></textarea></p></div><div id="respond-inputs" class="clearfix"><p><input name="author" value="Name (required)" size="30" aria-required="true" type="text"></p>
+<p><input name="email" value="E-Mail (required)" size="30" aria-required="true" type="text"></p>
+<p class="last"><input name="url" value="Website" size="30" type="text"></p></div>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Enviar comentario" type="submit"> <input name="comment_post_ID" value="2878" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="b105c2eda0" type="hidden"></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1459406061356" type="hidden"></form>
+					</div><!-- #respond -->
+		
+
+
+</div></div>
+		
+		<div class="post-navigation">
+			<div class="alignleft prev"><a href="http://www.adictosaltrabajo.com/tutoriales/depurar-tomcat-remoto/" rel="prev">Prev Post</a></div>
+			<div class="alignright next"><a href="http://www.adictosaltrabajo.com/noticias/mi-semana-de-desk-surfing-en-otogami/" rel="next">Next Post</a> </div>
+		</div>
+	
+			
+	</div>
+
+<div id="sidebar" class="four columns">
+
+    <div id="text-12" class="widget widget_text">			<div class="textwidget"><div class="textwidget"><div style="text-align:center;margin-top: 40px;">
+<a href="http://autentia.com/formacion/" target="blank"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/CursoAngular2.png"></a>
+</div></div></div>
+		</div><div id="text-3" class="widget widget_text">			<div class="textwidget"><div class="textwidget"><div style="text-align:center;margin-top: 40px;">
+<a href="http://autentia.com/2015/10/06/descargate-gratis-el-libro-las-reglas-no-escritas-para-triunfar-en-la-empresa-informatica/" target="blank"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/Publi_LibroRojo_Adictos-1.png"></a>
+</div></div></div>
+		</div><div id="text-2" class="widget widget_text">			<div class="textwidget"><div style="text-align:center"><a href="http://www.adictosaltrabajo.com/noticias/prohibidos-monos-lagartos/" target="blank"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/LOGO-MonoyLagarto.png"></a></div></div>
+		</div><div id="popularitypostswidget-2" class="widget popularitypostswidget"><h3 class="title"><span>Los más visitados de la semana</span></h3><ul> 
+ 	<li>
+			<span class="ppw-post-title"><a href="http://www.adictosaltrabajo.com/tutoriales/introduccion-a-los-microservicios/" title="Introducción a los Microservicios" rel="nofollow">Introducción a los Microservicios</a></span>
+			<span class="post-stats">
+			
+			<br>
+			
+			<span class="ppw-views"></span>			<span class="ppw-comments"></span> 
+			<span class="ppw-date"></span>
+			</span>
+				</li> 
+ 	<li>
+			<span class="ppw-post-title"><a href="http://www.adictosaltrabajo.com/tutoriales/calculo-finiquito-liquidacion-despido/" title="El cálculo de la liquidación por despido: el finiquito." rel="nofollow">El cálculo de la liquidación por despido: el finiquito.</a></span>
+			<span class="post-stats">
+			
+			<br>
+			
+			<span class="ppw-views"></span>			<span class="ppw-comments"></span> 
+			<span class="ppw-date"></span>
+			</span>
+				</li> 
+ 	<li>
+			<span class="ppw-post-title"><a href="http://www.adictosaltrabajo.com/tutoriales/jshell-una-consola-repl-como-novedad-en-java-9/" title="jShell: una consola REPL como novedad en Java 9" rel="nofollow">jShell: una consola REPL como novedad en Java 9</a></span>
+			<span class="post-stats">
+			
+			<br>
+			
+			<span class="ppw-views"></span>			<span class="ppw-comments"></span> 
+			<span class="ppw-date"></span>
+			</span>
+				</li> 
+ 	<li>
+			<span class="ppw-post-title"><a href="http://www.adictosaltrabajo.com/tutoriales/tutorial-basico-jdbc/" title="Tutorial básico de bases de datos en Java mediante JDBC" rel="nofollow">Tutorial básico de bases de datos en Java mediante JDBC</a></span>
+			<span class="post-stats">
+			
+			<br>
+			
+			<span class="ppw-views"></span>			<span class="ppw-comments"></span> 
+			<span class="ppw-date"></span>
+			</span>
+				</li> 
+ 	<li>
+			<span class="ppw-post-title"><a href="http://www.adictosaltrabajo.com/tutoriales/retoquefoto/" title="Cómo retocar una foto con Adobe Photoshop" rel="nofollow">Cómo retocar una foto con Adobe Photoshop</a></span>
+			<span class="post-stats">
+			
+			<br>
+			
+			<span class="ppw-views"></span>			<span class="ppw-comments"></span> 
+			<span class="ppw-date"></span>
+			</span>
+				</li></ul></div><div id="text-8" class="widget widget_text">			<div class="textwidget">            <iframe data-widget-id="487536757785624578" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 430px; padding: 0px; border: medium none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" class="twitter-timeline twitter-timeline-rendered" allowfullscreen="true" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+		</div><div id="archives-2" class="widget widget_archive"><h3 class="title"><span>Archivos</span></h3>		<label class="screen-reader-text" for="archives-dropdown-2">Archivos</label>
+		<select id="archives-dropdown-2" name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			
+			<option selected="selected" value="">Elegir mes</option>
+				<option value="http://www.adictosaltrabajo.com/2016/03/"> marzo 2016 </option>
+	<option value="http://www.adictosaltrabajo.com/2016/02/"> febrero 2016 </option>
+	<option value="http://www.adictosaltrabajo.com/2016/01/"> enero 2016 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/12/"> diciembre 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/11/"> noviembre 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/10/"> octubre 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/09/"> septiembre 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/08/"> agosto 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/07/"> julio 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/06/"> junio 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/05/"> mayo 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/04/"> abril 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/03/"> marzo 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/02/"> febrero 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2015/01/"> enero 2015 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/12/"> diciembre 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/11/"> noviembre 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/10/"> octubre 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/09/"> septiembre 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/08/"> agosto 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/07/"> julio 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/06/"> junio 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/05/"> mayo 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/04/"> abril 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/03/"> marzo 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/02/"> febrero 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2014/01/"> enero 2014 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/12/"> diciembre 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/11/"> noviembre 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/10/"> octubre 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/09/"> septiembre 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/08/"> agosto 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/07/"> julio 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/06/"> junio 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/05/"> mayo 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/04/"> abril 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/03/"> marzo 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/02/"> febrero 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2013/01/"> enero 2013 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/12/"> diciembre 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/11/"> noviembre 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/10/"> octubre 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/09/"> septiembre 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/08/"> agosto 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/07/"> julio 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/06/"> junio 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/05/"> mayo 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/04/"> abril 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/03/"> marzo 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/02/"> febrero 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2012/01/"> enero 2012 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/12/"> diciembre 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/11/"> noviembre 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/10/"> octubre 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/09/"> septiembre 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/08/"> agosto 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/07/"> julio 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/06/"> junio 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/05/"> mayo 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/04/"> abril 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/03/"> marzo 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/02/"> febrero 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2011/01/"> enero 2011 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/12/"> diciembre 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/11/"> noviembre 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/10/"> octubre 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/09/"> septiembre 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/08/"> agosto 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/07/"> julio 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/06/"> junio 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/05/"> mayo 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/04/"> abril 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/03/"> marzo 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/02/"> febrero 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2010/01/"> enero 2010 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/12/"> diciembre 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/11/"> noviembre 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/10/"> octubre 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/09/"> septiembre 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/08/"> agosto 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/07/"> julio 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/06/"> junio 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/05/"> mayo 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/04/"> abril 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/03/"> marzo 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/02/"> febrero 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2009/01/"> enero 2009 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/12/"> diciembre 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/11/"> noviembre 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/10/"> octubre 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/09/"> septiembre 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/08/"> agosto 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/07/"> julio 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/06/"> junio 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/05/"> mayo 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/04/"> abril 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/03/"> marzo 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/02/"> febrero 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2008/01/"> enero 2008 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/12/"> diciembre 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/11/"> noviembre 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/10/"> octubre 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/09/"> septiembre 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/08/"> agosto 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/07/"> julio 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/06/"> junio 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/05/"> mayo 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/04/"> abril 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/03/"> marzo 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/02/"> febrero 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2007/01/"> enero 2007 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/12/"> diciembre 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/11/"> noviembre 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/09/"> septiembre 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/08/"> agosto 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/07/"> julio 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/06/"> junio 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/05/"> mayo 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/04/"> abril 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/03/"> marzo 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/02/"> febrero 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2006/01/"> enero 2006 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/12/"> diciembre 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/11/"> noviembre 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/10/"> octubre 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/09/"> septiembre 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/07/"> julio 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/06/"> junio 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/05/"> mayo 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/04/"> abril 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/03/"> marzo 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/02/"> febrero 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2005/01/"> enero 2005 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/12/"> diciembre 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/11/"> noviembre 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/10/"> octubre 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/09/"> septiembre 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/08/"> agosto 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/07/"> julio 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/06/"> junio 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/05/"> mayo 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/04/"> abril 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/03/"> marzo 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/02/"> febrero 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2004/01/"> enero 2004 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/12/"> diciembre 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/11/"> noviembre 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/10/"> octubre 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/09/"> septiembre 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/08/"> agosto 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/07/"> julio 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/06/"> junio 2003 </option>
+	<option value="http://www.adictosaltrabajo.com/2003/05/"> mayo 2003 </option>
+
+		</select>
+		</div>
+</div>
+</div>
+
+<div class="clear"></div>
+	
+		
+	<div class="hr-border"></div>	
+		
+		<footer id="footer">
+		<div class="container">
+			<div class="clearfix">
+						<div id="recent-posts-3" class="widget widget_recent_entries four columns">		<h3>Lo último</h3>		<ul>
+					<li>
+				<a href="http://www.adictosaltrabajo.com/tutoriales/introduccion-a-protractor/">Introducción a Protractor</a>
+						</li>
+					<li>
+				<a href="http://www.adictosaltrabajo.com/tutoriales/tutorial-logback-en-spring-boot/">Logback en Spring Boot</a>
+						</li>
+					<li>
+				<a href="http://www.adictosaltrabajo.com/tutoriales/introduccion-a-los-microservicios/">Introducción a los Microservicios</a>
+						</li>
+					<li>
+				<a href="http://www.adictosaltrabajo.com/tutoriales/jshell-una-consola-repl-como-novedad-en-java-9/">jShell: una consola REPL como novedad en Java 9</a>
+						</li>
+					<li>
+				<a href="http://www.adictosaltrabajo.com/tutoriales/convierte-videos-verticales-a-horizontales/">Convierte videos verticales a horizontales</a>
+						</li>
+				</ul>
+		</div>		<div id="contact-2" class="widget widget_contact four columns"><h3>Datos de contacto</h3>		
+		<address>
+						<span class="address">Edificio BestPoint Avd. de Castilla, 1, Planta 2, Oficina 21B (San Fernando de Henares)</span>
+				
+						<span class="phone"><strong>Phone:</strong> 916 75 33 06</span>
+				
+				
+						<span class="email"><strong>E-Mail:</strong> <a href="mailto:info@adictosaltrabajo.com">info@adictosaltrabajo.com</a></span>
+				
+						<span class="web"><strong>Web:</strong> <a href="http://www.autentia.com/">http://www.autentia.com</a></span>
+					</address>
+		
+		</div><div id="text-4" class="widget widget_text four columns"><h3>Powered by</h3>			<div class="textwidget"><a href="http://autentia.com/" target="blank"><img src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/logoAutentia.png"></a></div>
+		</div>		
+			</div>
+		</div>
+	</footer>
+			
+	<div id="copyright" class="clearfix">
+		<div class="container">
+			
+			<div class="copyright-text eight columns">
+									Copyright 2003-2016 © All Rights Reserved | <a href="http://www.adictosaltrabajo.com/adictos/?page_id=1319">Texto legal y condiciones de uso</a>							</div>
+			
+						<div class="eight columns">
+				<div class="social-icons clearfix">
+					<ul>
+													<li class="social-twitter"><a data-original-title="Twitter" href="http://www.twitter.com/@adictosaltrabaj" target="_blank">Twitter</a></li>
+																																					<li class="social-facebook"><a data-original-title="Facebook" href="http://www.facebook.com/pages/AdictosAlTrabajo/353360561767" target="_blank">Facebook</a></li>
+																																											<li class="social-linkedin"><a data-original-title="LinkedIn" href="https://www.linkedin.com/groups?gid=2768318&amp;mostPopular=" target="_blank">LinkedIn</a></li>
+																																					<li class="social-youtube"><a data-original-title="YouTube" href="https://www.youtube.com/user/AutentiaMedia" target="_blank">YouTube</a></li>
+																																																													<li class="social-rss"><a data-original-title="RSS" href="http://www.adictosaltrabajo.com/feed/" target="_blank">RSS</a></li>
+											</ul>
+				</div>
+			</div>
+						
+		</div>
+	</div><!-- end copyright -->
+		
+	<div class="clear"></div>
+		
+	
+	<div style="display: block;" id="back-to-top"><a href="#">Back to Top</a></div>
+	
+		<div style="top: -62px; display: block;" id="infobar" class="clearfix">
+		<div class="container clearfix">
+			<div class="no-widgets">Enter your Infotext or Widgets here...</div>	
+		</div>
+		<a href="#" class="close-infobar"></a>
+	</div>
+		
+		
+	<!-- HTML del pié de página -->
+<div style="display: none;" class="cdp-cookies-alerta  cdp-cookies-layout-ventana cdp-cookies-pos-inferior cdp-cookies-textos-izq cdp-cookies-tema-azul">
+	<div class="cdp-cookies-texto">
+		<h4 style="font-size:15px !important;line-height:15px !important">Uso de cookies</h4><p style="font-size:12px !important;line-height:12px !important">Este
+ sitio web utiliza cookies para que usted tenga la mejor experiencia de 
+usuario. Si continúa navegando está dando su consentimiento para la 
+aceptación de las mencionadas cookies y la aceptación de nuestra <a href="http://www.adictosaltrabajo.com/politica-de-cookies/" style="font-size:12px !important;line-height:12px !important">política de cookies</a>, pinche el enlace para mayor información
+		<a href="javascript:;" class="cdp-cookies-boton-cerrar">ACEPTAR</a>
+	</p></div>
+</div>
+<!-- Custom Facebook Feed JS -->
+<script type="text/javascript">
+var cfflinkhashtags = "true";
+</script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/form.js"></script>
+<link rel="stylesheet" id="crayon-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/crayon.css" type="text/css" media="all">
+<link rel="stylesheet" id="popularity-posts-widget-css" href="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/ppw.css" type="text/css" media="all">
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/comment-reply.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/cff-scripts.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/shortcodes.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/bootstrap.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/superfish.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/mobilemenu.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/waypoints.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/waypoints-sticky.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/flexslider.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/functions.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/prettyPhoto.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/jquery.js"></script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/wp-embed.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.adictosaltrabajo.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Presiona %s para copiar y %s para pegar","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Crea%20Todo%20Un%20Entorno%20De%20M%C3%A1quinas%20Virtuales%20Con%20Un%20Solo%20Comando,%20Gracias%20A%20Vagrant%20%7C%20Adictosaltrabajo_files/crayon.js"></script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($){
+    
+	    /* ------------------------------------------------------------------------ */
+		/* Add PrettyPhoto */
+		/* ------------------------------------------------------------------------ */
+		
+		var lightboxArgs = {			
+						animation_speed: 'fast',
+						overlay_gallery: true,
+			autoplay_slideshow: false,
+						slideshow: 5000, /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+									theme: 'pp_default', 
+									opacity: 0.8,
+						show_title: true,
+						deeplinking: false,
+			allow_resize: true, 			/* Resize the photos bigger than viewport. true/false */
+			counter_separator_label: '/', 	/* The separator for the gallery counter 1 "of" 2 */
+			default_width: 940,
+			default_height: 529
+		};
+		
+					$('a[href$=jpg], a[href$=JPG], a[href$=jpeg], a[href$=JPEG], a[href$=png], a[href$=gif], a[href$=bmp]:has(img)').prettyPhoto(lightboxArgs);
+				
+		$('a[class^="prettyPhoto"], a[rel^="prettyPhoto"]').prettyPhoto(lightboxArgs);
+		
+			    
+	    
+});
+	
+</script>
+	
+	
+
+
+
+
+
+
+<iframe style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe></body></html>
+<!-- Dynamic page generated in 1.690 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2016-03-30 16:27:58 -->
+<!-- Compression = gzip -->

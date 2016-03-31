@@ -1,0 +1,130 @@
+              CORRIENDO UNA VM EN VAGRANT
+
+1. Creamos carpetas como VagrantVM/Ubuntu-Precise
+
+en la carpeta Ubuntu-Precise escribimos vagrant init, se creara el VagrantFile
+
+2. Ahora creamos la VM, creamos una box.
+Como se habia explicado Vagrant usa ya un VDE o imagen base que cloana desde su servidor.
+
+por ejemplo anadimos el precise 64
+
+vagrant box add precise64 http://files.vagrantup.com/precise64.box
+
+Vemos como se descarga el box(ya descompreso) y esta descarga se hace una vez, pues es visible por todas los otros boxes. (se conecta mediante ssh) pero ninguno modifica los VDE base(los desl servidor).
+
+los VDE se encuentran en https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Boxes 
+
+3. Para usar vamos a editar el VagrantFile
+el cual contiene la configuración necesaria para utilizarla.
+  Si la creamos con el comando vagrant init por defecto viene con un contenido bastante extenso a modo orientativo,
+  pero casi todo está comentado.
+  Por ahora, el archivo va a tener el siguiente contenido:
+  
+    # -*- mode: ruby -*-
+    # vi: set ft=ruby :
+     
+    VAGRANTFILE_API_VERSION = "2"
+     
+    Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+     
+      # Insert config options here
+     
+    end
+
+  Anadimos configuracion de Vagrant en el comentario # insert
+  
+  Escogemos el Sistema operativo:
+    desde la pagina de descargas de vagrant:
+    https://atlas.hashicorp.com/boxes/search
+    Anadimos la linea:
+      config.vm.box = "precise64" en vez de "base"
+
+4. Lanzamos nuestra VM
+  con vagrant up iniciamos nuestro box
+  
+  si aparece algun problema con virtual-box, escribir:
+  
+  vagrant plugin install vagrant-vbguest
+  
+  vagrant halt (apaga)
+  vagrant up (prende)
+
+5. Para conectarnos a nuestra maquina, lo hacemos mediante ssh
+  En nuestro directorio del proyecto:
+
+  vagrant ssh
+  
+  nos manda a nuestra maquina virtual en modo consola.
+  NOTA: el directorio vagrant de nuestra maquina Host es un directorio compartido con nuestra VM (basicamente, es el home de nuestra VM).
+  
+  Para mas, ver la carpeta Vagrant_HTML.
+  
+  
+INFO EXTRA:
+
+/*
+
+  Redireccionamiento de puertos:
+     Al estar desarrollando cualquier aplicación, no sólo una Web,
+     queremos ir probándola durante el proceso.
+     Pero, ¿cómo accedemos a la máquina virtual Vagrant que acabamos de crear a través del navegador? Muy fácil.
+     Apache estará escuchando en el puerto 80,
+     pero si intentamos acceder a http://localhost:80, no funcionará.
+     Para que funcione bien tenemos que hacer un redireccionamiento de puertos, es decir,
+     que simularemos que el puerto 8080 (es el que suelo utilizar cuando desarrollo) es el 80 de la máquina virtual.
+     Añadimos la siguiente línea:
+      config.vm.network "forwarded_port", guest: 80, host: 8080
+      
+    Red privada:
+      Si en lugar de acceder por localhost,
+      queremos hacerlo por IP, añadimos lo siguiente:
+        config.vm.network "private_network", ip: "192.168.33.10"
+        
+    Carpetas compartidas:
+      Ya que nuestro objetivo es desarrollar una aplicación Web,
+      tenemos que programar.
+      El código que desarrollemos estará en nuestro ordenador,
+      no en la máquina virtual.
+      La carpeta donde tendremos el proyecto Web se va a llamar htdocs
+      y va a sincronizarse con /var/www/html dentro de la máquina virtual.
+      Para compartirlo con ella, haremos lo siguiente:
+        config.vm.synced_folder "htdocs", "/var/www/html"
+    
+    Install y Config el entorno de desarrollo:
+      Para instalar LAMP, vamos a añadir las instrucciones a un archivo llamado config.sh,
+      que editaremos en el siguiente paso.
+      En él estarán los comandos de instalación y se ejecutará automáticamente al crear la máquina.
+      Añadimos la siguiente línea:
+        config.vm.provision "shell", path: "config.sh"
+        
+   Luego en la consola:
+    vagrant up
+    
+   Luego nos conectamos a la maquina virtual:
+    vagrant ssh
+    Tenga cuidado con hacer rm -rf/, ya que vagrant comparte un directorio en / con el host que contiene su Vagrantfile.
+    Nos contecamos a precise32.
+      ls /vagrant
+      nos mostrara el Vagrantfile ( que es el mismo que esta en el host)
+    hagamos esto:
+      touch /vagrant/foo
+    salgamos dela sesion:
+      exit
+   Ahora en el host, veamos nuestra carpeta vagrantBox
+    y tendra Vagrantfile y foo
+   Nuestras carpetas estan sincronizadas !!
+   
+   creamos un archivo llamado bootstrap.sh que contenga:
+    #!/usr/bin/env bash
+    apt-get update
+    apt-get install -y apache2
+    if ! [ -L /var/www ]; then
+      rm -rf /var/www
+      ln -fs /vagrant /var/www
+    fi
+    
+    para este ejemplo pequeno anadimos:
+      config.vm.provision :shell, path: "bootstrap.sh"
+
+*/
