@@ -1,0 +1,33 @@
+************QEMU
+
+sudo apt-get install qemu qemu-launcher qemu-system qemu-user qemu-utils
+sudo apt-get install qemu-kvm qemu virt-manager virt-viewer libvirt-bin
+/*
+  QEMU es un emulador de procesadores basado en la traducción dinámica de binarios 
+  (conversión del código binario de la arquitectura fuente en código entendible por la arquitectura huésped).
+  El objetivo principal es emular un sistema operativo dentro de otro sin tener que reparticionar el disco duro,
+  empleando para su ubicación cualquier directorio dentro de éste.
+
+  No usa GUI, pero existe su version, llamado qemu-launcher ( para linux), pero mejor es el Virtual-Manager :D (similar a virtualBox pero mas ligero)
+*/
+/*
+  MODOS:
+  MODO USUARIO:
+    Puede ejecutar programas compilados para un tipo de CPU en otro tipo de CPU.
+    Las llamadas al sistema son pensadas para endianness y desarreglos en 32/64 bits.
+    Wine y Dosemu son los principales objetivos de QEMU.
+  
+  EMULACION COMPLETO DEL SISTEMA ORDENADOR:
+    QEMU emula un sistema informático completo,
+    incluyendo procesador y varios periféricos.
+    Este puede ser usado para proveer hosting virtual a varios ordenadores virtuales en un único ordenador.
+    QEMU puede arrancar varios sistemas operativos,
+    incluyendo entre otros Linux, Microsoft Windows, DOS, y BSD.
+    Admite además la emulación de varias plataformas de hardware,
+    incluyendo x86, AMD64, Alpha, Mips, y Sparc.
+*/
+
+Soporta emulación de IA-32 (x86) PC, AMD64 PC, MIPS R4000, Sun's SPARC sun4m,
+Sun's SPARC sun4u, ARM development boards (Integrator/CP y Versatile/PB),
+SH4 SHIX board, PowerPC (PReP y Power Macintosh), y arquitecturas ETRAX CRIS.
+

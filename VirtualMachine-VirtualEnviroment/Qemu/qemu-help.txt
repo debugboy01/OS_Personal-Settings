@@ -1,0 +1,310 @@
+1.Download compressed iso image
+Unpack: xz -d FreeBSD-9.3-RELEASE-i386-disc1.iso.xz
+Install:
+
+qemu-system-i386                                                \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom FreeBSD-9.3-RELEASE-i386-disc1.iso                     \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:01,model=virtio               \
+  -net user,hostfwd=tcp::2001-:22
+
+Boot:
+
+qemu-system-i386                                                \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:01,model=virtio               \
+  -net user,hostfwd=tcp::2001-:22
+
+
+
+Download iso image
+Install:
+
+qemu-system-i386                                                \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom NetBSD-6.1.4-i386.iso                                  \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:02,model=virtio               \
+  -net user,hostfwd=tcp::2002-:22
+
+Boot:
+
+qemu-system-i386                                                \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:02,model=virtio               \
+  -net user,hostfwd=tcp::2002-:22
+
+
+ Download iso image
+Install:
+
+qemu-system-i386                                                \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom debian-7.6.0-i386-CD-1.iso                             \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:03,model=virtio               \
+  -net user,hostfwd=tcp::2003-:22
+
+Boot:
+
+qemu-system-i386                                                \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:03,model=virtio               \
+  -net user,hostfwd=tcp::2003-:22
+
+Download compressed iso image
+Unpack: xz -d FreeBSD-9.3-RELEASE-amd64-disc1.iso.xz
+Install:
+
+qemu-system-x86_64                                              \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom FreeBSD-9.3-RELEASE-amd64-disc1.iso                    \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:04,model=virtio               \
+  -net user,hostfwd=tcp::2004-:22
+
+Boot:
+
+qemu-system-x86_64                                              \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:04,model=virtio               \
+  -net user,hostfwd=tcp::2004-:22
+
+Download iso image
+Install:
+
+qemu-system-x86_64                                              \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom NetBSD-6.1.4-amd64.iso                                 \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:05,model=virtio               \
+  -net user,hostfwd=tcp::2005-:22
+
+Boot:
+
+qemu-system-x86_64                                              \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:05,model=virtio               \
+  -net user,hostfwd=tcp::2005-:22
+
+Download iso image
+Install:
+
+qemu-system-x86_64                                              \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom debian-7.6.0-amd64-CD-1.iso                            \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:06,model=virtio               \
+  -net user,hostfwd=tcp::2006-:22
+
+Boot:
+
+qemu-system-x86_64                                              \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:06,model=virtio               \
+  -net user,hostfwd=tcp::2006-:22
+
+Download kernel and initrd
+Install:
+
+qemu-system-mips -M malta                                       \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:07,model=virtio               \
+  -net user,hostfwd=tcp::2007-:22                               \
+  -kernel vmlinux-3.2.0-4-4kc-malta                             \
+  -initrd initrd.gz                                             \
+  -append "console=ttyS0"                                       \
+  -nographic
+
+Follow the instructions in the section Copying out Linux kernel and initrd below.
+Boot (console-less):
+
+qemu-system-mips -M malta                                       \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:07,model=virtio               \
+  -net user,hostfwd=tcp::2007-:22                               \
+  -kernel vmlinux-3.2.0-4-4kc-malta                             \
+  -initrd initrd.img-3.2.0-4-4kc-malta                          \
+  -append "root=/dev/vda1 console=ttyS0"                        \
+  -serial null -monitor null                                    \
+  -nographic
+
+ Use: qemu 2.2.0 or newer (1.6.2 will also work, but intermediate releases will not yield a stable system, see notes below)
+Download kernel and initrd
+Install:
+
+qemu-system-mips64 -M malta                                     \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:08                            \
+  -net user,hostfwd=tcp::2008-:22                               \
+  -kernel vmlinux-3.2.0-4-4kc-malta                             \
+  -initrd initrd.gz                                             \
+  -append "console=ttyS0"                                       \
+  -nographic
+
+This is now largely a 32-bit system (and indeed the install command should remind of the mips-32 command above). But the Debian installer should have put the 64-bit vmlinux-3.2.0-4-5kc-malta and initrd.img-3.2.0-4-5kc-malta in /boot. If not, install them using apt-get. But this kernel and initrd will not get used; you need to copy them out into the host system and boot using them. See the section Copying out Linux kernel and initrd below.
+Boot (console-less):
+
+qemu-system-mips64 -M malta -cpu 5Kc -m 256                     \
+  -hda disk.img                                                 \
+  -net nic,macaddr=52:54:00:fa:ce:08                            \
+  -net user,hostfwd=tcp::2008-:22                               \
+  -kernel vmlinux-3.2.0-4-5kc-malta                             \
+  -initrd initrd.img-3.2.0-4-5kc-malta                          \
+  -append "root=/dev/sda1 console=ttyS0"                        \
+  -serial null -monitor null                                    \
+  -nographic
+
+Notes:
+
+    Adding -cpu 5Kc selects a different Linux idle loop, utilising the wait instruction. Without this, qemu will consume 100% host CPU. Unfortunately, qemu 1.7.x, 2.0.x, 2.1.0 are all very crash-prone under -cpu 5Kc (segfaults and assertion failures). Older qemu used to work properly, I've confirmed 1.6.2 is OK, but I think 1.5.x might also have worked. Even older qemu used to emulate some instructions incorrectly.
+    The system tends to freeze after some hours if using virtio disk, using qemu 1.6.2. I haven't been able to evaluate qemu 2.2.x in this respect, it might be stable with virtio.
+    A little-endian MIPS system, using qemu-system-mips64el, is an alternative. Download kernel and initrd instead of the files linked above, then proceed analogously. 
+
+Use: qemu 1.7.1 (later not tested)
+Download iso image
+Install:
+
+qemu-system-sparc                                               \
+  -hda disk.img                                                 \
+  -cdrom sparccd-5.2.2.iso                                      \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:09                            \
+  -net user,hostfwd=tcp::2009-:22
+
+Boot:
+
+qemu-system-sparc                                               \
+  -hda disk.img                                                 \
+  -net nic,macaddr=52:54:00:fa:ce:09                            \
+  -net user,hostfwd=tcp::2009-:22
+
+Note: Neither NetBSD or OpenBSD currently handle power saving features. You will see a boot message about that "power-management" is not configured. The consequence of this is that qemu will use 100% host CPU. There are claims of an apc driver linking to an apc(4) manual page, but my 6.1 RC4 system has no traces of it.
+Newer NetBSD releases seem incompatible with qemu 1.7.1 (as well as newer qemu).
+I am not aware of any GNU/Linux dists which support 32-bit sparc, but Debian 4 did support it, but it is not fully stable under qemu.
+Use: qemu 2.1.0 (older will not work). Avoid virtio devices here as later qemu and sparc64 Debian seem incompatible.
+Download iso image
+Install:
+
+qemu-system-sparc64 -m 512                                      \
+  -drive file=disk.img,if=ide,index=0                           \
+  -cdrom debian-7.6.0-sparc-CD-1.iso                            \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:10,model=e1000                \
+  -net user,hostfwd=tcp::2010-:22                               \
+  -nographic
+
+Boot:
+
+qemu-system-sparc64 -m 512                                      \
+  -drive file=disk.img,if=ide,index=0                           \
+  -net nic,macaddr=52:54:00:fa:ce:10,model=e1000                \
+  -net user,hostfwd=tcp::2010-:22                               \
+  -nographic
+
+Caveat: The system consumes 100% host CPU time, even when the guest idles.
+Use: qemu 2.0.0
+Download iso image
+Install:
+
+qemu-system-ppc                                                 \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -cdrom debian-7.6.0-powerpc-CD-1.iso                          \
+  -boot d                                                       \
+  -net nic,macaddr=52:54:00:fa:ce:11,model=virtio               \
+  -net user,hostfwd=tcp::2011-:22
+
+Follow the instructions in the section Copying out Linux kernel and initrd below.
+Boot:
+
+qemu-system-ppc                                                 \
+  -drive file=disk.img,if=virtio,index=0                        \
+  -net nic,macaddr=52:54:00:fa:ce:11,model=virtio               \
+  -net user,hostfwd=tcp::2011-:22                               \
+  -kernel vmlinux-3.2.0-4-powerpc                               \
+  -initrd initrd.img-3.2.0-4-powerpc                            \
+  -append "root=/dev/vda3"
+
+You may need to modify the root= argument depending on where your / partition was put. It should be the one given here if you used the default layout.
+Use: qemu 2.0.0 (later not tested)
+Download kernel and initrd.
+Install:
+
+qemu-system-ppc64 -M pseries -cpu POWER7 -m 256                 \
+  -drive file=disk.img,if=scsi,index=0                          \
+  -net nic,macaddr=52:54:00:fa:ce:12,model=virtio               \
+  -net user,hostfwd=tcp::2012-:22                               \
+  -kernel vmlinux                                               \
+  -initrd initrd.gz                                             \
+  -serial null -monitor null
+
+Perform a default install using vncviewer.
+Boot:
+
+qemu-system-ppc64 -M pseries -cpu POWER7 -m 256                 \
+  -drive file=disk.img,if=scsi,index=0                          \
+  -net nic,macaddr=52:54:00:fa:ce:12,model=virtio               \
+  -net user,hostfwd=tcp::2012-:22                               \
+  -serial null -monitor null
+
+Note that I previously suggested to do -M mac99 using virtio disk and virtio networking. That system used to work with qemu 1.5.x, but failed with qemu 1.7.1. That system also consumed 100% host CPU, while the new suggested system is more well-behaved.
+Use: qemu 2.0.0 (not older, newer might work)
+Download kernel and initrd. Install using vncviewer over the network:
+
+qemu-system-arm -M vexpress-a9 -cpu cortex-a9 -m 256            \
+  -sd disk.img                                                  \
+  -net nic,macaddr=52:54:00:fa:ce:13                            \
+  -net user,hostfwd=tcp::2013-:22                               \
+  -kernel vmlinuz-3.2.0-4-vexpress                              \
+  -initrd initrd.gz                                             \
+  -append "root=/dev/ram"                                       \
+  -display vnc=localhost:17
+
+Follow the instructions in the section Copying out Linux kernel and initrd below.
+Boot:
+
+qemu-system-arm -M vexpress-a9 -cpu cortex-a9 -m 256            \
+  -sd disk.img                                                  \
+  -net nic,macaddr=52:54:00:fa:ce:13                            \
+  -net user,hostfwd=tcp::2013-:22                               \
+  -kernel vmlinuz-3.2.0-4-vexpress                              \
+  -initrd initrd.img-3.2.0-4-vexpress                           \
+  -append "root=/dev/mmcblk0p2"                                 \
+  -display vnc=localhost:17
+
+(These instructions are based on work by Ian Campbell as well as private communication with Ian.)
+Use: qemu 2.1.0 (older will not work)
+Download kernel and initrd.
+
+qemu-system-aarch64 -M virt -cpu cortex-a57 -m 256              \
+  -drive file=disk.img,if=none,id=blk -device virtio-blk-device,drive=blk \
+  -net user,hostfwd=tcp::2014-:22 -device virtio-net-device,vlan=0 \
+  -kernel linux                                                 \
+  -initrd initrd.gz                                             \
+  -append "console=ttyAMA0 --"                                  \
+  -nographic
+
+Perform a plain installation.
+
+Unfortunately, this currently creates a /boot/initrd which cannot be used for booting the system. The problem is that virtio devices are neither compiled into the kernel nor put into initrd. We need to manually create a working initrd.
+
+Follow the instructions in the section Copying out Linux kernel and initrd below, but directly after the command /etc/init.d/ssh start issue these commands in order to generate a working initrd:
+
+mv /boot/initrd.img-3.16.0-4-arm64 /boot/initrd.img-3.16.0-4-arm64.old
+echo virtio-mmio >>/etc/initramfs-tools/modules
+/usr/sbin/update-initramfs -c -k 3.16.0-4-arm64
+
+Then resume with copying out files, ssh -p PORT ....
+(The version number string might have changed since I wrote this; update as per the contents of /boot.)
+Boot the installed system:
+
+qemu-system-aarch64 -M virt -cpu cortex-a57 -m 256              \
+  -drive file=disk.img,if=none,id=blk -device virtio-blk-device,drive=blk \
+  -net user,hostfwd=tcp::2014-:22 -device virtio-net-device,vlan=0 \
+  -kernel vmlinuz-3.16.0-4-arm64                                \
+  -initrd initrd.img-3.16.0-4-arm64                             \
+  -append "root=/dev/vda2 rw console=ttyAMA0 --"                \
+  -serial null -nographic
+
+

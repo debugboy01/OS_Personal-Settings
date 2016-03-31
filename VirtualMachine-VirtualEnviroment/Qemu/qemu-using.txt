@@ -1,0 +1,55 @@
+Usando qemu
+
+*****************************************
+
+CUANDO TENEMOS LA ISO EN NUESTRA COMPUTADORA:
+
+creamos una imagen iso:
+
+qemu-img create -f qcow qemu_disk.img 4G
+
+qcow: QEMU copy-on-Write, especifia el tipo de imagen disco.
+donde 3G es la cantidad de memoria que usara (RAM)
+
+Creamos una distro de la imagen ISO:
+
+qemu-system-x86_64 -drive file=qemu_disk.img,if=virtio,index=0 -cdrom vivid-desktop-amd64.iso -m 256 -boot d -net nic,macaddr=52:54:00:fa:ce:05,model=virtio -net user,hostfwd=tcp::2005-:22
+
+instalar sistema, cuando se termine volver a correr:
+
+qemu-system-x86_64 -drive file=qemu_disk.img,if=virtio,index=0 -net nic,macaddr=52:54:00:fa:ce:05,model=virtio  -net user,hostfwd=tcp::2005-:22
+
+*****************************************
+
+CUANDO TENEMOS EN UN CD ISO.
+
+En primer lugar, crearemos la imagen de disco, es decir, un fichero que contendrá la imagen del disco duro del sistema invitado, al que daremos un tamaño -por ejemplo- de 4 Gigabytes:
+
+$ qemu-img create -f qcow imagen.qcow 4G
+
+Crearemos ahora una imagen superpuesta a ésta, de modo que los cambios se almacenen en un fichero aparte y podamos regresar a la imagen original en caso en caso de problemas o inestabilidades:
+
+$ qemu-img create -b imagen.qcow -f qcow imagen2.qcow
+
+A continuación podemos o usar una imagen ISO o usar directamente un CD / DVD con el sistema operativo que se desea ejecutar para instalar. Si tuviesemos una imagen ISO con nuestro CD Ubuntu en un fichero 'ubuntu.iso' sólo debemos hacer :
+
+$ qemu -cdrom ubuntu.iso -hda imagen2.qcow -m 256 -boot d 
+
+Si queremos usar directamente el CD indicamos la ruta del CD
+
+$ qemu -cdrom /dev/cdrom -hda imagen2.qcow -m 256 -boot d 
+
+El parámetro -m 256 indica la memoria de nuestro sistema virtual. Si no es suficiente se puede incrementar, dependiendo del ordenador en que se ejecute.
+
+Una vez instalado el sistema operativo podemos volver a arrancar QEMU directamente sobre la imagen instalada.
+
+$ qemu -hda imagen2.qcow -m 256
+
+
+**********************************************************
+
+O EN USB 
+
+qemu-system-x86_64 -hda /dev/sdx
+
+**********************************************************

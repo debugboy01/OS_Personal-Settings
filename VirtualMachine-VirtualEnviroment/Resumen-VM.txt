@@ -5,5 +5,7 @@ Vagrant:
 Software de virtualizacion, multiples maquinas encendidas, y se conectan mediante shell.
 
 VirtualMachinesSoftware (VirtualBox, VMWare):
-software de vrtualizacion, una maquina sobre otra, mediante el virtualizador.
+Software de virtualizacion, instala las iso como cualquier OS o pueden ser ejecutadas desde un vdmi.
 
+Qemu:
+Software de virtualizacion, usada desde consola para ser lanzadas almacenando una imagen con toda la informacion del OS.

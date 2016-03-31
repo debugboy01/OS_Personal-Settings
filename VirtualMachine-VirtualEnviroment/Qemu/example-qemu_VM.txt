@@ -1,0 +1,35 @@
+          Corriendo una VM en qemu
+
+Creamos una nueva maquina virtual.
+
+en este ejemplo sera el ubuntu 15.04 server
+
+1. Creamos el virtual hard disk image para la nueva VM.
+
+Creamos una carpeta llamada qemu y a su vez una dentro ~/.qemu/qemuVM
+
+Aqui se guardaran las iso de nuestro OS.
+
+En esa carpeta creada, (si queremos, para administrar mejor nuestras VM, creamos una carpeta por cada imagen) por ejemplo,
+
+creamos la carpeta Ubuntu-15_04, y aqui creamos nuestra VM, le damos 20Gb de tamano de disco de imagen.
+
+qemu-img create ubuntu.img 20G
+
+Luego para bootear la VM e intalar(1era vez), hacemos:
+
+Si es una VM de 64 bits:
+
+qemu-system-x86_64 -hda ubuntu.img -boot d -cdrom ~/.qemu/qemuVM/Ubuntu-15_04/ubuntu-15.04-server-amd64.iso -m 640
+
+Si es una VM de 32 bits:
+
+qemu-system-xi386 -hda ubuntu.img -boot d -cdrom ~/.qemu/qemuVM/Ubuntu-15_04/ubuntu-15.04-server-i386.iso -m 640
+
+Notar que el ultimo comando -m 640 significa 640Mb de RAM para el OS guest.
+
+Finalmente, una vez ya instalada, escribimos:
+
+qemu-system-x86_64 -hda ubuntu.img -m 640
+
+Y listo, a disfrutar :D

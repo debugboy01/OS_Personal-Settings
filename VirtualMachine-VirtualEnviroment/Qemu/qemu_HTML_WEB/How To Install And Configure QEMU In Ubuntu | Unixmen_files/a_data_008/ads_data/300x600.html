@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Google Interactive</title>
+	<link href="300x600_data/css.css" rel="stylesheet" type="text/css">  
+    <script src="300x600_data/Enabler_01_85.js"></script>
+	<style>
+		html{
+			 -webkit-font-smoothing: antialiased;
+		}
+	body{
+			width: 300px;
+			height:600px;
+			margin:0;
+			-webkit-font-smoothing: antialiased;
+			padding:0;
+			overflow: hidden;
+		}
+		div.wrapper{
+			background-color: #FFFFFF;
+			border: 1px solid #C8C8C8;
+			width: 298px;
+			height: 598px;
+			overflow: hidden;
+		}
+		img.imgEnvelope{
+			left: 110px;
+			top: 39px;
+			width: 82px;
+			position: absolute;
+			z-index: 100;
+			visibility: hidden;			
+		}
+		span.txtMiraComo{
+			font-family: "Open Sans";
+			color: #7D7D7D;
+			font-size: 13px;
+			position: absolute;
+			left: 0px;
+			top: 139px;
+			width: 298px;
+			text-align: center;
+			letter-spacing: 0px;
+			opacity: 0;
+		
+		}
+		input.edtInput1{
+			position: absolute;
+			background-color: #F5F5F5;
+			border: 1px solid #CCCCCC;
+			color: #424242;
+			width: 200px;
+			height: 33px;
+			left: 65px;
+			top: 202px;
+			padding-left: 10px;
+			opacity: 0;
+	
+		}
+
+		input.edtInput2{
+			position: absolute;
+			background-color: #F5F5F5;
+			border: 1px solid #CCCCCC;
+			color: #424242;
+			width: 200px;
+			height: 33px;
+			left: 65px;
+			top: 202px;
+			padding-left: 10px;
+			opacity: 0;
+		
+		}
+		span.circleOne{
+			position: absolute;
+			display: block;
+			font-family: "Open Sans";
+			color: #FFF;
+			font-size: 18px;
+			/* font-weight: bold; */
+			background-color: #D7D7D7;
+			width: 35px;
+			height: 35px;
+			line-height: 33px;
+			left: 22px;
+			top: 202px;
+			text-align: center;
+			border-radius: 50%;
+			transition: all 0.4s linear;
+			-webkit-transition: all 0.4s linear;
+			visibility: hidden;
+			opacity: 0;
+		}
+		span.circleTwo{
+			position: absolute;
+			display: block;
+			font-family: "Open Sans";
+			color: #FFF;
+			font-size: 18px;
+			/* font-weight: bold; */
+			background-color: #D7D7D7;
+			width: 35px;
+			height: 35px;
+			line-height: 33px;
+			left: 22px;
+			top: 202px;
+			text-align: center;
+			border-radius: 50%;
+			transition: all 0.4s linear;
+			-webkit-transition: all 0.4s linear;
+			visibility: hidden;
+			opacity: 0;
+		}
+		span.btnGo{
+			font-family: "Open Sans";
+			font-size: 15px;
+			background-color: #CCCCCC;
+			color: #FFFFFF;
+			position: absolute;
+			top: 248px;
+			left: 111px;
+			width: 80px;
+			text-align: center;
+			height: 35px;
+			border-radius: 2px;
+			line-height: 34px;
+			transition: all 0.2s linear;
+			-webkit-transition: all 0.2s linear;
+			cursor: pointer;
+			border-style: none;
+			opacity: 0;
+		}
+		button.btnGo:hover{
+			background-color: #4D90FE;
+			transition: all 0.2s linear;
+			-webkit-transition: all 0.2s linear;
+			cursor: hand;
+		}
+		span.btnGo2{
+			font-family: "Open Sans";
+			font-size: 15px;
+			background-color: #CCCCCC;
+			color: #FFFFFF;
+			position: absolute;
+			top: 248px;
+			left: 111px;
+			width: 80px;
+			text-align: center;
+			height: 35px;
+			border-radius: 2px;
+			line-height: 34px;
+			transition: all 0.2s linear;
+			-webkit-transition: all 0.2s linear;
+			cursor: pointer;
+			border-style: none;
+			visibility: hidden;
+		}
+		button.btnGo2:hover{
+			background-color: #4D90FE;
+			transition: all 0.2s linear;
+			-webkit-transition: all 0.2s linear;
+			cursor: hand;
+		}
+		div.imgBackground{
+			position: absolute;
+			left: 22px;
+			top: 316px;
+			width: 277px;
+			height: 283px;
+			background-repeat: no-repeat;
+			background-image: url(screen.gif);
+			background-size: 501px;
+			background-position: 0px 0px;
+			visibility: hidden;
+		}
+		div.imgZoom{
+			position: relative;
+			width: 275px;
+			height: 275px;
+			top: 308px;
+			left: 9px;
+			-webkit-border-radius: 50%!important;
+			display: inline-block;
+			border-radius: 50%!important;
+			background-repeat: no-repeat;
+			border: 2px solid #CCCCCC;
+			visibility: hidden;
+			-webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+			overflow: hidden;
+			
+
+		}
+		div.backgroundZoom{
+			position: absolute;
+			width: 1527px;
+			height: 991px;
+
+			top: 43px;
+			left: -14px;
+			background-image: url(screen.gif);
+			background-position: 0px 0px;
+			background-repeat: no-repeat;
+			visibility: hidden;
+			overflow: hidden;
+			
+		}
+		span.txtCompany{
+			position: absolute;
+			width: 200px;
+			height: 53px;
+			top: 63px;
+			left: 0px;
+			text-align: left;
+			color: #4D90FE;
+			background-color: #F6F6F7;
+			font-size: 20px;
+			font-weight: bold;
+			padding-left: 30px;
+			padding-top: 19px;
+			text-transform: uppercase;
+			-webkit-transform: uppercase;
+			font-family: "Open Sans";
+			transition: all 0.3s linear;
+			visibility: hidden; 
+		}
+		img.pointerArrow{
+			position: absolute;
+			top: 202px;
+			left: 109px;
+			visibility: hidden;
+
+		}
+		img.pointerArrowEdit{
+			position: absolute;
+			top: 202px;
+			left: 109px;
+			visibility: hidden;
+
+		}
+		img.pointerHand{
+			position: absolute;
+			top: 202px;
+			left: 109px;
+			visibility: hidden;
+
+		}
+		::-webkit-input-placeholder {
+			font-family: "Open Sans";
+			font-size: 12px;
+			color: #727272;
+		}
+		:-moz-placeholder {
+			font-family: "Open Sans";
+			font-size: 12px;
+			color: #727272;
+		}
+		::-moz-placeholder {
+			font-family: "Open Sans";
+			font-size: 12px;
+			color: #727272;
+		}
+		:-ms-input-placeholder {
+			font-family: "Open Sans";
+			font-size: 12px;
+			color: #727272;
+		}
+		.animated-06s {
+		  -webkit-animation-duration: 0.6s;
+		  animation-duration: 0.6s;
+		  -webkit-animation-fill-mode: both;
+		  animation-fill-mode: both;
+		  transition-timing-function: linear;
+		}
+		.animated-1s {
+		  -webkit-animation-duration: 1s;
+		  animation-duration: 1s;
+		  -webkit-animation-fill-mode: both;
+		  animation-fill-mode: both;
+		  transition-timing-function: linear;
+		}
+		.animated-2s {
+		  -webkit-animation-duration: 2s;
+		  animation-duration: 2s;
+		  -webkit-animation-fill-mode: both;
+		  animation-fill-mode: both;
+		  transition-timing-function: linear;
+		}
+
+		span.txtBienvenido{
+			font-family: "Open Sans";
+			color: #7D7D7D;
+			font-size: 22px;
+			position: absolute;
+			left: 0px;
+			text-align: center;
+			top: 73px;
+			width: 334px;
+			letter-spacing: 0.16px;
+			opacity: 0;
+			visibility:hidden;
+		}
+
+		img.imgEnvelope2{
+			left: 88px;
+			width: 64px;
+			top: 149px;
+			position: absolute;
+			z-index: 200;
+			opacity: 0;
+			visibility:hidden;
+		}
+
+		img.imgEnvelope3{
+			left: 88px;
+			width: 64px;
+			top: 149px;
+			position: absolute;
+			z-index: 100;
+			opacity: 0;
+			visibility:hidden;
+		}
+		img.imgCurveArrow{
+			left: 121px;
+			width: 78px;
+			top: 126px;
+			position: absolute;
+			z-index: 100;
+			opacity: 0;
+			visibility:hidden;
+		}
+
+		span.txtMail{
+			font-family: "Open Sans";
+		    color: #7D7D7D;
+		    font-size: 14px;
+		    position: absolute;
+
+		    left: 5px;
+		    text-align: right;
+		    padding-right: 38px;
+		    
+		    top: 122px;
+		    width: 190px;
+		    letter-spacing: 0.16px;
+		    opacity: 0;
+		    visibility: hidden;
+		}
+
+		img.imgEnvelope4{
+			left: 105px;
+		    top: 202px;
+		    width: 81px;
+		    position: absolute;
+		    z-index: 100;
+		    opacity: 0;
+		    visibility: hidden;
+		}
+		img.imgReload{
+			left: 274px;
+			top: 10px;
+			position: absolute;
+			z-index: 100;
+			visibility: hidden;
+		}
+		img.imgReload:hover{
+			transition: all 0.3s linear;
+			transform: rotate(359deg);
+			-webkit-transform: rotate(359deg);
+			cursor: pointer;
+		}
+		span.txtGmailBuisness{
+			font-family: "Open Sans";
+			color: #7D7D7D;
+			font-size: 20px;
+			position: absolute;
+			left: 0px;
+			top: 109px;
+			width: 298px;
+			text-align: center;
+			letter-spacing: 0.0px;
+			opacity: 0;
+			visibility: hidden;
+		}
+		span.txtGmailBuisness2{
+			font-family: "Open Sans";
+			color: #7D7D7D;
+			font-size: 20px;
+			position: absolute;
+			left: 0px;
+			top: 278px;
+			width: 298px;
+			text-align: center;
+			letter-spacing: 0.0px;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		
+		span.txtNowYouCan{
+			font-family: "Open Sans";
+			color: #7D7D7D;
+			font-size: 14px;
+			position: absolute;
+			top: 308px;
+			left: 0px;
+			width: 298px;
+			text-align: center;
+			letter-spacing: 0px;
+			line-height: 20px;
+			opacity: 0;
+			visibility: hidden;
+
+		}
+
+		a.btnStartNow{
+			font-family: "Open Sans";
+			font-size: 13px;
+			background-color: #7CD612;
+			color: #FFFFFF;
+			position: absolute;
+			top: 367px;
+			left: 80px;
+			width: 128px;
+			text-align: center;
+			height: 34px;
+			border-radius: 2px;
+			line-height: 32px;
+			transition: all 0.2s linear;
+			-webkit-transition: all 0.2s linear;
+			cursor: pointer;
+			opacity: 0;
+			text-decoration: none;
+			visibility: hidden;
+		    
+		}
+		a.btnStartNow:hover{
+			background-color: #8CE622;
+		}
+
+		img.imgShadow{
+			top: 285px;
+    		left: -25px;
+    		position: absolute;
+    		visibility: hidden;
+		}
+
+		@keyframes EnvelopeZoomOut {
+		  0% {
+		    opacity: 1;
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    transform: scale(0.22, 0.22);
+		    -webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+    		visibility:visible;
+		  }
+		}
+		@-webkit-keyframes EnvelopeZoomOut {
+		  0% {
+		    opacity: 1;
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    transform: scale(0.22, 0.22);
+		    -webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+    		visibility:visible;
+		  }
+		}
+
+		.EnvelopeZoomOut {
+		  -webkit-animation-name: EnvelopeZoomOut;
+		  animation-name: EnvelopeZoomOut;
+		}
+
+		@keyframes EnvelopeFadeOut {
+
+		  0% {
+		    opacity: 1;
+		  	transform: scale(0.22, 0.22);
+		  	-webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+    		visibility:visible;
+		  }
+		  99% {
+		    opacity: 0;
+		    transform: scale(0.22, 0.22);
+		    -webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+    		visibility:hidden;
+		  }
+
+		  100% {
+		  	transform: scale(0.22, 0.22);
+		  	-webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+		    opacity: 0;
+		    transform: none;
+		    -webkit-transform: none;
+    		visibility:hidden;
+		  }
+		}
+		@-webkit-keyframes EnvelopeFadeOut {
+
+		  0% {
+		    opacity: 1;
+		  	transform: scale(0.22, 0.22);
+		  	-webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+    		visibility:visible;
+		  }
+		  99% {
+		    opacity: 0;
+		    transform: scale(0.22, 0.22);
+		    -webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+    		visibility:hidden;
+		  }
+
+		  100% {
+		  	transform: scale(0.22, 0.22);
+		  	-webkit-transform: scale(0.22, 0.22);
+		    left: -74px;
+    		top: -36px;
+		    opacity: 0;
+		    transform: none;
+		    -webkit-transform: none;
+    		visibility:hidden;
+		  }
+		}
+
+		.EnvelopeFadeOut {
+		 -webkit-animation-name: EnvelopeFadeOut;
+		  animation-name: EnvelopeFadeOut;
+		}
+
+		@keyframes btnGoArrow {
+		  0% {
+		    visibility:visible;
+		    left: 50px;
+		    top: 100px;
+		  }
+		 35%{
+		 	visibility: hidden;
+		 }
+		  50%{
+		  	top: 260px;
+			left: 125px;
+		  }
+		 
+		 65%{
+		 	visibility: hidden;
+		 }
+		 66%{
+		 	visibility: visible;
+		 	top: 260px;
+			left: 125px;
+		 }
+		  100% {
+		  	visibility: visible;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+		}
+		@-webkit-keyframes btnGoArrow {
+		  0% {
+		    visibility:visible;
+		    left: 50px;
+		    top: 100px;
+		  }
+		 35%{
+		 	visibility: hidden;
+		 }
+		  50%{
+		  	top: 260px;
+			left: 125px;
+		  }
+		 
+		 65%{
+		 	visibility: hidden;
+		 }
+		 66%{
+		 	visibility: visible;
+		 	top: 260px;
+			left: 125px;
+		 }
+		  100% {
+		  	visibility: visible;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+		}
+		.btnGoArrow {
+		  -webkit-animation-name: btnGoArrow;
+		  animation-name: btnGoArrow;
+		}
+
+		@keyframes btnGoArrow2 {
+		  0% {
+		    visibility: visible;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+		 35%{
+		 	visibility: hidden;
+		 }
+		  50%{
+		  	top: 260px;
+			left: 125px;
+		  }
+		 
+		 65%{
+		 	visibility: hidden;
+		 }
+		 66%{
+		 	visibility: visible;
+		 	top: 260px;
+			left: 125px;
+		 }
+		  100% {
+		  	visibility: hidden;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+		}
+		@-webkit-keyframes btnGoArrow2 {
+		  0% {
+		    visibility: visible;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+		 35%{
+		 	visibility: hidden;
+		 }
+		  50%{
+		  	top: 260px;
+			left: 125px;
+		  }
+		 
+		 65%{
+		 	visibility: hidden;
+		 }
+		 66%{
+		 	visibility: visible;
+		 	top: 260px;
+			left: 125px;
+		 }
+		  100% {
+		  	visibility: hidden;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+		}
+		.btnGoArrow2 {
+		  -webkit-animation-name: btnGoArrow2;
+		  animation-name: btnGoArrow2;
+		}
+
+
+
+		@keyframes btnGoArrow3 {
+		  0% {
+		    visibility: visible;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+
+		  50%{
+		  	left: 90px;
+			top: 220px;
+		  }
+		 
+		  100% {
+		  	visibility: visible;
+		    top: 310px;
+			left: 85px;
+		  }
+		}
+		@-webkit-keyframes btnGoArrow3 {
+		  0% {
+		    visibility: visible;
+		  	display: block;
+		    top: 310px;
+			left: 85px;
+		  }
+
+		  50%{
+		  	left: 90px;
+			top: 220px;
+		  }
+		 
+		  100% {
+		  	visibility: visible;
+		    top: 310px;
+			left: 85px;
+		  }
+		}
+		.btnGoArrow3 {
+		  -webkit-animation-name: btnGoArrow3;
+		  animation-name: btnGoArrow3;
+		}
+
+
+
+
+
+		@keyframes btnGoEdit {
+		  0% {
+		    visibility:visible;
+		    left: 150px;
+		    top: 350px;
+		  }
+		 45%{
+		 	visibility: hidden;
+		 }
+		  50%{
+		  	left: 90px;
+			top: 220px;
+		  }
+		 
+		 65%{
+		 	visibility: hidden;
+		 }
+		  100%{
+		  	visibility: hidden;
+		  }
+		}
+		@-webkit-keyframes btnGoEdit {
+		  0% {
+		    visibility:visible;
+		    left: 150px;
+		    top: 350px;
+		  }
+		 45%{
+		 	visibility: hidden;
+		 }
+		  50%{
+		  	left: 90px;
+			top: 220px;
+		  }
+		 
+		 65%{
+		 	visibility: hidden;
+		 }
+		  100%{
+		  	visibility: hidden;
+		  }
+		}
+		.btnGoEdit {
+		  -webkit-animation-name: btnGoEdit;
+		  animation-name: btnGoEdit;
+		}
+
+		@keyframes btnGoHand {
+		  39%{
+		  	visibility: hidden;
+		  	top: 232px;
+			left: 170px;
+		  }
+		  40%{
+		  	visibility: visible;
+		  	top: 260px;
+			left: 125px;
+		  }
+		  60% {
+		    visibility: hidden;
+		    top: 260px;
+			left: 125px;
+		  }
+		}
+		@-webkit-keyframes btnGoHand {
+		  39%{
+		  	visibility: hidden;
+		  	top: 232px;
+			left: 170px;
+		  }
+		  40%{
+		  	visibility: visible;
+		  	top: 260px;
+			left: 125px;
+		  }
+		  60% {
+		    visibility: hidden;
+		    top: 260px;
+			left: 125px;
+		  }
+		}
+		.btnGoHand {
+		  -webkit-animation-name: btnGoHand;
+		  animation-name: btnGoHand;
+		}
+
+		@keyframes btnGoHand2 {
+		  39%{
+		  	visibility: hidden;
+		  	top: 260px;
+			left: 125px;
+		  }
+		  40%{
+		  	visibility: visible;
+		  	top: 260px;
+			left: 125px;
+		  }
+		  60% {
+		    visibility: hidden;
+		    top: 260px;
+			left: 125px;
+		  }
+		}
+		@-webkit-keyframes btnGoHand2 {
+		  39%{
+		  	visibility: hidden;
+		  	top: 260px;
+			left: 125px;
+		  }
+		  40%{
+		  	visibility: visible;
+		  	top: 260px;
+			left: 125px;
+		  }
+		  60% {
+		    visibility: hidden;
+		    top: 260px;
+			left: 125px;
+		  }
+		}
+		.btnGoHand2 {
+		  -webkit-animation-name: btnGoHand2;
+		  animation-name: btnGoHand2;
+		}
+
+
+		@keyframes fadeOut {
+		  0% {
+		    opacity: 1;
+		  }
+
+		  99% {
+		    opacity: 0;
+		  }
+		  100%{
+		  	opacity: 0;
+		    visibility:hidden;
+		  }
+		}
+		@-webkit-keyframes fadeOut {
+		  0% {
+		    opacity: 1;
+		  }
+
+		  99% {
+		    opacity: 0;
+		  }
+		  100%{
+		  	opacity: 0;
+		    visibility:hidden;
+		  }
+		}
+		.fadeOut {
+		  -webkit-animation-name: fadeOut;
+		  animation-name: fadeOut;
+		}
+
+
+		@keyframes fadeOutLeft {
+		  0% {
+		    opacity: 1;
+		    visibility: visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+
+		  99% {
+		    opacity: 1;
+		   transform: translate3d(-300px, 0px, 0px);
+		   -webkit-transform: translate3d(-300px, 0px, 0px);
+		  }
+		  100%{
+		  	opacity: 0;
+		    visibility:hidden;
+		  }
+		}
+		@-webkit-keyframes fadeOutLeft {
+		  0% {
+		    opacity: 1;
+		    visibility: visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+
+		  99% {
+		    opacity: 1;
+		   transform: translate3d(-300px, 0px, 0px);
+		   -webkit-transform: translate3d(-300px, 0px, 0px);
+		  }
+		  100%{
+		  	opacity: 0;
+		    visibility:hidden;
+		  }
+		}
+		.fadeOutLeft {
+		  -webkit-animation-name: fadeOutLeft;
+		  animation-name: fadeOutLeft;
+		}
+
+
+		@keyframes fadeCompany {
+		  0% {
+		    opacity: 1;
+		    visibility: visible;
+		  }
+
+		  100%{
+		  	opacity: 0.6;
+		    visibility:hidden;
+		    transform: scale(0.55);
+		    -webkit-transform: scale(0.55);
+		     top: 96px;
+    	   left: -400px;
+		  }
+		}
+		@-webkit-keyframes fadeCompany {
+		  0% {
+		    opacity: 1;
+		    visibility: visible;
+		  }
+
+		  100%{
+		  	opacity: 0.6;
+		    visibility:hidden;
+		    transform: scale(0.55);
+		    -webkit-transform: scale(0.55);
+		     top: 96px;
+    	   left: -400px;
+		  }
+		}
+
+		.fadeCompany {
+		  -webkit-animation-name: fadeCompany;
+		  animation-name: fadeCompany;
+		}
+
+		@keyframes fadeInLeft {
+		  0% {
+		    opacity: 0;
+		    visibility: visible;
+		     transform: translate3d(300px, 0px, 0px);
+		     -webkit-transform: translate3d(300px, 0px, 0px);
+		  }
+		  100%{
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		@-webkit-keyframes fadeInLeft {
+		  0% {
+		    opacity: 0;
+		    visibility: visible;
+		     transform: translate3d(300px, 0px, 0px);
+		     -webkit-transform: translate3d(300px, 0px, 0px);
+		  }
+		  100%{
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		.fadeInLeft {
+		  -webkit-animation-name: fadeInLeft;
+		  animation-name: fadeInLeft;
+		}
+
+
+		@keyframes fadeIn {
+		  0% {
+		    opacity: 0;
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    visibility:visible;
+		  }
+		}
+		@-webkit-keyframes fadeIn {
+		  0% {
+		    opacity: 0;
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    visibility:visible;
+		  }
+		}
+
+		.fadeIn {
+		  -webkit-animation-name: fadeIn;
+		  animation-name: fadeIn;
+		}
+
+		@keyframes fadeInUp {
+		  0% {
+		    opacity: 0;
+		    visibility:visible;
+		    transform: translate3d(0px, 15px, 0px);
+		    -webkit-transform: translate3d(0px, 15px, 0px);
+		  }
+
+		  100% {
+		    opacity: 1;
+		    visibility:visible;
+		    transform: none;
+		    -webkit-transform: none;
+		  }
+		}
+		@-webkit-keyframes fadeInUp {
+		  0% {
+		    opacity: 0;
+		    visibility:visible;
+		    transform: translate3d(0px, 15px, 0px);
+		    -webkit-transform: translate3d(0px, 15px, 0px);
+		  }
+
+		  100% {
+		    opacity: 1;
+		    visibility:visible;
+		    transform: none;
+		    -webkit-transform: none;
+		  }
+		}
+		.fadeInUp {
+		  -webkit-animation-name: fadeInUp;
+		  animation-name: fadeInUp;
+		}
+
+		@keyframes backgroundFadeInLeft {
+	    69%{
+				visibility: hidden;
+				opacity: 0;
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+		  70%{
+		  	opacity: 0;
+		    visibility:visible;
+		    transform: translate3d(40px, 0px, 0px);
+		    -webkit-transform: translate3d(40px, 0px, 0px);
+		  }
+
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		@-webkit-keyframes backgroundFadeInLeft {
+		 0%{
+		  	opacity: 0;
+		    visibility:hidden;
+		    transform: translate3d(40px, 0px, 0px);
+		    -webkit-transform: translate3d(40px, 0px, 0px);
+		  }
+		  70%{
+		  	opacity: 0;
+		    visibility:visible;
+		    transform: translate3d(40px, 0px, 0px);
+		    -webkit-transform: translate3d(40px, 0px, 0px);
+		  }
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		.backgroundFadeInLeft {
+		  -webkit-animation-name: backgroundFadeInLeft;
+		  animation-name: backgroundFadeInLeft;
+		}
+
+		@keyframes backgroundDown {
+			0%{
+				visibility: visible;
+				opacity: 1;
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+
+		  30% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 100px, 0px);
+		    -webkit-transform: translate3d(0px, 100px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 100px, 0px);
+		    -webkit-transform: translate3d(0px, 100px, 0px);
+		  }
+		}
+		@-webkit-keyframes backgroundDown {
+			0%{
+				visibility: visible;
+				opacity: 1;
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+
+		  30% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 100px, 0px);
+		    -webkit-transform: translate3d(0px, 100px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 100px, 0px);
+		    -webkit-transform: translate3d(0px, 100px, 0px);
+		  }
+		}
+		.backgroundDown {
+		  -webkit-animation-name: backgroundDown;
+		  animation-name: backgroundDown;
+		}
+
+
+		@keyframes backgroundLeft {
+		   0% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 100px, 0px);
+		    -webkit-transform: translate3d(0px, 100px, 0px);
+		  }
+		  70%{
+		 	transform: translate3d(-20px, 50px, 0px);
+		 	-webkit-transform: translate3d(-20px, 50px, 0px);
+		  	background-position: -210px 0px;
+		  	visibility: visible;
+		  	opacity: 0px;
+		  }
+		  100%{
+		 	transform: translate3d(-20px, 50px, 0px);
+		 	-webkit-transform: translate3d(-20px, 50px, 0px);
+		  	background-position: -210px 0px;
+		  	visibility: visible;
+		  	opacity: 0px;
+		  }
+		}
+		@-webkit-keyframes backgroundLeft {
+		   0% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 100px, 0px);
+		    -webkit-transform: translate3d(0px, 100px, 0px);
+		  }
+		  70%{
+		 	transform: translate3d(-20px, 50px, 0px);
+		 	-webkit-transform: translate3d(-20px, 50px, 0px);
+		  	background-position: -210px 0px;
+		  	visibility: visible;
+		  	opacity: 0px;
+		  }
+		  100%{
+		 	transform: translate3d(-20px, 50px, 0px);
+		 	-webkit-transform: translate3d(-20px, 50px, 0px);
+		  	background-position: -210px 0px;
+		  	visibility: visible;
+		  	opacity: 0px;
+		  }
+		}
+		.backgroundLeft {
+		  -webkit-animation-name: backgroundLeft;
+		  animation-name: backgroundLeft;
+		}
+
+
+		@keyframes zoomFadeInLeft {
+			0%{
+				visibility: visible;
+				opacity: 1;
+				background-position: -600px 46px;
+				transform: translate3d(300px, 0px, 0px);
+				-webkit-transform: translate3d(300px, 0px, 0px);
+			}
+		  90% {
+		  	opacity: 1;
+		    visibility:visible;
+		    background-position: -7px 46px;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    background-position: -7px 46px;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		@-webkit-keyframes zoomFadeInLeft {
+			0%{
+				visibility: visible;
+				opacity: 1;
+				background-position: -600px 46px;
+				transform: translate3d(300px, 0px, 0px);
+				-webkit-transform: translate3d(300px, 0px, 0px);
+			}
+		  90% {
+		  	opacity: 1;
+		    visibility:visible;
+		    background-position: -7px 46px;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    background-position: -7px 46px;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		.zoomFadeInLeft {
+		  -webkit-animation-name: zoomFadeInLeft;
+		  animation-name: zoomFadeInLeft;
+		}
+
+		@keyframes shadowFadeInLeft {
+		0%{
+				visibility: visible;
+				opacity: 1;
+				transform: translate3d(300px, 0px, 0px);
+				-webkit-transform: translate3d(300px, 0px, 0px);
+			}
+		  90% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		@-webkit-keyframes shadowFadeInLeft {
+		0%{
+				visibility: visible;
+				opacity: 1;
+				transform: translate3d(300px, 0px, 0px);
+				-webkit-transform: translate3d(300px, 0px, 0px);
+			}
+		  90% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		.shadowFadeInLeft {
+		  -webkit-animation-name: shadowFadeInLeft;
+		  animation-name: shadowFadeInLeft;
+		}
+
+
+		@keyframes backgroundZoomFadeInLeft {
+		0%{
+				visibility: visible;
+				opacity: 1;
+				transform: translate3d(600px, 0px, 0px);
+				-webkit-transform: translate3d(600px, 0px, 0px);
+			}
+		  90% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		@-webkit-keyframes backgroundZoomFadeInLeft {
+		0%{
+				visibility: visible;
+				opacity: 1;
+				transform: translate3d(600px, 0px, 0px);
+				-webkit-transform: translate3d(600px, 0px, 0px);
+			}
+		  90% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		   100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		  }
+		}
+		.backgroundZoomFadeInLeft {
+		  -webkit-animation-name: backgroundZoomFadeInLeft;
+		  animation-name: backgroundZoomFadeInLeft;
+		}
+
+
+		@keyframes zoomMoveLeft {
+			0%{
+				opacity: 1;
+				visibility:visible;
+				/*background-position: -7px 46px;*/
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+			50%{
+				background-size: 325%;
+			}
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		   /* background-position: -553px 104px;*/
+		    /*background-size: 325%;*/
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		    top: 241px;
+		  }
+		}
+		@-webkit-keyframes zoomMoveLeft {
+			0%{
+				opacity: 1;
+				visibility:visible;
+				/*background-position: -7px 46px;*/
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+			50%{
+				background-size: 325%;
+			}
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		   /* background-position: -553px 104px;*/
+		    /*background-size: 325%;*/
+		    transform: translate3d(0px, 0px, 0px);
+		    -webkit-transform: translate3d(0px, 0px, 0px);
+		    top: 241px;
+		  }
+		}
+		.zoomMoveLeft {
+		  -webkit-animation-name: zoomMoveLeft;
+		  animation-name: zoomMoveLeft;
+		}
+
+		@keyframes backgroundZoomMoveLeft {
+			0%{
+				opacity: 1;
+				visibility:visible;
+				/*background-position: -7px 46px;*/
+			}
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		   /* background-position: -553px 104px;*/
+		    /*background-size: 325%;*/
+		    transform: scale(0.60);
+		    -webkit-transform: scale(0.60);
+   			height: 991px;
+    		top: -95px;
+    		left: -870px;
+		  }
+		}
+		@-webkit-keyframes backgroundZoomMoveLeft {
+			0%{
+				opacity: 1;
+				visibility:visible;
+				/*background-position: -7px 46px;*/
+			}
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		   /* background-position: -553px 104px;*/
+		    /*background-size: 325%;*/
+		    transform: scale(0.60);
+		    -webkit-transform: scale(0.60);
+   			height: 991px;
+    		top: -95px;
+    		left: -870px;
+		  }
+		}
+		.backgroundZoomMoveLeft {
+		  -webkit-animation-name: backgroundZoomMoveLeft;
+		  animation-name: backgroundZoomMoveLeft;
+		}
+
+		@keyframes shadowMoveLeft {
+			0%{
+				opacity: 1;
+				visibility:visible;
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    top: 217px;
+		  }
+		}
+		@-webkit-keyframes shadowMoveLeft {
+			0%{
+				opacity: 1;
+				visibility:visible;
+				transform: translate3d(0px, 0px, 0px);
+				-webkit-transform: translate3d(0px, 0px, 0px);
+			}
+		  100% {
+		  	opacity: 1;
+		    visibility:visible;
+		    top: 217px;
+		  }
+		}
+		.shadowMoveLeft {
+		  -webkit-animation-name: shadowMoveLeft;
+		  animation-name: shadowMoveLeft;
+		}
+
+
+
+		@keyframes envelopeLeft {
+		  0% {
+		     opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    transform: translate3d(93px, 0, 0);
+		    -webkit-transform: translate3d(93px, 0, 0);
+		    visibility:visible;
+		  }
+		}
+		@-webkit-keyframes envelopeLeft {
+		  0% {
+		     opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    transform: translate3d(93px, 0, 0);
+		    -webkit-transform: translate3d(93px, 0, 0);
+		    visibility:visible;
+		  }
+		}
+		.envelopeLeft {
+		  -webkit-animation-name: envelopeLeft;
+		  animation-name: envelopeLeft;
+		   -webkit-animation-delay: 0.3s; 
+    	  animation-delay: 0.3s;
+		}
+
+		@keyframes envelopeRight {
+		  0% {
+		     opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+		  20%{
+		  	opacity: 1;
+		  	visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    visibility:visible;
+		  }
+		}
+		@-webkit-keyframes envelopeRight {
+		  0% {
+		     opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+		  20%{
+		  	opacity: 1;
+		  	visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    visibility:visible;
+		  }
+		}
+		.envelopeRight {
+		  -webkit-animation-name: envelopeRight;
+		  animation-name: envelopeRight;
+		 
+		}
+
+
+		@keyframes bienvenidoFadeInDown {
+		  0% {
+		    opacity: 1;
+		    transform: translate3d(0, 20px, 0);
+		    -webkit-transform: translate3d(0, 20px, 0);
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+		}
+		@-webkit-keyframes bienvenidoFadeInDown {
+		  0% {
+		    opacity: 1;
+		    transform: translate3d(0, 20px, 0);
+		    -webkit-transform: translate3d(0, 20px, 0);
+		    visibility:visible;
+		  }
+
+		  100% {
+		    opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+		}
+		.bienvenidoFadeInDown {
+		  -webkit-animation-name: bienvenidoFadeInDown;
+		  animation-name: bienvenidoFadeInDown;
+		}
+
+		@keyframes curveArrowFadeIn {
+		  0% {
+		  	opacity: 1;
+		    transform: scale3d(0,0,1);
+		    -webkit-transform: scale3d(0,0,1);
+		    visibility:visible;
+		  }
+
+		  100% {
+		  	opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+		}
+		@-webkit-keyframes curveArrowFadeIn {
+		  0% {
+		  	opacity: 1;
+		    transform: scale3d(0,0,1);
+		    -webkit-transform: scale3d(0,0,1);
+		    visibility:visible;
+		  }
+
+		  100% {
+		  	opacity: 1;
+		    transform: none;
+		    -webkit-transform: none;
+		    visibility:visible;
+		  }
+		}
+		.curveArrowFadeIn {
+		  -webkit-animation-name: curveArrowFadeIn;
+		  animation-name: curveArrowFadeIn;
+		}
+	</style>
+	
+</head>
+
+<body id="testDestroy">
+	<div class="wrapper">
+			<!--step 1 -->
+			<span style="z-index: 100;" class="txtMiraComo animated-06s fadeInUp">Mira cómo puede verse <br> tu e-mail profesional:</span>
+			<img style="z-index: 100;" class="imgEnvelope animated-06s fadeInUp" src="300x600_data/sprite49.png">
+			<span style="z-index: 100;" class="txtGmailBuisness animated-06s fadeInUp">Gmail Para Tu Negocio</span>
+			<form name="myform">
+				<span style="background-color: rgb(77, 144, 254);" class="circleOne animated-06s fadeOutLeft">1</span>
+				<span class="circleTwo animated-06s fadeInLeft">2</span>
+				<input style="z-index: 500;" class="edtInput1 animated-06s fadeInLeft" maxlength="12" placeholder="Escribe tu nombre" name="scroll2" size="&amp;{msg.length" +="" 2};="" onclick="busy();" type="text">	
+				<input value="Pijamas Mullidos" style="z-index: 500;" class="edtInput2 animated-06s fadeOutLeft" maxlength="13" placeholder="Escribe el nombre de tu empresa" name="scroll" size="&amp;{msg2.length" +="" 2};="" onclick="busy();" type="text">			
+				<span style="z-index: 600; pointer-events: none; background-color: rgb(77, 144, 254);" class="btnGo animated-06s fadeOutLeft" id="waitShowOne">Siguiente</span>
+				<span style="z-index: 600; background-color: rgb(77, 144, 254);" class="btnGo2 animated-06s fadeInLeft">Ir</span>
+			</form>
+			<div class="imgBackground animated-2s backgroundFadeInLeft animated-06s backgroundDown"></div>
+			<img src="300x600_data/shadow.png" class="imgShadow animated-06s shadowFadeInLeft">
+			<div class="imgZoom animated-06s zoomFadeInLeft">
+				<div class="backgroundZoom animated-06s backgroundZoomFadeInLeft"></div>
+				<span style="visibility: visible;" class="txtCompany">Pijamas Mullidos</span>
+				<span style="z-index: 100;" class="txtMail"></span>
+			</div>
+			<img style="z-index: 700;" class="pointerArrow animated-1s btnGoArrow2" src="300x600_data/flecha.png">
+			<img style="z-index: 700;" class="pointerArrowEdit animated-1s btnGoEdit" src="300x600_data/flecha.png">
+			<img style="z-index: 700;" class="pointerHand animated-1s btnGoHand2" src="300x600_data/mano.png">
+			<!-- step 2 -->
+			<span style="z-index: 100;" class="txtBienvenido">Bienvenido, <span id="resultado"></span></span>
+			<img style="z-index: 200;" class="imgEnvelope2" src="300x600_data/sobre.png">
+			<img style="z-index: 100;" class="imgEnvelope3" src="300x600_data/sobre2.png">
+			<!-- step 3-->
+			
+			<!-- step 4 -->
+			<img style="z-index: 600;" class="imgReload" src="300x600_data/reload.png">
+			<img style="z-index: 100;" class="imgEnvelope4" src="300x600_data/sprite49.png">
+			
+			<span style="z-index: 100;" class="txtNowYouCan">Ahora puedes verte más profesional <br> con un e-mail personalizado.</span>
+			<a style="z-index: 100;" class="btnStartNow" id="toEnabler">Comienza Ahora</a>
+			<span class="txtGmailBuisness2">Gmail Para Tu Negocio</span>
+	</div>
+
+	    <script src="300x600_data/jquery.js"></script>
+
+	<script>
+		//-----------------------------------------------------------------
+		//ANIMATION STEPS FUNCTIONS----------------------------------------
+		//-----------------------------------------------------------------
+		var clickeo = "";
+		var reboot ="";
+		var scrollEx="";
+
+		
+		function ShowOne(){
+			$(".imgEnvelope").addClass('animated-06s fadeInUp');
+			$(".circleOne").addClass('animated-06s fadeInUp');
+			$(".circleOne").css('background-color', '#4D90FE');
+			$(".txtMiraComo").addClass('animated-06s fadeInUp');
+			$(".txtGmailBuisness").addClass('animated-06s fadeInUp');	
+			//$(".edtInput1").addClass('animated-06s fadeInUp');
+			$(".edtInput2").addClass('animated-06s fadeInUp');
+			$(".btnGo").addClass('animated-06s fadeInUp');
+			$(".circleOne").addClass('animated-06s fadeInUp');
+			$(".imgBackground").addClass('animated-2s backgroundFadeInLeft');
+			//$(".circleTwo").addClass('animated-06s fadeInUp');
+
+		}
+
+		function HideOne(){
+			//$(".txtMiraComo").removeClass('animated-06s fadeInUp');	
+			//$(".edtInput1").removeClass('animated-06s fadeInUp');
+
+			$(".circleOne").removeClass('animated-06s fadeInUp');
+			$(".edtInput2").removeClass('animated-06s fadeInUp');
+			$(".btnGo").removeClass('animated-06s fadeInUp');
+
+			$(".edtInput2").addClass('animated-06s fadeOutLeft');
+			$(".btnGo").addClass('animated-06s fadeOutLeft');
+			$(".circleOne").addClass('animated-06s fadeOutLeft');
+
+			
+			//$(".circleTwo").removeClass('animated-06s fadeInUp');
+			//$(".txtGmailBuisness").removeClass('animated-06s fadeInUp');
+			//$(".imgEnvelope").removeClass('animated-06s fadeInUp');
+
+			//$(".txtMiraComo").addClass('animated-06s fadeOut');	
+			//$(".imgEnvelope").addClass('animated-06s fadeOut');
+			//$(".edtInput1").addClass('animated-06s fadeOut');
+			
+			//$(".circleTwo").addClass('animated-06s fadeOut');
+			//$(".circleOne").css('background-color', '#D7D7D7');
+			//$(".circleTwo").css('background-color', '#D7D7D7');
+			//$(".txtGmailBuisness").addClass('animated-06s fadeOut');
+			//$(".imgEnvelope").removeClass('fadeOut');
+			
+		}
+		
+		function ShowTwo(){
+			
+
+
+			$(".edtInput1").addClass('animated-06s fadeInLeft');
+			$(".btnGo2").addClass('animated-06s fadeInLeft');
+			$(".circleTwo").addClass('animated-06s fadeInLeft');
+			//$(".txtBienvenido").addClass('animated-06s bienvenidoFadeInDown');
+			//$(".imgEnvelope3").addClass('animated-06s envelopeLeft');
+			//$(".imgEnvelope2").addClass('animated-06s envelopeRight');
+			//$(".imgCurveArrow").addClass('animated-06s curveArrowFadeIn');
+		}
+		
+		function HideTwo(){
+			$(".edtInput1").removeClass('animated-06s fadeInLeft');
+			$(".btnGo2").removeClass('animated-06s fadeInLeft');
+			$(".circleTwo").removeClass('animated-06s fadeInLeft');
+
+
+			$(".edtInput1").addClass('animated-06s fadeOut');
+			$(".btnGo2").addClass('animated-06s fadeOut');
+			$(".circleTwo").addClass('animated-06s fadeOut');
+			
+			/*$(".txtBienvenido").removeClass('animated-06s bienvenidoFadeInDown');
+			$(".imgEnvelope3").removeClass('animated-06s envelopeLeft');
+			$(".imgEnvelope2").removeClass('animated-06s envelopeRight');
+			$(".imgCurveArrow").removeClass('animated-06s curveArrowFadeIn');
+
+
+			$(".txtBienvenido").addClass('animated-06s fadeOut');
+			$(".imgEnvelope3").addClass('animated-06s fadeOut');
+			$(".imgEnvelope2").addClass('animated-06s fadeOut');
+			$(".imgCurveArrow").addClass('animated-06s fadeOut');*/
+		}
+
+		function ShowThree(){
+			//$(".txtMail").addClass('animated-06s fadeIn');
+			$(".imgZoom").removeClass('animated-06s zoomFadeInLeft');
+			$(".imgShadow").removeClass('animated-06s shadowFadeInLeft');
+			$(".imgBackground").removeClass('animated-06s backgroundDown backgroundFadeInLeft');
+			$(".backgroundZoom").removeClass('animated-06s backgroundZoomFadeInLeft');
+
+			$(".imgBackground").addClass('animated-1s backgroundLeft');
+			$(".imgZoom").addClass('animated-1s zoomMoveLeft');
+			$(".imgShadow").addClass('animated-1s shadowMoveLeft');
+			$(".backgroundZoom").addClass('animated-1s backgroundZoomMoveLeft');
+			$(".txtCompany").addClass('animated-1s fadeCompany');
+			$(".txtMail").addClass('animated-1s fadeInLeft');
+			//$(".imgBackground").addClass('animated-06s backgroundDown');
+		}
+
+		function HideThree(){
+			$(".imgBackground").removeClass('animated-1s backgroundLeft');
+			$(".imgShadow").removeClass('animated-1s shadowMoveLeft');
+			$(".imgZoom").removeClass('animated-1s zoomMoveLeft');
+			$(".imgShadow").removeClass('animated-1s shadowFadeInLeft');
+			$(".imgEnvelope").removeClass('animated-06s fadeInUp');
+			$(".txtMiraComo").removeClass('animated-06s fadeInUp');
+			$(".txtGmailBuisness").removeClass('animated-06s fadeInUp');	
+			$(".txtMail").removeClass('fadeInLeft');
+			$(".backgroundZoom").removeClass('animated-1s backgroundZoomMoveLeft');
+		
+			$(".imgBackground").addClass('animated-06s fadeOut');
+			$(".imgZoom").addClass('animated-06s fadeOut');
+			$(".backgroundZoom").addClass('animated-06s fadeOut');
+			$(".imgEnvelope").addClass('animated-06s fadeOut');
+			$(".txtMiraComo").addClass('animated-06s fadeOut');
+			$(".txtGmailBuisness").addClass('animated-06s fadeOut');
+			$(".imgShadow").addClass('animated-06s fadeOut');
+			$(".txtMail").addClass('animated-06s fadeOut');
+		}
+		function ShowFour(){
+			$(".imgEnvelope4").addClass('animated-06s fadeIn');
+			
+			$(".txtNowYouCan").addClass('animated-06s fadeIn');
+			$(".btnStartNow").addClass('animated-06s fadeIn');
+			$(".imgReload").addClass('animated-06s fadeIn');
+			$(".txtGmailBuisness2").addClass('animated-06s fadeIn');
+
+
+		}
+		function HideFour(){
+			$(".imgEnvelope4").removeClass('animated-06s fadeIn');
+			$(".txtGmailBuisness2").removeClass('animated-06s fadeIn');
+			
+			$(".txtNowYouCan").removeClass('animated-06s fadeIn');
+			$(".btnStartNow").removeClass('animated-06s fadeIn');
+			$(".imgReload").removeClass('animated-06s fadeIn');
+
+
+			$(".imgEnvelope4").addClass('animated-06s fadeOut');
+
+			$(".txtNowYouCan").addClass('animated-06s fadeOut');
+			$(".btnStartNow").addClass('animated-06s fadeOut');
+			$(".imgReload").addClass('animated-06s fadeOut');
+		}
+
+		function StartShow(){
+			
+			setTimeout(function(){
+				if(document.myform.scroll.value=="" && document.myform.scroll2.value==""){
+					$(".pointerArrowEdit").addClass('animated-1s btnGoEdit');
+				}
+			}, 4300);
+
+			setTimeout(function(){
+				if(document.myform.scroll.value=="" && document.myform.scroll2.value==""){
+					$( ".edtInput2").click();
+					$(".txtCompany").css('visibility', 'visible');
+				}
+			}, 4900);
+
+			setTimeout(function(){
+				if (clickeo =="" || (document.myform.scroll.value=="" && document.myform.scroll2.value=="")){
+						$(".btnGo").css('pointer-events', 'none'); //Disable
+						scroll();}
+			}, 5000);
+
+			setTimeout(function(){
+				if (scrollEx =="1"){
+					$(".pointerHand").addClass('animated-1s btnGoHand');
+					$(".pointerArrow").addClass('animated-1s btnGoArrow');
+					$(".btnGo").css('background-color', '#4D90FE');
+
+				}
+			}, 7300);
+
+			setTimeout(function(){
+				if (scrollEx =="1"){
+					$(".pointerArrow").addClass('animated-1s btnGoArrow3');
+				}
+			}, 8600);
+
+			setTimeout(function(){
+				if (clickeo =="" || (document.myform.scroll.value==msg && document.myform.scroll2.value=="")){
+						$(".btnGo").css('pointer-events', 'none'); //Disable
+						scroll2();}
+			}, 9100);
+
+			setTimeout(function(){
+				if(scrollEx =="1"){
+					$(".pointerHand").removeClass('animated-1s btnGoHand');
+					$(".pointerArrow").removeClass('animated-1s btnGoArrow');
+					$(".btnGo2").css('background-color', '#4D90FE');
+					$(".pointerHand").addClass('animated-1s btnGoHand2');
+					$(".pointerArrow").removeClass('animated-1s btnGoArrow3');
+					$(".pointerArrow").addClass('animated-1s btnGoArrow2');
+				
+				}
+			}, 11000);
+
+			setTimeout(function(){
+				if(scrollEx =="1"){
+					$( ".btnGo2").click();
+				}
+			}, 11400);
+
+		}
+		
+		function ResetShow(){ 
+			x = "";	x2 = "";num = 1; num2 = 1;
+			toggle = 1;	tt = 1;	tt2 = 1; OOK = 0; OOK2 = 0; 	
+			timval = 150; tval = "";  
+			document.myform.scroll.value="";
+			document.myform.scroll2.value="";
+			scrollEx ="";
+			reboot ="";
+			clickeo ="";
+			$(".txtMiraComo").removeClass('fadeOut'); 
+			$(".imgEnvelope").removeClass('EnvelopeFadeOut');
+			$(".imgEnvelope").removeClass('fadeOut');
+			$(".edtInput1").removeClass('fadeOut');
+			$(".edtInput2").removeClass('fadeOut');
+			$(".btnGo").removeClass('fadeOut');			
+			$(".circleOne").removeClass('fadeOut');
+			$(".circleTwo").removeClass('fadeOut');
+			$(".txtBienvenido").removeClass('fadeOut');
+			$(".imgEnvelope3").removeClass('fadeOut');
+			$(".imgEnvelope2").removeClass('fadeOut');
+			$(".imgCurveArrow").removeClass('fadeOut');
+			$(".txtMail").removeClass('fadeOut');
+			$(".imgEnvelope4").removeClass('fadeOut');
+			$(".txtGmailBuisness").removeClass('fadeOut');
+			$(".txtGmailBuisness2").removeClass('fadeOut');
+			$(".txtNowYouCan").removeClass('fadeOut');
+			$(".btnStartNow").removeClass('fadeOut');
+			$(".imgReload").removeClass('fadeOut');
+			$(".pointerHand").removeClass('animated-1s btnGoHand');
+			$(".pointerArrow").removeClass('animated-1s btnGoArrow');
+			$(".pointerHand").removeClass('animated-1s btnGoHand2');
+			$(".pointerArrow").removeClass('animated-1s btnGoArrow2');
+			$(".pointerArrowEdit").removeClass('animated-1s btnGoEdit');
+			$(".btnGo").css('background-color', '#CCCCCC');
+			$(".btnGo").css('pointer-events', 'all');	
+			$(".imgShadow").addClass('fadeOut');
+			$(".txtCompany").removeClass('fadeCompany');
+			$(".txtMail").removeClass('fadeOut');
+			$(".backgroundZoom").removeClass('animated-06s fadeOut');			
+			$(".pointerArrow").removeClass('animated-1s btnGoArrow3');
+
+		}
+
+		//-----------------------------------------------------------------
+		//MAIN-------------------------------------------------------------
+		//-----------------------------------------------------------------
+
+		ShowOne();
+		StartShow();
+
+		//-----------------------------------------------------------------
+		//EVENTES----------------------------------------------------------
+		//-----------------------------------------------------------------
+		$(".btnGo").click(function(){
+			if(document.myform.scroll.value!=""){				
+				setTimeout(HideOne, 300);
+				setTimeout(ShowTwo, 600);
+				//setTimeout(HideTwo, 5000);
+				//setTimeout(ShowThree, 5300);
+				//setTimeout(HideThree, 8000);
+				//setTimeout(ShowFour, 8300);
+				reboot ="1";
+
+			}
+			$('.txtMail').text(document.myform.scroll2.value);
+			
+
+		});
+
+		$(".btnGo2").click(function(){
+			if(document.myform.scroll2.value!=""){
+				$('#resultadob').text(document.myform.scroll.value);
+				setTimeout(HideTwo, 300);
+				setTimeout(ShowThree, 600);
+				setTimeout(HideThree, 4000);
+				setTimeout(ShowFour, 5000);
+				
+				//setTimeout(HideTwo, 5000);
+				//setTimeout(ShowThree, 5300);
+				//setTimeout(HideThree, 8000);
+				//setTimeout(ShowFour, 8300);
+				reboot ="1";
+
+			}
+			
+			var name1 = document.myform.scroll2.value;
+			name1 = name1.split(" ");
+			name1 = name1[0].toLowerCase();
+
+			var name2 = document.myform.scroll.value;
+			name2 = name2.split(" ");
+			name2 = name2[0].toLowerCase();
+
+			$('.txtMail').text(name1 + '@' + name2 + '.com');
+
+		});
+
+		$( ".edtInput2").click(function(){
+			$(".imgZoom").addClass('animated-06s zoomFadeInLeft');
+			$(".imgShadow").addClass('animated-06s shadowFadeInLeft');
+			$(".backgroundZoom").addClass('animated-06s backgroundZoomFadeInLeft');
+			$(".imgBackground").addClass('animated-06s backgroundDown');
+			
+		});
+
+
+
+		$(".edtInput2").keyup(function(e){
+
+			if(document.myform.scroll.value!=""){
+				$(".btnGo").css('background-color', '#4D90FE');
+				$(".circleOne").css('background-color', '#4D90FE');
+				$(".txtCompany").css('visibility', 'visible');
+				//$(".imgZoom").css('background-image', 'url(screen2.gif)');
+			}else {
+				$(".circleOne").css('background-color', '#D7D7D7');
+				//$(".imgZoom").css('background-image', 'url(screen2.gif)');
+				$(".btnGo").css('background-color', '#D7D7D7');
+				$(".txtCompany").css('visibility', 'hidden');			
+			}  
+			$(".txtCompany").text(document.myform.scroll.value);
+			if(e.keyCode == 13){
+				$(".btnGo").click();
+			}
+		});
+
+		$(".edtInput1").keyup(function(e){
+			if(document.myform.scroll2.value!=""){
+				$(".btnGo2").css('background-color', '#4D90FE');
+				$(".circleTwo").css('background-color', '#4D90FE');
+			}else {
+				$(".circleTwo").css('background-color', '#D7D7D7');
+				$(".btnGo2").css('background-color', '#D7D7D7');			
+			}   
+			if(e.keyCode == 13){
+				$(".btnGo2").click();
+			} 
+		});
+
+ 
+
+
+
+
+		$(".imgReload").click(function(){
+			HideFour();
+			ResetShow();
+			ShowOne();
+			StartShow();
+
+		});
+	</script>
+
+	<script>
+		//-----------------------------------------------------------------
+		//TYPE MACHINE SCROLL TEXT EFFECT FUNCTIONS------------------------
+		//-----------------------------------------------------------------
+		var msg2 = "Juan";
+		var msg = "Pijamas Mullidos";
+		var x = "";
+		var x2 = "";
+		num = 1;
+		num2 = 1;
+		toggle = 1;
+		tt = 1;
+		tt2 = 1;
+		OOK = 0;
+		OOK2 = 0;
+		timval = 150;
+		var tval = "";
+		var alternate = 0;
+		function fasl() { 
+			timval = (timval==60 ? 150 : 60 ) 
+		}
+
+
+		function scroll() {
+
+				if (num <= msg.length){
+					OOK = 1;
+				}else{
+					document.myform.scroll.value = x;
+					$(".txtCompany").text(document.myform.scroll.value);
+					toggle = 0;
+				}
+
+			if ( OOK == 1){
+				OOK = 0;
+				x = msg.substring(0,num);
+				document.myform.scroll.value = x + "|";
+				num = num+1 ;
+
+				$(".txtCompany").text(x);
+			}
+			if (toggle == 1){					
+				setTimeout("scroll()", timval);
+				scrollEx=1;
+			} else { 
+				x = "";
+				x2 = "";
+				num = 1;
+				num2 = 1;
+				toggle = 1;
+				tt = 1;
+				tt2 = 1;
+				OOK = 0;
+				OOK2 = 0;
+				timval = 150;
+				tval = "";      
+				$(".btnGo").click();
+			}
+		}
+
+		function scroll2() {
+
+				if (num <= msg2.length){
+					OOK = 1;
+				if (num == 1){
+							$(".circleTwo").css('background-color', '#4D90FE');
+						}
+				}else{
+					document.myform.scroll2.value = x;
+					toggle = 0;
+				}
+
+			if ( OOK == 1){
+				OOK = 0;
+				x = msg2.substring(0,num);
+				document.myform.scroll2.value = x + "|";
+				num = num+1 ;
+
+			}
+			if (toggle == 1){					
+				setTimeout("scroll2()", timval);
+				scrollEx=1;
+			} else { 
+				x = "";
+				x2 = "";
+				num = 1;
+				num2 = 1;
+				toggle = 1;
+				tt = 1;
+				tt2 = 1;
+				OOK = 0;
+				OOK2 = 0;
+				timval = 150;
+				tval = "";      
+				$(".btnGo").click();
+			}
+		}
+
+
+		function capturar(){
+			var porNombre=document.getElementsByName("scroll")[0].value;			
+			porNombreb = porNombre.split(" ");
+			porNombreb = porNombreb[0].toLowerCase();
+			document.getElementById("resultado").innerHTML=porNombre; 
+			document.getElementById("resultadob").innerHTML=porNombreb;
+		}
+
+		function capturar2(){
+			var porNombre2=document.getElementsByName("scroll2")[0].value;
+			porNombre2 = porNombre2.split(" ");
+			porNombre2 = porNombre2[0].toLowerCase();
+			document.getElementById("resultado2").innerHTML= porNombre2;
+		}
+
+		function busy(){ 
+			if (clickeo == "") {
+				document.myform.scroll.value="";
+				document.myform.scroll2.value="";				
+				clickeo = "1";
+			}
+		}
+
+	</script>
+
+	<script>
+		$('body').append('<div id="bgexit" style="position: absolute; left: 0px; top: 0px; width: 100%; height:100%; z-index: 300;cursor:pointer"></div>');
+		$('.imgEnvelope').css('z-index', '100');
+		$('.txtMiraComo').css('z-index', '100');
+		$('.edtInput1').css('z-index', '500');
+		$('.edtInput2').css('z-index', '500');
+		$('.btnGo').css('z-index', '600');
+		$('.btnGo2').css('z-index', '600');
+		$('.pointerArrow').css('z-index', '700');
+		$('.pointerArrowEdit').css('z-index', '700');
+		$('.pointerHand').css('z-index', '700');
+		$('.txtBienvenido').css('z-index', '100');
+		$('.imgEnvelope2').css('z-index', '200');
+		$('.imgEnvelope3').css('z-index', '100');
+		$('.imgEnvelope4').css('z-index', '100');
+		$('.imgCurveArrow').css('z-index', '100');
+		$('.txtMail').css('z-index', '100');
+		$('.imgReload').css('z-index', '600');
+		$('.txtGmailBuisness').css('z-index', '100');
+		$('.txtNowYouCan').css('z-index', '100');
+		$('.btnStartNow').css('z-index', '100');
+
+
+	</script><div id="bgexit" style="position: absolute; left: 0px; top: 0px; width: 100%; height:100%; z-index: 300;cursor:pointer"></div>
+	<script>
+      //setTimeout(replay, 30000);
+	function bgExitHandler(e) {
+  		Enabler.exit('Comienza Ahora','https://www.google.com/intx/es-419/work/apps/business/');
+	}
+	document.getElementById('bgexit').addEventListener('click', bgExitHandler, false);
+	</script>
+
+</body></html>
