@@ -7,6 +7,7 @@ sudo apt-get install r-base r-base-dev
 // o tambien 
 
 sudo nano /etc/apt/sources.list.d/r-base.list
+
 // creamos un nuevo r-base.list para tener conexion al CRAN
 //CRAN es una red de servidores ftp y web de todo el mundo que almacenan idénticos,
 // hasta a la fecha, versiones de código y la documentación para R. Por favor,
@@ -18,6 +19,7 @@ deb http://cran.espol.edu.ec/bin/linux/ubuntu trusty/
 // CRAN de ecuador
 // copiamos estas lineas en ese r-base
 
+En consola escribir:
 
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
