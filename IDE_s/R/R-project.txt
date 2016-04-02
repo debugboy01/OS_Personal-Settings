@@ -16,16 +16,28 @@ sudo nano /etc/apt/sources.list.d/r-base.list
 # R-Base repository
 deb http://cran.espol.edu.ec/bin/linux/ubuntu trusty/
 
+o
+
+sudo gedit /etc/apt/sources.list
+add
+deb http://cran.rstudio.com/bin/linux/ubuntu trusty/
+
 // CRAN de ecuador
 // copiamos estas lineas en ese r-base
 
 En consola escribir:
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+
+o
+
 
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 // importamos repositorio
 
 sudo apt-get update
+sudo apt-get upgrade
 
 //luego:
 
