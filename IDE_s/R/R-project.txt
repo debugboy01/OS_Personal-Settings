@@ -33,11 +33,3 @@ sudo apt-get install r-base r-base-dev r-cran-rjava r-cran-xml libxml2-dev
 // en la consola escribir
 
 R
-
-***** RStudio
-
-//ir a la web oficial y descargar para el SO
-
-http://www.rstudio.com/products/rstudio/download/
-// escoger sistema operativo
-
