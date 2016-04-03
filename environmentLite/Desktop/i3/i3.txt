@@ -20,7 +20,7 @@ Comandos utiles para i3:
 
 $mod + Enter 	        	Abrir termianal
 $mod + A 	        	Foco al “padre”
-$mod + S  	        Disposición Stacked (Cascada)
+$mod + S	  	        Disposición Stacked (Cascada)
 $mod + W 	        	Disposición Tabbed
 $mod + E 	        	Disposición por defecto
 $mod + SpaceBar 		Cambio de foco tiling/floating
