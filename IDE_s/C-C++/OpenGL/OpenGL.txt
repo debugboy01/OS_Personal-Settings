@@ -1,0 +1,37 @@
+**************** OpenGL
+
+OpenGL = Open Graphics Library
+GLU = Graphic Library Utility
+GLUT = Graphic Library Utility Toolkit
+
+sudo apt-get install freeglut3
+
+Luego se instalaran las cabeceras en /usr/include/GL
+
+glext.h
+gl.h
+gl_mangle.h
+glu.h
+glu_mangle.h
+glxext.h
+glx.h
+glx_mangle.h
+internal/
+
+Ahora instalar:
+
+sudo apt-get install freeglut3-dev
+
+ahora se anadieron:
+
+freeglut_ext.h
+freeglut.h
+freeglut_std.h
+glut.h
+
+Ejemplo HolaMundo.
+
+Compilando en c++.
+
+g++ helloWorldOpenGL.cpp -o hwogl -lglut -lGL
+

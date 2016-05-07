@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+echo "Instalando los headers de OpenGL ... "
+sudo apt-get install freeglut3
+echo "Revisando las librerias ... "
+ls -x /usr/include/GL
+echo "Instalando dependencias dev ... "
+sudo apt-get install freeglut3-dev
+echo "Revisando librerias ... "
+ls -x /usr/include/GL
+echo "Listo."
+
