@@ -12,11 +12,12 @@ anadir:
 set nu
 
 "tabulation step"
-set ts=2
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 "indent at press enter"
 set autoindent
 
 "show current position"
 set ruler
+
 
