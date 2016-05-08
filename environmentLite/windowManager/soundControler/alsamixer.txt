@@ -8,3 +8,5 @@ $alsamixer
  y modificamos el Master de PCH ( es el volumen  de nuestra maquina ).
 
  y modificamos el audio llamado. Master
+ 
+ amixer -D pulse sset Master 5%-
