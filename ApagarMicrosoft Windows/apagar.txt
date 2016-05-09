@@ -1,0 +1,5 @@
+Para apagar completamente el sistema de windows y no tener el problema de mount -sf
+
+en cmd escribir
+
+shutdown /s /t 0
