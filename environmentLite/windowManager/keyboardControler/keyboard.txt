@@ -1,1 +1,1 @@
-En i3 solo mantener apretado alt+Spacebar y cambias de teclado.
+En i3 solo mantener apretado ctrl+Spacebar y cambias de teclado.
