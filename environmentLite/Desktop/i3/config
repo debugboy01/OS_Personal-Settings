@@ -174,8 +174,8 @@ bar {
 	position top
 	font pango: Sans, Icon 9
 	colors{
-		statusline #ffa500
-		background #29303a
+		statusline #6da500
+		background #2d203a
 		active_workspace #E5E5E5 #5697B2
                 focused_workspace #29303a #29303a #FFFFFF
                 inactive_workspace #373d48 #373d48 #AAAAAA
