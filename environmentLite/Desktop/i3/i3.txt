@@ -40,4 +40,4 @@ $mod + Shift + K 		Mover ventana abajo
 $mod + Shift + L 		Mover ventana arriba
 $mod + Shift + : 		Mover ventana a la derecha
 $mod + Shift + SpaceBar 	Cambiar modo de ventana entre tiling/floating
-$mod + Shift + x:		Bloquear sesion
+$mod + Shift + x		Bloquear sesion
