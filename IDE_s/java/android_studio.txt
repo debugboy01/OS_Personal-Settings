@@ -20,3 +20,7 @@ sudo apt-get install android-studio
 si hay problema con el sdk tool.
 
 sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6z
+
+o
+
+sudo apt-get install lib32z1 lib32ncurses5 libbz2-1.0 lib32stdc++6
