@@ -1,4 +1,4 @@
-En la carpeta /etc/default/grub
+# En la carpeta /etc/default/grub
 
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
